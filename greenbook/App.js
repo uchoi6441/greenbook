@@ -8,7 +8,7 @@ export default class App extends React.Component {
         <View style={styles.headingBufferTop}>
         </View>
         <View style={styles.heading}>
-          <Text style={styles.headingText}>YEET!</Text>
+          <Text style={styles.headingText}>YEeeeET!</Text>
         </View>
         <View style={styles.headingBufferBottom}>
           <Text style={{fontSize: 20}}>subtitle here</Text>
