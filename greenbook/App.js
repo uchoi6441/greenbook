@@ -1,20 +1,35 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { Font } from 'expo';
 
 export default class App extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      fontLoaded: false,
+    };
+  }
+  async componentDidMount() {
+    await Font.loadAsync({
+      'gloria-hallelujah': require('./assets/fonts/GloriaHallelujah.ttf'),
+      'libre-barcode': require('./assets/fonts/LibreBarcode128Text-Regular.ttf')
+    });
+    this.setState({ fontLoaded: true });
+  }
   render() {
     return (
       <View style={{flex: 1, backgroundColor: "blue"}}>
         <View style={styles.headingBufferTop}>
         </View>
         <View style={styles.heading}>
-          <Text style={styles.headingText}>YEeeeET!</Text>
+          <Text style={ this.state.fontLoaded ? styles.headingText : styles.justInCase }>YEeeeET!</Text>
         </View>
         <View style={styles.headingBufferBottom}>
-          <Text style={{fontSize: 20}}>subtitle here</Text>
+          <Text style={ this.state.fontLoaded ? styles.subheadingText : styles.justInCase }>subtitle here</Text>
         </View>
       </View>
     );
+
   }
 }
 
@@ -41,6 +56,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   headingText: {
+    fontSize: 44,
+    fontFamily: 'gloria-hallelujah',
+  },
+  subheadingText: {
+    fontSize: 44,
+    fontFamily: 'libre-barcode',
+  },
+  justInCase: {
     fontSize: 44,
   },
 });

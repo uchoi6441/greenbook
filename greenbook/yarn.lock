@@ -1950,9 +1950,9 @@ expo-localization@~2.0.0:
     moment-timezone "^0.5.23"
     rtl-detect "^1.0.2"
 
-expo-location@~2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/expo-location/-/expo-location-2.0.0.tgz#8ce2502960abffaffa87e07939668f2bb03874d3"
+expo-location@~2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/expo-location/-/expo-location-2.0.1.tgz#44d5865640ce28a1683dec8ff9269e786b86aa2e"
   dependencies:
     invariant "^2.2.4"
 
@@ -2035,9 +2035,9 @@ expo-task-manager@~1.0.0:
     expo-errors "~1.0.0"
     expo-task-manager-interface "~1.0.0"
 
-expo@^32.0.0:
-  version "32.0.0"
-  resolved "https://registry.yarnpkg.com/expo/-/expo-32.0.0.tgz#c5b0120fdbd76ab9b14476482d525fde23effdbf"
+expo@^32.0.2:
+  version "32.0.2"
+  resolved "https://registry.yarnpkg.com/expo/-/expo-32.0.2.tgz#266abf5b5ff955151609666c23946f4e45f3ed23"
   dependencies:
     "@babel/runtime" "^7.1.2"
     "@expo/vector-icons" "github:expo/vector-icons#expo-font-fix"
@@ -2077,7 +2077,7 @@ expo@^32.0.0:
     expo-image-loader-interface "~2.0.0"
     expo-local-authentication "~2.0.0"
     expo-localization "~2.0.0"
-    expo-location "~2.0.0"
+    expo-location "~2.0.1"
     expo-media-library "~2.0.0"
     expo-payments-stripe "~2.0.0"
     expo-permissions "~2.0.0"
@@ -2101,10 +2101,10 @@ expo@^32.0.0:
     prop-types "^15.6.0"
     qs "^6.5.0"
     react-native-branch "2.2.5"
-    react-native-gesture-handler "1.0.12"
+    react-native-gesture-handler "1.0.14"
     react-native-maps expo/react-native-maps#v0.22.1-exp.0
     react-native-reanimated "1.0.0-alpha.11"
-    react-native-screens "1.0.0-alpha.19"
+    react-native-screens "1.0.0-alpha.22"
     react-native-svg "8.0.10"
     react-native-view-shot "2.5.0"
     serialize-error "^2.1.0"
@@ -3832,15 +3832,15 @@ react-native-branch@2.2.5:
   version "2.2.5"
   resolved "https://registry.yarnpkg.com/react-native-branch/-/react-native-branch-2.2.5.tgz#4074dd63b4973e6397d9ce50e97b57c77a518e9d"
 
-react-native-gesture-handler@1.0.12:
-  version "1.0.12"
-  resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-1.0.12.tgz#99a22f90212df299245357dbd3a9a01c788f310b"
+react-native-gesture-handler@1.0.14:
+  version "1.0.14"
+  resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-1.0.14.tgz#0e79fcc7175c9bb2e550917a35488100eec8738b"
   dependencies:
     hoist-non-react-statics "^2.3.1"
     invariant "^2.2.2"
     prop-types "^15.5.10"
 
-react-native-maps@expo/react-native-maps#v0.22.1-exp.0:
+"react-native-maps@github:expo/react-native-maps#v0.22.1-exp.0":
   version "0.22.1"
   resolved "https://codeload.github.com/expo/react-native-maps/tar.gz/e6f98ff7272e5d0a7fe974a41f28593af2d77bb2"
 
@@ -3854,9 +3854,9 @@ react-native-safe-module@^1.1.0:
   dependencies:
     dedent "^0.6.0"
 
-react-native-screens@1.0.0-alpha.19:
-  version "1.0.0-alpha.19"
-  resolved "https://registry.yarnpkg.com/react-native-screens/-/react-native-screens-1.0.0-alpha.19.tgz#ecf3c9023e169b7013266d40b9c5599f37667f6d"
+react-native-screens@1.0.0-alpha.22:
+  version "1.0.0-alpha.22"
+  resolved "https://registry.yarnpkg.com/react-native-screens/-/react-native-screens-1.0.0-alpha.22.tgz#7a120377b52aa9bbb94d0b8541a014026be9289b"
 
 react-native-svg@8.0.10:
   version "8.0.10"
