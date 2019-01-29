@@ -22,10 +22,8 @@ export default class App extends React.Component {
         <View style={styles.headingBufferTop}>
         </View>
         <View style={styles.heading}>
-          <Text style={ this.state.fontLoaded ? styles.headingText : styles.justInCase }>YEeeeET!</Text>
-        </View>
-        <View style={styles.headingBufferBottom}>
-          <Text style={ this.state.fontLoaded ? styles.subheadingText : styles.justInCase }>subtitle here</Text>
+          <Text style={ this.state.fontLoaded ? styles.headingText : styles.justInCase }>green</Text>
+          <Text style={ this.state.fontLoaded ? styles.subheadingText : styles.justInCase }>book</Text>
         </View>
       </View>
     );
@@ -56,11 +54,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   headingText: {
-    fontSize: 44,
+    fontSize: 35,
     fontFamily: 'gloria-hallelujah',
+    color: '#024C2E',
   },
   subheadingText: {
-    fontSize: 44,
+    fontSize: 70,
+    marginTop: -16,
     fontFamily: 'libre-barcode',
   },
   justInCase: {
