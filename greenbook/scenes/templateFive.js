@@ -1,15 +1,14 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-export default class templateFive extends React.Component {
+export class templateFive extends React.Component {
   render() {
     return (
       <View style={{flex: 1, alignItems: 'center'}}>
         <View style={styles.headingBufferTop}>
         </View>
         <View style={styles.heading}>
-          <Text style={styles.headingText}>postings</Text>
-          <Text style={styles.headingText}>*~*~*~*~*~*~</Text>
+          <Text style={styles.headingText}>YEET!</Text>
         </View>
         <View style={styles.headingBufferBottomFive}>
           <Text style={{fontSize: 20}}>subtitle here</Text>
@@ -36,7 +35,7 @@ const styles = StyleSheet.create({
   headingBufferTop: {
     height: '8%',
     width: '100%',
-    backgroundColor: '#fff',
+    backgroundColor: 'red',
     alignItems: 'center',
     justifyContent: 'center'
   },
@@ -48,7 +47,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   headingText: {
-    fontSize: 40,
+    fontSize: 44,
   },
   bodyFive: {
     height: '60%',

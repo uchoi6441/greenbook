@@ -1,23 +1,22 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-export default class templateFive extends React.Component {
+export class templateFour extends React.Component {
   render() {
     return (
       <View style={{flex: 1, alignItems: 'center'}}>
         <View style={styles.headingBufferTop}>
         </View>
         <View style={styles.heading}>
-          <Text style={styles.headingText}>postings</Text>
-          <Text style={styles.headingText}>*~*~*~*~*~*~</Text>
+          <Text style={styles.headingText}>YEET!</Text>
         </View>
-        <View style={styles.headingBufferBottomFive}>
+        <View style={styles.headingBufferBottomFour}>
           <Text style={{fontSize: 20}}>subtitle here</Text>
         </View>
-        <View style={styles.bodyFive}>
+        <View style={styles.bodyFour}>
           <Text style={{fontSize: 20}}>body here</Text>
         </View>
-        <View style={styles.footerFive}>
+        <View style={styles.footerFour}>
           <Text style={{fontSize: 20}}>bottom here</Text>
         </View>
       </View>
@@ -36,30 +35,30 @@ const styles = StyleSheet.create({
   headingBufferTop: {
     height: '8%',
     width: '100%',
-    backgroundColor: '#fff',
+    backgroundColor: 'red',
     alignItems: 'center',
     justifyContent: 'center'
   },
-  headingBufferBottomFive: {
-    height: '5%',
+  headingBufferBottomFour: {
+    height: '6%',
     width: '100%',
     backgroundColor: 'red',
     alignItems: 'center',
     justifyContent: 'center'
   },
   headingText: {
-    fontSize: 40,
+    fontSize: 44,
   },
-  bodyFive: {
-    height: '60%',
+  bodyFour: {
+    height: '50%',
     width: '100%',
     backgroundColor: 'green',
     alignItems: 'center',
     justifyContent: 'center'
   },
-  footerFive: {
-    height: '15%',
-    width: '100%',
+  footerFour: {
+    height: '24%',
+    width: '88%',
     backgroundColor: 'yellow',
     alignItems: 'center',
     justifyContent: 'center'
