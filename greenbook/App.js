@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
 import { Font } from 'expo';
 
 export default class App extends React.Component {
@@ -25,6 +25,16 @@ export default class App extends React.Component {
           <Text style={ this.state.fontLoaded ? styles.headingText : styles.justInCase }>green</Text>
           <Text style={ this.state.fontLoaded ? styles.subheadingText : styles.justInCase }>book</Text>
         </View>
+        <View style={{flexDirection: 'row', paddingTop: 10}}>
+        <Image
+          source={require('./assets/images/vine.png')}
+        />
+        <Image
+          source={require('./assets/images/vine.png')}
+        />
+        <Image
+          source={require('./assets/images/vine.png')}
+        />
         <View style={styles.headingBufferBottomFive}>
           <Text style={{fontSize: 20}}>subtitle here</Text>
         </View>
