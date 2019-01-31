@@ -1,40 +1,15 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
-import { Font } from 'expo';
+import { StyleSheet, Text, View } from 'react-native';
 
-export default class App extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      fontLoaded: false,
-    };
-  }
-  async componentDidMount() {
-    await Font.loadAsync({
-      'gloria-hallelujah': require('./assets/fonts/GloriaHallelujah.ttf'),
-      'libre-barcode': require('./assets/fonts/LibreBarcode128Text-Regular.ttf')
-    });
-    this.setState({ fontLoaded: true });
-  }
+export class templateFive extends React.Component {
   render() {
     return (
       <View style={{flex: 1, alignItems: 'center'}}>
         <View style={styles.headingBufferTop}>
         </View>
         <View style={styles.heading}>
-          <Text style={ this.state.fontLoaded ? styles.headingText : styles.justInCase }>green</Text>
-          <Text style={ this.state.fontLoaded ? styles.subheadingText : styles.justInCase }>book</Text>
+          <Text style={styles.headingText}>YEET!</Text>
         </View>
-        <View style={{flexDirection: 'row', paddingTop: 10}}>
-        <Image
-          source={require('./assets/images/vine.png')}
-        />
-        <Image
-          source={require('./assets/images/vine.png')}
-        />
-        <Image
-          source={require('./assets/images/vine.png')}
-        />
         <View style={styles.headingBufferBottomFive}>
           <Text style={{fontSize: 20}}>subtitle here</Text>
         </View>
@@ -46,7 +21,6 @@ export default class App extends React.Component {
         </View>
       </View>
     );
-
   }
 }
 
@@ -61,7 +35,7 @@ const styles = StyleSheet.create({
   headingBufferTop: {
     height: '8%',
     width: '100%',
-    backgroundColor: '#fff',
+    backgroundColor: 'red',
     alignItems: 'center',
     justifyContent: 'center'
   },
@@ -73,16 +47,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   headingText: {
-    fontSize: 35,
-    fontFamily: 'gloria-hallelujah',
-    color: '#024C2E',
-  },
-  subheadingText: {
-    fontSize: 70,
-    marginTop: -16,
-    fontFamily: 'libre-barcode',
-  },
-  justInCase: {
     fontSize: 44,
   },
   bodyFive: {
