@@ -19,30 +19,45 @@ export default class App extends React.Component {
   render() {
     return (
       <View style={{flex: 1, backgroundColor: "blue"}}>
-        <View style={styles.headingBufferTop}>
-        </View>
+        <View style={styles.headingBufferTop}/>
         <View style={styles.heading}>
           <Text style={ this.state.fontLoaded ? styles.headingText : styles.justInCase }>green</Text>
           <Text style={ this.state.fontLoaded ? styles.subheadingText : styles.justInCase }>book</Text>
         </View>
         <View style={{flexDirection: 'row', paddingTop: 10}}>
-        <Image
-          source={require('./assets/images/vine.png')}
-        />
-        <Image
-          source={require('./assets/images/vine.png')}
-        />
-        <Image
-          source={require('./assets/images/vine.png')}
-        />
+          <Image source={require('./assets/images/vine.png')}/>
+          <Image source={require('./assets/images/vine.png')}/>
+          <Image source={require('./assets/images/vine.png')}/>
+        </View>
+        <View style={styles.headingBufferBottomFive}>
+          <Text style={{fontSize: 20}}>subtitle here</Text>
+        </View>
+        <View style={styles.bodyFive}>
+          <Text style={{fontSize: 20}}>body here</Text>
+        </View>
+        <View style={styles.footerFive}>
+          <Text style={{fontSize: 20}}>bottom here</Text>
         </View>
       </View>
     );
-
   }
 }
 
 const styles = StyleSheet.create({
+  bodyFive: {
+    height: '60%',
+    width: '100%',
+    backgroundColor: 'green',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  footerFive: {
+    height: '15%',
+    width: '100%',
+    backgroundColor: 'yellow',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
   heading: {
     height: '12%',
     width: '100%',
@@ -59,6 +74,13 @@ const styles = StyleSheet.create({
   },
   headingBufferBottom: {
     height: '6%',
+    width: '100%',
+    backgroundColor: 'red',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  headingBufferBottomFive: {
+    height: '5%',
     width: '100%',
     backgroundColor: 'red',
     alignItems: 'center',
