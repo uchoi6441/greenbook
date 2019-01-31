@@ -1,15 +1,29 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { Font } from 'expo';
 
-export default class templateFive extends React.Component {
+export default class App extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      fontLoaded: false,
+    };
+  }
+  async componentDidMount() {
+    await Font.loadAsync({
+      'gloria-hallelujah': require('./assets/fonts/GloriaHallelujah.ttf'),
+      'libre-barcode': require('./assets/fonts/LibreBarcode128Text-Regular.ttf')
+    });
+    this.setState({ fontLoaded: true });
+  }
   render() {
     return (
       <View style={{flex: 1, alignItems: 'center'}}>
         <View style={styles.headingBufferTop}>
         </View>
         <View style={styles.heading}>
-          <Text style={styles.headingText}>postings</Text>
-          <Text style={styles.headingText}>*~*~*~*~*~*~</Text>
+          <Text style={ this.state.fontLoaded ? styles.headingText : styles.justInCase }>green</Text>
+          <Text style={ this.state.fontLoaded ? styles.subheadingText : styles.justInCase }>book</Text>
         </View>
         <View style={styles.headingBufferBottomFive}>
           <Text style={{fontSize: 20}}>subtitle here</Text>
@@ -22,6 +36,7 @@ export default class templateFive extends React.Component {
         </View>
       </View>
     );
+
   }
 }
 
@@ -48,7 +63,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   headingText: {
-    fontSize: 40,
+    fontSize: 35,
+    fontFamily: 'gloria-hallelujah',
+    color: '#024C2E',
+  },
+  subheadingText: {
+    fontSize: 70,
+    marginTop: -16,
+    fontFamily: 'libre-barcode',
+  },
+  justInCase: {
+    fontSize: 44,
   },
   bodyFive: {
     height: '60%',
