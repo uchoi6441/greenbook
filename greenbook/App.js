@@ -12,7 +12,8 @@ export default class App extends React.Component {
   async componentDidMount() {
     await Font.loadAsync({
       'gloria-hallelujah': require('./assets/fonts/GloriaHallelujah.ttf'),
-      'libre-barcode': require('./assets/fonts/LibreBarcode128Text-Regular.ttf')
+      'libre-barcode': require('./assets/fonts/LibreBarcode128Text-Regular.ttf'),
+      'source-code-pro': require('./assets/fonts/SourceCodePro-Regular.ttf'),
     });
     this.setState({ fontLoaded: true });
   }
@@ -24,7 +25,7 @@ export default class App extends React.Component {
           <Text style={ this.state.fontLoaded ? styles.headingText : styles.justInCase }>green</Text>
           <Text style={ this.state.fontLoaded ? styles.subheadingText : styles.justInCase }>book</Text>
         </View>
-        <View style={{flexDirection: 'row', paddingTop: 10}}>
+        <View style={{flexDirection: 'row', paddingTop: '10%'}}>
           <Image
             source={require('./assets/images/vine.png')}
             style={styles.vine}
@@ -43,10 +44,12 @@ export default class App extends React.Component {
           />
         </View>
         <View style={styles.headingBufferBottomFive}>
-          <Text style={{fontSize: 20}}>subtitle here</Text>
+          <Text style={{fontSize: 20}}>username:</Text>
+          <Text style={{fontSize: 20}}>password:</Text>
         </View>
         <View style={styles.bodyFive}>
-          <Text style={{fontSize: 20}}>body here</Text>
+          <Text style={{fontSize: 25}}>log in</Text>
+          <Text style={{fontSize: 20}}>sign up</Text>
         </View>
         <View style={styles.footerFive}>
           <Text style={{fontSize: 20}}>bottom here</Text>
@@ -96,8 +99,8 @@ const styles = StyleSheet.create({
     height: '5%',
     width: '100%',
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center'
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start'
   },
   headingText: {
     fontSize: 35,
