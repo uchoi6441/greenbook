@@ -13,7 +13,7 @@ export default class App extends React.Component {
     await Font.loadAsync({
       'gloria-hallelujah': require('./assets/fonts/GloriaHallelujah.ttf'),
       'libre-barcode': require('./assets/fonts/LibreBarcode128Text-Regular.ttf'),
-      'source-code-pro': require('./assets/fonts/SourceCodePro-Regular.ttf'),
+      'source-code-pro': require('./assets/fonts/SourceCodePro-Light.ttf'),
     });
     this.setState({ fontLoaded: true });
   }
@@ -44,15 +44,12 @@ export default class App extends React.Component {
           />
         </View>
         <View style={styles.headingBufferBottomFive}>
-          <Text style={styles.userInfo}>username:</Text>
-          <Text style={styles.userInfo}>password:</Text>
+          <Text style={ this.state.fontLoaded ?  styles.userInfo : styles.justInCase }>username:</Text>
+          <Text style={ this.state.fontLoaded ?  styles.userInfo : styles.justInCase }>password:</Text>
         </View>
         <View style={styles.bodyFive}>
-          <Text style={styles.logIn}>log in</Text>
-          <Text style={styles.signUp}>sign up</Text>
-        </View>
-        <View style={styles.footerFive}>
-          <Text style={{fontSize: 20}}>bottom here</Text>
+          <Text style={ this.state.fontLoaded ?  styles.logIn : styles.justInCase }>log in</Text>
+          <Text style={ this.state.fontLoaded ?  styles.signUp : styles.justInCase }>sign up</Text>
         </View>
         <View style={{flexDirection: 'row', paddingTop: '10%'}}>
           <Image
@@ -85,14 +82,15 @@ export default class App extends React.Component {
 
 const styles = StyleSheet.create({
   bodyFive: {
-    height: '60%',
+    //height: '60%',
     width: '100%',
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center'
   },
   bookImage: {
-
+    width: 100,
+    height: 100,
   },
   footerFive: {
     height: '15%',
@@ -108,13 +106,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  headingBufferTop: {
-    height: '8%',
-    width: '100%',
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
   headingBufferBottom: {
     height: '6%',
     width: '100%',
@@ -123,30 +114,25 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   headingBufferBottomFive: {
-    height: '5%',
     width: '100%',
     backgroundColor: '#fff',
-    alignItems: 'flex-start',
-    justifyContent: 'flex-start'
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  headingBufferTop: {
+    height: '8%',
+    width: '100%',
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   headingText: {
     fontSize: 35,
     fontFamily: 'gloria-hallelujah',
     color: '#024C2E',
   },
-  subheadingText: {
-    fontSize: 70,
-    marginTop: -16,
-    fontFamily: 'libre-barcode',
-  },
   justInCase: {
     fontSize: 44,
-  },
-  vineImage: {
-    marginLeft: -5,
-  },
-  vineImage2: {
-    transform: [{ rotate: '180deg'}],
   },
   logIn: {
     fontFamily: 'gloria-hallelujah',
@@ -158,8 +144,20 @@ const styles = StyleSheet.create({
     fontSize: 28,
     color: '#024C2E',
   },
+  subheadingText: {
+    fontSize: 70,
+    marginTop: -16,
+    fontFamily: 'libre-barcode',
+  },
   userInfo: {
     fontSize: 30,
     fontFamily: 'source-code-pro',
+  },
+  vineImage: {
+    marginLeft: -10,
+  },
+  vineImage2: {
+    marginLeft: -10,
+    transform: [{ rotate: '180deg'}],
   },
 });
