@@ -28,31 +28,55 @@ export default class App extends React.Component {
         <View style={{flexDirection: 'row', paddingTop: '10%'}}>
           <Image
             source={require('./assets/images/vine.png')}
-            style={styles.vine}
+            style={styles.vineImage}
           />
           <Image
             source={require('./assets/images/vine.png')}
-            style={styles.vine}
+            style={styles.vineImage}
           />
           <Image
             source={require('./assets/images/vine.png')}
-            style={styles.vine}
+            style={styles.vineImage}
           />
           <Image
             source={require('./assets/images/vine.png')}
-            style={styles.vine}
+            style={styles.vineImage}
           />
         </View>
         <View style={styles.headingBufferBottomFive}>
-          <Text style={{fontSize: 20}}>username:</Text>
-          <Text style={{fontSize: 20}}>password:</Text>
+          <Text style={styles.userInfo}>username:</Text>
+          <Text style={styles.userInfo}>password:</Text>
         </View>
         <View style={styles.bodyFive}>
-          <Text style={{fontSize: 25}}>log in</Text>
-          <Text style={{fontSize: 20}}>sign up</Text>
+          <Text style={styles.logIn}>log in</Text>
+          <Text style={styles.signUp}>sign up</Text>
         </View>
         <View style={styles.footerFive}>
           <Text style={{fontSize: 20}}>bottom here</Text>
+        </View>
+        <View style={{flexDirection: 'row', paddingTop: '10%'}}>
+          <Image
+            source={require('./assets/images/vine.png')}
+            style={styles.vineImage2}
+          />
+          <Image
+            source={require('./assets/images/vine.png')}
+            style={styles.vineImage2}
+          />
+          <Image
+            source={require('./assets/images/vine.png')}
+            style={styles.vineImage2}
+          />
+          <Image
+            source={require('./assets/images/vine.png')}
+            style={styles.vineImage2}
+          />
+        </View>
+        <View style={{alignItems: 'center', justifyContent: 'center'}}>
+          <Image
+            source={require('./assets/images/book.png')}
+            style={styles.bookImage}
+          />
         </View>
       </View>
     );
@@ -66,6 +90,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center'
+  },
+  bookImage: {
+
   },
   footerFive: {
     height: '15%',
@@ -115,7 +142,24 @@ const styles = StyleSheet.create({
   justInCase: {
     fontSize: 44,
   },
-  vine: {
+  vineImage: {
     marginLeft: -5,
+  },
+  vineImage2: {
+    transform: [{ rotate: '180deg'}],
+  },
+  logIn: {
+    fontFamily: 'gloria-hallelujah',
+    fontSize: 44,
+    color: '#024C2E',
+  },
+  signUp: {
+    fontFamily: 'gloria-hallelujah',
+    fontSize: 28,
+    color: '#024C2E',
+  },
+  userInfo: {
+    fontSize: 30,
+    fontFamily: 'source-code-pro',
   },
 });
