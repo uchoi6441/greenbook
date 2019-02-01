@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, TextInput } from 'react-native';
 import { Font } from 'expo';
 
 export default class App extends React.Component {
@@ -7,6 +7,7 @@ export default class App extends React.Component {
     super(props)
     this.state = {
       fontLoaded: false,
+      text: '',
     };
   }
   async componentDidMount() {
@@ -43,15 +44,25 @@ export default class App extends React.Component {
             style={styles.vineImage}
           />
         </View>
-        <View style={styles.headingBufferBottomFive}>
-          <Text style={ this.state.fontLoaded ?  styles.userInfo : styles.justInCase }>username:</Text>
-          <Text style={ this.state.fontLoaded ?  styles.userInfo : styles.justInCase }>password:</Text>
+        <View style={styles.userInfo}>
+          <Text style={ this.state.fontLoaded ?  styles.userInfoText : styles.justInCase }>username:</Text>
+          <TextInput
+            style={ this.state.fontLoaded ? styles.userInfoText2 : styles.justInCase }
+            onChangeText={(text) => this.setState({text})}
+          />
+        </View>
+        <View style={styles.userInfo}>
+          <Text style={ this.state.fontLoaded ?  styles.userInfoText : styles.justInCase }>password:</Text>
+          <TextInput
+            style={ this.state.fontLoaded ? styles.userInfoText2 : styles.justInCase }
+            onChangeText={(text) => this.setState({text})}
+          />
         </View>
         <View style={styles.bodyFive}>
           <Text style={ this.state.fontLoaded ?  styles.logIn : styles.justInCase }>log in</Text>
           <Text style={ this.state.fontLoaded ?  styles.signUp : styles.justInCase }>sign up</Text>
         </View>
-        <View style={{flexDirection: 'row', paddingTop: '10%'}}>
+        <View style={{flexDirection: 'row'}}>
           <Image
             source={require('./assets/images/vine.png')}
             style={styles.vineImage2}
@@ -69,7 +80,7 @@ export default class App extends React.Component {
             style={styles.vineImage2}
           />
         </View>
-        <View style={{alignItems: 'center', justifyContent: 'center'}}>
+        <View style={{alignItems: 'center', justifyContent: 'center', paddingTop: '5%'}}>
           <Image
             source={require('./assets/images/book.png')}
             style={styles.bookImage}
@@ -82,15 +93,15 @@ export default class App extends React.Component {
 
 const styles = StyleSheet.create({
   bodyFive: {
-    //height: '60%',
     width: '100%',
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    marginTop: '10%',
   },
   bookImage: {
-    width: 100,
-    height: 100,
+    width: 125,
+    height: 125,
   },
   footerFive: {
     height: '15%',
@@ -108,12 +119,6 @@ const styles = StyleSheet.create({
   },
   headingBufferBottom: {
     height: '6%',
-    width: '100%',
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  headingBufferBottomFive: {
     width: '100%',
     backgroundColor: '#fff',
     alignItems: 'center',
@@ -150,14 +155,30 @@ const styles = StyleSheet.create({
     fontFamily: 'libre-barcode',
   },
   userInfo: {
+    width: '100%',
+    flexDirection: 'row',
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    paddingLeft: '10%',
+    flexWrap: 'wrap',
+  },
+  userInfoText: {
     fontSize: 30,
     fontFamily: 'source-code-pro',
+    paddingRight: 5,
+    paddingTop: '7%',
+  },
+  userInfoText2: {
+    fontSize: 20,
+    fontFamily: 'source-code-pro',
+    paddingTop: '10%',
+    alignItems: 'center',
   },
   vineImage: {
-    marginLeft: -10,
+    marginLeft: -12,
   },
   vineImage2: {
-    marginLeft: -10,
+    marginLeft: -12,
     transform: [{ rotate: '180deg'}],
   },
 });
