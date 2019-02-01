@@ -9,7 +9,7 @@ export class HomeScreen extends React.Component {
     super(props)
     this.state = {
       fontLoaded: false,
-      text: '',
+      text: ' ',
     };
   }
   async componentDidMount() {
