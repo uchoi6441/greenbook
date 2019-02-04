@@ -67,7 +67,7 @@ export class LogInScreen extends React.Component {
             font = { this.state.fontLoaded }
             text = { 'log in' }
             navigation = { this.props.navigation }
-            destination = { 'HomeScreen' }
+            destination = { 'Home' }
           />
           <Text style={ this.state.fontLoaded ?  styles.signUp : styles.justInCase }>sign up</Text>
         </View>
