@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, Image, TextInput } from 'react-native';
 import { Font } from 'expo';
 import { StackNavigator } from 'react-navigation';
+import HomeOptions from './../components/HomeOptions';
 
 export class HomeScreen extends React.Component {
   static navigationOptions = { header: null };
@@ -27,10 +28,36 @@ export class HomeScreen extends React.Component {
         <View style={ styles.heading }>
           <Text style={ this.state.fontLoaded ? styles.headingText : styles.justInCase }>home</Text>
         </View>
-        <View style={{ flexDirection: 'row', paddingTop: '10%' }}>
+        <View style={{ justifyContent: 'center' }}>
           <Image
             source={require('./../assets/images/vine.png')}
             style={ styles.vineImage }
+          />
+        </View>
+        <View style={ styles.body }>
+          <HomeOptions
+            font = { this.state.fontLoaded }
+            text = { 'find' }
+            navigation = { this.props.navigation }
+            destination = { 'Home' }
+          />
+          <HomeOptions
+            font = { this.state.fontLoaded }
+            text = { 'sell' }
+            navigation = { this.props.navigation }
+            destination = { 'Home' }
+          />
+          <HomeOptions
+            font = { this.state.fontLoaded }
+            text = { 'my postings' }
+            navigation = { this.props.navigation }
+            destination = { 'Home' }
+          />
+          <HomeOptions
+            font = { this.state.fontLoaded }
+            text = { 'messages' }
+            navigation = { this.props.navigation }
+            destination = { 'Home' }
           />
         </View>
         <View style={ styles.bottomImages }>
@@ -49,6 +76,11 @@ export class HomeScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  body: {
+    justifyContent: 'center',
+    flexDirection: 'column',
+    alignContent: 'space-between',
+  },
   bottomImages: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -100,7 +132,7 @@ const styles = StyleSheet.create({
     marginLeft: 40,
   },
   vineImage: {
-    marginLeft: -12,
+    justifyContent: 'center',
     transform: [{ rotate: '180deg'}],
   },
 });
