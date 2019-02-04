@@ -8,6 +8,7 @@ import { HomeScreen } from './screens/Home';
 const RootStack = createStackNavigator({
   Home: { screen: HomeScreen },
   LogIn: { screen: LogInScreen },
+
 });
 
 export default createAppContainer(RootStack);

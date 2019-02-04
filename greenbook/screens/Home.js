@@ -22,15 +22,25 @@ export class HomeScreen extends React.Component {
   }
   render() {
     return (
-      <View style={{flex: 1, backgroundColor: '#fff'}}>
-        <View style={styles.headingBufferTop}/>
-        <View style={styles.heading}>
+      <View style={{ flex: 1, backgroundColor: '#fff' }}>
+        <View style={ styles.headingBufferTop }/>
+        <View style={ styles.heading }>
           <Text style={ this.state.fontLoaded ? styles.headingText : styles.justInCase }>home</Text>
         </View>
-        <View style={{alignItems: 'center'}}>
+        <View style={{ flexDirection: 'row', paddingTop: '10%' }}>
           <Image
             source={require('./../assets/images/vine.png')}
-            style={styles.vineImage}
+            style={ styles.vineImage }
+          />
+        </View>
+        <View style={ styles.bottomImages }>
+          <Image
+            source={require('./../assets/images/settings.png')}
+            style={ styles.settingsImage }
+          />
+          <Image
+            source={require('./../assets/images/cottage.png')}
+            style={ styles.cottageImage }
           />
         </View>
       </View>
@@ -39,23 +49,10 @@ export class HomeScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  bodyFive: {
-    width: '100%',
-    backgroundColor: '#fff',
+  bottomImages: {
+    flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: '10%',
-  },
-  bookImage: {
-    width: 125,
-    height: 125,
-  },
-  footerFive: {
-    height: '15%',
-    width: '100%',
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'space-around',
   },
   heading: {
     height: '12%',
@@ -86,42 +83,24 @@ const styles = StyleSheet.create({
   justInCase: {
     fontSize: 44,
   },
-  logIn: {
-    fontFamily: 'gloria-hallelujah',
-    fontSize: 44,
-    color: '#024C2E',
-  },
-  signUp: {
-    fontFamily: 'gloria-hallelujah',
-    fontSize: 28,
-    color: '#024C2E',
-  },
-  subheadingText: {
-    fontSize: 70,
-    marginTop: -16,
-    fontFamily: 'libre-barcode',
-  },
-  userInfo: {
-    width: '100%',
-    flexDirection: 'row',
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    paddingLeft: '10%',
-    flexWrap: 'wrap',
-  },
-  userInfoText: {
+  buttonText: {
     fontSize: 30,
     fontFamily: 'source-code-pro',
     paddingRight: 5,
     paddingTop: '7%',
   },
-  userInfoText2: {
-    fontSize: 20,
-    fontFamily: 'source-code-pro',
-    paddingTop: '10%',
-    alignItems: 'center',
+  cottageImage: {
+    width: 100,
+    height: 100,
+    marginRight: 40,
+  },
+  settingsImage: {
+    width: 60,
+    height: 60,
+    marginLeft: 40,
   },
   vineImage: {
+    marginLeft: -12,
     transform: [{ rotate: '180deg'}],
   },
 });

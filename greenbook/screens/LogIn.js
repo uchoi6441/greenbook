@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, Image, TextInput } from 'react-native';
 import { Font } from 'expo';
 import { StackNavigator } from 'react-navigation';
+import LogInButton from './../components/LogInButton';
 
 export class LogInScreen extends React.Component {
   static navigationOptions = { header: null };
@@ -21,6 +22,7 @@ export class LogInScreen extends React.Component {
     this.setState({ fontLoaded: true });
   }
   render() {
+    const { navigate } = this.props.navigation
     return (
       <View style={{flex: 1, backgroundColor: '#fff'}}>
         <View style={styles.headingBufferTop}/>
@@ -61,7 +63,12 @@ export class LogInScreen extends React.Component {
           />
         </View>
         <View style={styles.bodyFive}>
-          <Text style={ this.state.fontLoaded ?  styles.logIn : styles.justInCase }>log in</Text>
+          <LogInButton
+            font = { this.state.fontLoaded }
+            text = { 'log in' }
+            navigation = { this.props.navigation }
+            destination = { 'Home' }
+          />
           <Text style={ this.state.fontLoaded ?  styles.signUp : styles.justInCase }>sign up</Text>
         </View>
         <View style={{flexDirection: 'row'}}>
@@ -95,7 +102,6 @@ export class LogInScreen extends React.Component {
 
 const styles = StyleSheet.create({
   bodyFive: {
-    width: '100%',
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
