@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Image, TextInput } from 'react-native';
 import { Font } from 'expo';
 import { StackNavigator } from 'react-navigation';
 
-export class HomeScreen extends React.Component {
+export class LogInScreen extends React.Component {
   static navigationOptions = { header: null };
   constructor(props) {
     super(props)
@@ -25,12 +25,67 @@ export class HomeScreen extends React.Component {
       <View style={{flex: 1, backgroundColor: '#fff'}}>
         <View style={styles.headingBufferTop}/>
         <View style={styles.heading}>
-          <Text style={ this.state.fontLoaded ? styles.headingText : styles.justInCase }>home</Text>
+          <Text style={ this.state.fontLoaded ? styles.headingText : styles.justInCase }>green</Text>
+          <Text style={ this.state.fontLoaded ? styles.subheadingText : styles.justInCase }>book</Text>
         </View>
-        <View style={{alignItems: 'center'}}>
+        <View style={{flexDirection: 'row', paddingTop: '10%'}}>
           <Image
             source={require('./../assets/images/vine.png')}
             style={styles.vineImage}
+          />
+          <Image
+            source={require('./../assets/images/vine.png')}
+            style={styles.vineImage}
+          />
+          <Image
+            source={require('./../assets/images/vine.png')}
+            style={styles.vineImage}
+          />
+          <Image
+            source={require('./../assets/images/vine.png')}
+            style={styles.vineImage}
+          />
+        </View>
+        <View style={styles.userInfo}>
+          <Text style={ this.state.fontLoaded ?  styles.userInfoText : styles.justInCase }>username:</Text>
+          <TextInput
+            style={ this.state.fontLoaded ? styles.userInfoText2 : styles.justInCase }
+            onChangeText={(text) => this.setState({text})}
+          />
+        </View>
+        <View style={styles.userInfo}>
+          <Text style={ this.state.fontLoaded ?  styles.userInfoText : styles.justInCase }>password:</Text>
+          <TextInput
+            style={ this.state.fontLoaded ? styles.userInfoText2 : styles.justInCase }
+            onChangeText={(text) => this.setState({text})}
+          />
+        </View>
+        <View style={styles.bodyFive}>
+          <Text style={ this.state.fontLoaded ?  styles.logIn : styles.justInCase }>log in</Text>
+          <Text style={ this.state.fontLoaded ?  styles.signUp : styles.justInCase }>sign up</Text>
+        </View>
+        <View style={{flexDirection: 'row'}}>
+          <Image
+            source={require('./../assets/images/vine.png')}
+            style={styles.vineImage2}
+          />
+          <Image
+            source={require('./../assets/images/vine.png')}
+            style={styles.vineImage2}
+          />
+          <Image
+            source={require('./../assets/images/vine.png')}
+            style={styles.vineImage2}
+          />
+          <Image
+            source={require('./../assets/images/vine.png')}
+            style={styles.vineImage2}
+          />
+        </View>
+        <View style={{alignItems: 'center', justifyContent: 'center', paddingTop: '5%'}}>
+          <Image
+            source={require('./../assets/images/book.png')}
+            style={styles.bookImage}
           />
         </View>
       </View>
@@ -122,6 +177,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   vineImage: {
+    marginLeft: -12,
+  },
+  vineImage2: {
+    marginLeft: -12,
     transform: [{ rotate: '180deg'}],
   },
 });
