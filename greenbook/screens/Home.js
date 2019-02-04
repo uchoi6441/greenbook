@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, Image, TextInput } from 'react-native';
 import { Font } from 'expo';
 import { StackNavigator } from 'react-navigation';
+import HomeOptions from './../components/HomeOptions';
 
 export class HomeScreen extends React.Component {
   static navigationOptions = { header: null };
@@ -22,71 +23,51 @@ export class HomeScreen extends React.Component {
   }
   render() {
     return (
-      <View style={{flex: 1, backgroundColor: '#fff'}}>
-        <View style={styles.headingBufferTop}/>
-        <View style={styles.heading}>
-          <Text style={ this.state.fontLoaded ? styles.headingText : styles.justInCase }>green</Text>
-          <Text style={ this.state.fontLoaded ? styles.subheadingText : styles.justInCase }>book</Text>
+      <View style={{ flex: 1, backgroundColor: '#fff' }}>
+        <View style={ styles.headingBufferTop }/>
+        <View style={ styles.heading }>
+          <Text style={ this.state.fontLoaded ? styles.headingText : styles.justInCase }>home</Text>
         </View>
-        <View style={{flexDirection: 'row', paddingTop: '10%'}}>
+        <View style={{ alignItems: 'center', marginTop: -30 }}>
           <Image
             source={require('./../assets/images/vine.png')}
-            style={styles.vineImage}
-          />
-          <Image
-            source={require('./../assets/images/vine.png')}
-            style={styles.vineImage}
-          />
-          <Image
-            source={require('./../assets/images/vine.png')}
-            style={styles.vineImage}
-          />
-          <Image
-            source={require('./../assets/images/vine.png')}
-            style={styles.vineImage}
+            style={ styles.vineImage }
           />
         </View>
-        <View style={styles.userInfo}>
-          <Text style={ this.state.fontLoaded ?  styles.userInfoText : styles.justInCase }>username:</Text>
-          <TextInput
-            style={ this.state.fontLoaded ? styles.userInfoText2 : styles.justInCase }
-            onChangeText={(text) => this.setState({text})}
+        <View style={ styles.body }>
+          <HomeOptions
+            font = { this.state.fontLoaded }
+            text = { 'find' }
+            navigation = { this.props.navigation }
+            destination = { 'Home' }
+          />
+          <HomeOptions
+            font = { this.state.fontLoaded }
+            text = { 'sell' }
+            navigation = { this.props.navigation }
+            destination = { 'Home' }
+          />
+          <HomeOptions
+            font = { this.state.fontLoaded }
+            text = { 'my postings' }
+            navigation = { this.props.navigation }
+            destination = { 'Home' }
+          />
+          <HomeOptions
+            font = { this.state.fontLoaded }
+            text = { 'messages' }
+            navigation = { this.props.navigation }
+            destination = { 'Home' }
           />
         </View>
-        <View style={styles.userInfo}>
-          <Text style={ this.state.fontLoaded ?  styles.userInfoText : styles.justInCase }>password:</Text>
-          <TextInput
-            style={ this.state.fontLoaded ? styles.userInfoText2 : styles.justInCase }
-            onChangeText={(text) => this.setState({text})}
-          />
-        </View>
-        <View style={styles.bodyFive}>
-
-          <Text style={ this.state.fontLoaded ?  styles.logIn : styles.justInCase }>log in</Text>
-          <Text style={ this.state.fontLoaded ?  styles.signUp : styles.justInCase }>sign up</Text>
-        </View>
-        <View style={{flexDirection: 'row'}}>
+        <View style={ styles.bottomImages }>
           <Image
-            source={require('./../assets/images/vine.png')}
-            style={styles.vineImage2}
+            source={require('./../assets/images/settings.png')}
+            style={ styles.settingsImage }
           />
           <Image
-            source={require('./../assets/images/vine.png')}
-            style={styles.vineImage2}
-          />
-          <Image
-            source={require('./../assets/images/vine.png')}
-            style={styles.vineImage2}
-          />
-          <Image
-            source={require('./../assets/images/vine.png')}
-            style={styles.vineImage2}
-          />
-        </View>
-        <View style={{alignItems: 'center', justifyContent: 'center', paddingTop: '5%'}}>
-          <Image
-            source={require('./../assets/images/book.png')}
-            style={styles.bookImage}
+            source={require('./../assets/images/cottage.png')}
+            style={ styles.cottageImage }
           />
         </View>
       </View>
@@ -95,23 +76,16 @@ export class HomeScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  bodyFive: {
-    width: '100%',
-    backgroundColor: '#fff',
-    alignItems: 'center',
+  body: {
     justifyContent: 'center',
-    marginTop: '10%',
+    flexDirection: 'column',
+    alignContent: 'space-between',
+    marginTop: '30%',
   },
-  bookImage: {
-    width: 125,
-    height: 125,
-  },
-  footerFive: {
-    height: '15%',
-    width: '100%',
-    backgroundColor: '#fff',
+  bottomImages: {
+    flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'space-around',
   },
   heading: {
     height: '12%',
@@ -119,13 +93,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  headingBufferBottom: {
-    height: '6%',
-    width: '100%',
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center'
   },
   headingBufferTop: {
     height: '8%',
@@ -142,46 +109,17 @@ const styles = StyleSheet.create({
   justInCase: {
     fontSize: 44,
   },
-  logIn: {
-    fontFamily: 'gloria-hallelujah',
-    fontSize: 44,
-    color: '#024C2E',
+  cottageImage: {
+    width: 100,
+    height: 100,
+    marginRight: 40,
   },
-  signUp: {
-    fontFamily: 'gloria-hallelujah',
-    fontSize: 28,
-    color: '#024C2E',
-  },
-  subheadingText: {
-    fontSize: 70,
-    marginTop: -16,
-    fontFamily: 'libre-barcode',
-  },
-  userInfo: {
-    width: '100%',
-    flexDirection: 'row',
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    paddingLeft: '10%',
-    flexWrap: 'wrap',
-  },
-  userInfoText: {
-    fontSize: 30,
-    fontFamily: 'source-code-pro',
-    paddingRight: 5,
-    paddingTop: '7%',
-  },
-  userInfoText2: {
-    fontSize: 20,
-    fontFamily: 'source-code-pro',
-    paddingTop: '10%',
-    alignItems: 'center',
+  settingsImage: {
+    width: 60,
+    height: 60,
+    marginLeft: 40,
   },
   vineImage: {
-    marginLeft: -12,
-  },
-  vineImage2: {
-    marginLeft: -12,
     transform: [{ rotate: '180deg'}],
   },
 });
