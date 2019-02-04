@@ -6,9 +6,8 @@ import { LogInScreen } from './screens/LogIn';
 import { HomeScreen } from './screens/Home';
 
 const RootStack = createStackNavigator({
-  Home: { screen: HomeScreen },
   LogIn: { screen: LogInScreen },
-
+  Home: { screen: HomeScreen },
 });
 
 export default createAppContainer(RootStack);

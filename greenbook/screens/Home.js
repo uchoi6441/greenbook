@@ -28,7 +28,7 @@ export class HomeScreen extends React.Component {
         <View style={ styles.heading }>
           <Text style={ this.state.fontLoaded ? styles.headingText : styles.justInCase }>home</Text>
         </View>
-        <View style={{ justifyContent: 'center' }}>
+        <View style={{ alignItems: 'center', marginTop: -30 }}>
           <Image
             source={require('./../assets/images/vine.png')}
             style={ styles.vineImage }
@@ -80,6 +80,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     flexDirection: 'column',
     alignContent: 'space-between',
+    marginTop: '30%',
   },
   bottomImages: {
     flexDirection: 'row',
@@ -92,13 +93,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  headingBufferBottom: {
-    height: '6%',
-    width: '100%',
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center'
   },
   headingBufferTop: {
     height: '8%',
@@ -115,12 +109,6 @@ const styles = StyleSheet.create({
   justInCase: {
     fontSize: 44,
   },
-  buttonText: {
-    fontSize: 30,
-    fontFamily: 'source-code-pro',
-    paddingRight: 5,
-    paddingTop: '7%',
-  },
   cottageImage: {
     width: 100,
     height: 100,
@@ -132,7 +120,6 @@ const styles = StyleSheet.create({
     marginLeft: 40,
   },
   vineImage: {
-    justifyContent: 'center',
     transform: [{ rotate: '180deg'}],
   },
 });
