@@ -11,6 +11,10 @@ export class SignUpScreen extends React.Component {
     this.state = {
       fontLoaded: false,
       text: '',
+      id: null,
+      name: '',
+      username: '',
+      password: '',
     };
   }
   async componentDidMount() {
@@ -26,7 +30,7 @@ export class SignUpScreen extends React.Component {
       <View style={{ flex: 1, backgroundColor: '#fff' }}>
         <View style={ styles.headingBufferTop }/>
         <View style={ styles.heading }>
-          <Text style={ this.state.fontLoaded ? styles.headingText : styles.justInCase }>home</Text>
+          <Text style={ this.state.fontLoaded ? styles.headingText : styles.justInCase }>sign up</Text>
         </View>
         <View style={{ alignItems: 'center', marginTop: -30 }}>
           <Image
@@ -35,40 +39,45 @@ export class SignUpScreen extends React.Component {
           />
         </View>
         <View style={ styles.body }>
-          <HomeOptions
-            font = { this.state.fontLoaded }
-            text = { 'find' }
-            navigation = { this.props.navigation }
-            destination = { 'Home' }
-          />
-          <HomeOptions
-            font = { this.state.fontLoaded }
-            text = { 'sell' }
-            navigation = { this.props.navigation }
-            destination = { 'Home' }
-          />
-          <HomeOptions
-            font = { this.state.fontLoaded }
-            text = { 'my postings' }
-            navigation = { this.props.navigation }
-            destination = { 'Home' }
-          />
-          <HomeOptions
-            font = { this.state.fontLoaded }
-            text = { 'messages' }
-            navigation = { this.props.navigation }
-            destination = { 'Home' }
-          />
+          <View style={{flexDirection:'row'}}>
+            <HomeOptions
+              font = { this.state.fontLoaded }
+              text = { 'find' }
+              navigation = { this.props.navigation }
+              destination = { 'Home' }
+            />
+            <Text style={this.state.fontLoaded ? styles.enter : styles.justInCase }>name:</Text>
+            <TextInput
+              style={ this.state.fontLoaded ? styles.enter : styles.justInCase }
+              onChangeText={(name) => this.setState({name})}
+            />
+          </View>
+          <View style={{flexDirection:'row'}}>
+            <Text style={this.state.fontLoaded ? styles.enter : styles.justInCase }>username:</Text>
+            <TextInput
+              style={ this.state.fontLoaded ? styles.enter : styles.justInCase }
+              onChangeText={(username) => this.setState({username})}
+            />
+          </View>
+          <View style={{flexDirection:'row'}}>
+            <Text style={this.state.fontLoaded ? styles.enter : styles.justInCase }>password:</Text>
+            <TextInput
+              style={ this.state.fontLoaded ? styles.enter : styles.justInCase }
+              onChangeText={(password) => this.setState({password})}
+            />
+          </View>
         </View>
-        <View style={ styles.bottomImages }>
-          <Image
-            source={require('./../assets/images/settings.png')}
-            style={ styles.settingsImage }
-          />
-          <Image
-            source={require('./../assets/images/cottage.png')}
-            style={ styles.cottageImage }
-          />
+        <View style={{flexDirection:'row'}}>
+          <View style={ styles.bottomImages }>
+            <Image
+              source={require('./../assets/images/willow.png')}
+              style={ styles.settingsImage }
+            />
+          </View>
+          <View style={{flexDirection: 'column'}}>
+            <Text>continue</Text>
+            <Text>back</Text>
+          </View>
         </View>
       </View>
     );
@@ -86,6 +95,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-around',
+  },
+  enter: {
+    fontSize: 30,
+    fontFamily: 'source-code-pro'
   },
   heading: {
     height: '12%',
