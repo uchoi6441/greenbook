@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, TextInput } from 'react-native';
+import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity } from 'react-native';
 import { Font } from 'expo';
 import { StackNavigator } from 'react-navigation';
 import HomeOptions from './../components/HomeOptions';
@@ -22,6 +22,7 @@ export class HomeScreen extends React.Component {
     this.setState({ fontLoaded: true });
   }
   render() {
+    const { navigate } = this.props.navigation
     return (
       <View style={{ flex: 1, backgroundColor: '#fff' }}>
         <View style={ styles.headingBufferTop }/>
@@ -61,14 +62,18 @@ export class HomeScreen extends React.Component {
           />
         </View>
         <View style={ styles.bottomImages }>
-          <Image
-            source={require('./../assets/images/settings.png')}
-            style={ styles.settingsImage }
-          />
-          <Image
-            source={require('./../assets/images/cottage.png')}
-            style={ styles.cottageImage }
-          />
+          <TouchableOpacity onPress={() =>
+            navigate('Home')
+            }
+          >
+            <Image source = { require('./../assets/images/settings.png') } style = { styles.settingsImage }/>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() =>
+            navigate('Home')
+            }
+          >
+            <Image source = { require('./../assets/images/cottage.png') } style = { styles.cottageImage }/>
+          </TouchableOpacity>
         </View>
       </View>
     );
