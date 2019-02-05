@@ -3,6 +3,8 @@ import { StyleSheet, Text, View, Image, TextInput } from 'react-native';
 import { Font } from 'expo';
 import { StackNavigator } from 'react-navigation';
 import LogInButton from './../components/LogInButton';
+import firebase from 'firebase';
+import { generateUserKey, createUser } from './../services/user-actions';
 
 export class LogInScreen extends React.Component {
   static navigationOptions = { header: null };
@@ -11,6 +13,9 @@ export class LogInScreen extends React.Component {
     this.state = {
       fontLoaded: false,
       text: '',
+      id: null,
+      username: '',
+      password: '',
     };
   }
   async componentDidMount() {
@@ -52,14 +57,14 @@ export class LogInScreen extends React.Component {
           <Text style={ this.state.fontLoaded ?  styles.userInfoText : styles.justInCase }>username:</Text>
           <TextInput
             style={ this.state.fontLoaded ? styles.userInfoText2 : styles.justInCase }
-            onChangeText={(text) => this.setState({text})}
+            onChangeText={(username) => this.setState({username})}
           />
         </View>
         <View style={styles.userInfo}>
           <Text style={ this.state.fontLoaded ?  styles.userInfoText : styles.justInCase }>password:</Text>
           <TextInput
             style={ this.state.fontLoaded ? styles.userInfoText2 : styles.justInCase }
-            onChangeText={(text) => this.setState({text})}
+            onChangeText={(password) => this.setState({password})}
           />
         </View>
         <View style={styles.bodyFive}>
@@ -68,6 +73,8 @@ export class LogInScreen extends React.Component {
             text = { 'log in' }
             navigation = { this.props.navigation }
             destination = { 'Home' }
+            username = { this.state.username }
+            password = { this.state.password }
           />
           <Text style={ this.state.fontLoaded ?  styles.signUp : styles.justInCase }>sign up</Text>
         </View>
