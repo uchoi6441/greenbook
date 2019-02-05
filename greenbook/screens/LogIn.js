@@ -76,7 +76,14 @@ export class LogInScreen extends React.Component {
             username = { this.state.username }
             password = { this.state.password }
           />
-          <Text style={ this.state.fontLoaded ?  styles.signUp : styles.justInCase }>sign up</Text>
+          <LogInButton
+            font = { this.state.fontLoaded }
+            text = { 'sign up' }
+            navigation = { this.props.navigation }
+            destination = { 'SignUp' }
+            username = { this.state.username }
+            password = { this.state.password }
+          />
         </View>
         <View style={{flexDirection: 'row'}}>
           <Image
