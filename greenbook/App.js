@@ -9,8 +9,10 @@ import { SignUpScreen } from './screens/SignUp';
 import { CongratsScreen } from './screens/Congrats';
 import { SettingsScreen } from './screens/Settings';
 import { AboutScreen } from './screens/About';
+import { SummaryScreen } from './screens/Summary';
 
 const RootStack = createStackNavigator({
+  Summary: { screen: SummaryScreen },
   About: { screen: AboutScreen },
   LogIn: { screen: LogInScreen },
   Home: { screen: HomeScreen },
