@@ -11,13 +11,25 @@ export default class SignUpButton extends React.Component {
     return (
       <TouchableOpacity
         onPress={() => {
-          navigate(this.props.destination)
-          generateUserKey().then((key) => {
-            myKey = key
-            const user = { id: myKey, name: this.props.name, username: this.props.username, password: this.props.password }
-            createUser(user)
-          })
-        }}
+          firebase.auth().createUserWithEmailAndPassword(this.props.username, this.props.password).then(function(this.props) {
+            console.log(this.error)
+            navigate(this.destination)
+            generateUserKey().then((key) => {
+              myKey = key
+              const user = { id: myKey, name: this.props.name, username: this.props.username, password: this.props.password }
+              createUser(user)
+            })
+          }).catch(function(error) {
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            if (errorCode == 'auth/weak-password') {
+            alert('The password is too weak.');
+            } else {
+            alert(errorMessage);
+            }
+            console.log(error);
+            });
+          }}
         style={ styles.button }
       >
         <Text style = { this.props.font ? styles.buttonText : styles.buttonTextElse }>

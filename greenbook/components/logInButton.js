@@ -11,12 +11,17 @@ export default class LogInButton extends React.Component {
     return (
       <TouchableOpacity
         onPress={() => {
+          firebase.auth().signInWithEmailAndPassword(this.props.username, this.props.password).catch(function(error) {
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            if (errorCode === 'auth/wrong-password') {
+              alert('Wrong password.');
+            } else {
+              alert(errorMessage);
+            }
+            console.log(error);
+          });
           navigate(this.props.destination)
-          generateUserKey().then((key) => {
-            myKey = key
-            const user = { id: myKey, username: this.props.username, password: this.props.password }
-            createUser(user)
-          })
         }}
         style={ styles.button }
       >
