@@ -1,8 +1,9 @@
 import React from 'react';
-import { Dimensions, StyleSheet, Text, View, Image, TextInput } from 'react-native';
+import { Dimensions, StyleSheet, Text, View, Image, TextInput, TouchableOpacity } from 'react-native';
 import { Font } from 'expo';
 import { StackNavigator } from 'react-navigation';
 import HomeOptions from './../components/HomeOptions';
+import SignUpButton from './../components/SignUpButton';
 
 export class SignUpScreen extends React.Component {
   static navigationOptions = { header: null };
@@ -69,8 +70,22 @@ export class SignUpScreen extends React.Component {
             />
           </View>
           <View style={{flexDirection: 'column', alignItems: 'flex-end', marginTop: '10%' }}>
-            <Text style={ this.state.fontLoaded ? styles.continue : styles.else }>continue</Text>
-            <Text style={ this.state.fontLoaded? styles.back : styles.else }>back</Text>
+            <SignUpButton
+              font = { this.state.fontLoaded }
+              text = { 'continue' }
+              navigation = { this.props.navigation }
+              destination = { 'Home' }
+              name = { this.state.name }
+              username = { this.state.username }
+              password = { this.state.password }
+            />
+            <TouchableOpacity
+              onPress={() => {
+                this.props.navigation.navigate('LogIn')
+              }}
+            >
+              <Text style={ this.state.fontLoaded ? styles.back : styles.else }>back</Text>
+            </TouchableOpacity>
           </View>
         </View>
       </View>
