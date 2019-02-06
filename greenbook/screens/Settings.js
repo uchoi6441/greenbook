@@ -3,7 +3,7 @@ import { Dimensions, StyleSheet, Text, View, Image, TextInput, TouchableOpacity 
 import { Font } from 'expo';
 import { StackNavigator } from 'react-navigation';
 
-export class CongratsScreen extends React.Component {
+export class SettingsScreen extends React.Component {
   static navigationOptions = { header: null };
   constructor(props) {
     super(props)
@@ -29,7 +29,7 @@ export class CongratsScreen extends React.Component {
       <View style={{ flex: 1, backgroundColor: '#fff' }}>
         <View style={ styles.headingBufferTop }/>
         <View style={ styles.heading }>
-          <Text style={ this.state.fontLoaded ? styles.headingText : styles.justInCase }>congratulations</Text>
+          <Text style={ this.state.fontLoaded ? styles.headingText : styles.justInCase }>settings</Text>
         </View>
         <View style={{ alignItems: 'center', marginTop: -30 }}>
           <Image
@@ -38,25 +38,50 @@ export class CongratsScreen extends React.Component {
           />
         </View>
         <View style={ styles.bodyBox }>
-          <Text style={this.state.fontLoaded ? styles.boxTitle : styles.justInCase }>"you've completed a sale!"</Text>
-          <Text style={this.state.fontLoaded ? styles.boxText : styles.justInCase }>text</Text>
-        </View>
-        <View style={{flexDirection:'row', justifyContent: 'space-around' }}>
-          <View>
-            <Image
-              source={require('./../assets/images/castle.png')}
-              style={ styles.castleImage }
-            />
-          </View>
-          <View style={{justifyContent: 'center', alignItems: 'flex-end', marginRight: '10%' }}>
+          <Text style={this.state.fontLoaded ? styles.boxText : styles.justInCase }>notifications: {}</Text>
+          <View style={{flexDirection:'row', justifyContent: 'space-between', marginRight: 10}}>
+            <Text style={this.state.fontLoaded ? styles.boxText : styles.justInCase }>name: {}</Text>
             <TouchableOpacity
               onPress={() => {
                 this.props.navigation.navigate('Home')
               }}
             >
-              <Text style={ this.state.fontLoaded ? styles.home : styles.else }>home</Text>
+              <Text style={this.state.fontLoaded ? styles.change : styles.justInCase }>change</Text>
             </TouchableOpacity>
           </View>
+          <View style={{flexDirection:'row', justifyContent: 'space-between', marginRight: 10}}>
+            <Text style={this.state.fontLoaded ? styles.boxText : styles.justInCase }>username: {}</Text>
+            <TouchableOpacity
+              onPress={() => {
+                this.props.navigation.navigate('Home')
+              }}
+            >
+              <Text style={this.state.fontLoaded ? styles.change : styles.justInCase }>change</Text>
+            </TouchableOpacity>
+          </View>
+          <TouchableOpacity
+            onPress={() => {
+              this.props.navigation.navigate('Home')
+            }}
+          >
+            <Text style={this.state.fontLoaded ? styles.passwordText : styles.justInCase }>change password</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={{justifyContent: 'space-around', alignItems: 'center', marginTop: -30 }}>
+          <TouchableOpacity
+            onPress={() => {
+              this.props.navigation.navigate('Home')
+            }}
+          >
+            <Text style={ this.state.fontLoaded ? styles.save : styles.else }>save</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              this.props.navigation.navigate('Home')
+            }}
+          >
+            <Text style={ this.state.fontLoaded ? styles.home : styles.else }>home</Text>
+          </TouchableOpacity>
         </View>
       </View>
     );
@@ -64,8 +89,13 @@ export class CongratsScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  home: {
+  save: {
     fontSize: 35,
+    fontFamily: 'gloria-hallelujah',
+    color: '#024C2E',
+  },
+  home: {
+    fontSize: 30,
     fontFamily: 'gloria-hallelujah',
     color: '#024C2E',
   },
@@ -73,14 +103,19 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     marginTop: '7%',
   },
-  boxTitle: {
-    fontSize: 25,
-    fontFamily: 'gloria-hallelujah',
-    color: '#024C2E',
-  },
   boxText: {
     fontFamily: 'source-code-pro',
     fontSize: 25,
+  },
+  passwordText: {
+    fontFamily: 'source-code-pro',
+    fontSize: 25,
+    textDecorationLine: 'underline',
+  },
+  change: {
+    fontFamily: 'source-code-pro',
+    fontSize: 20,
+    textDecorationLine: 'underline',
   },
   continue: {
     fontSize: 35,
@@ -97,7 +132,7 @@ const styles = StyleSheet.create({
     marginBottom: '10%',
     marginTop: '10%',
     height: '50%',
-    alignItems: 'center',
+    justifyContent: 'space-around',
   },
   enter: {
     fontSize: 30,
