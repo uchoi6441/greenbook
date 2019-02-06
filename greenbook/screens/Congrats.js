@@ -2,9 +2,8 @@ import React from 'react';
 import { Dimensions, StyleSheet, Text, View, Image, TextInput, TouchableOpacity } from 'react-native';
 import { Font } from 'expo';
 import { StackNavigator } from 'react-navigation';
-import SignUpButton from './../components/SignUpButton';
 
-export class SignUpScreen extends React.Component {
+export class CongratsScreen extends React.Component {
   static navigationOptions = { header: null };
   constructor(props) {
     super(props)
@@ -30,7 +29,7 @@ export class SignUpScreen extends React.Component {
       <View style={{ flex: 1, backgroundColor: '#fff' }}>
         <View style={ styles.headingBufferTop }/>
         <View style={ styles.heading }>
-          <Text style={ this.state.fontLoaded ? styles.headingText : styles.justInCase }>sign up</Text>
+          <Text style={ this.state.fontLoaded ? styles.headingText : styles.justInCase }>congratulations</Text>
         </View>
         <View style={{ alignItems: 'center', marginTop: -30 }}>
           <Image
@@ -38,52 +37,24 @@ export class SignUpScreen extends React.Component {
             style={ styles.vineImage }
           />
         </View>
-        <View style={ styles.body }>
-          <View style={ styles.enterBox }>
-            <Text style={this.state.fontLoaded ? styles.enter : styles.justInCase }>name:</Text>
-            <TextInput
-              style={ this.state.fontLoaded ? styles.enter : styles.justInCase }
-              onChangeText={(name) => this.setState({name})}
-            />
-          </View>
-          <View style={ styles.enterBox }>
-            <Text style={this.state.fontLoaded ? styles.enter : styles.justInCase }>username:</Text>
-            <TextInput
-              style={ this.state.fontLoaded ? styles.enter : styles.justInCase }
-              onChangeText={(username) => this.setState({username})}
-            />
-          </View>
-          <View style={ styles.enterBox }>
-            <Text style={this.state.fontLoaded ? styles.enter : styles.justInCase }>password:</Text>
-            <TextInput
-              style={ this.state.fontLoaded ? styles.enter : styles.justInCase }
-              onChangeText={(password) => this.setState({password})}
-            />
-          </View>
+        <View style={ styles.bodyBox }>
+          <Text style={this.state.fontLoaded ? styles.boxTitle : styles.justInCase }>"you've completed a sale!"</Text>
+          <Text style={this.state.fontLoaded ? styles.boxText : styles.justInCase }>text</Text>
         </View>
-        <View style={{flexDirection:'row'}}>
-          <View style={ styles.bottomImages }>
+        <View style={{flexDirection:'row', justifyContent: 'space-around' }}>
+          <View>
             <Image
-              source={require('./../assets/images/willow.png')}
-              style={ styles.willowImage }
+              source={require('./../assets/images/castle.png')}
+              style={ styles.castleImage }
             />
           </View>
-          <View style={{flexDirection: 'column', alignItems: 'flex-end', marginTop: '10%' }}>
-            <SignUpButton
-              font = { this.state.fontLoaded }
-              text = { 'continue' }
-              navigation = { this.props.navigation }
-              destination = { 'Home' }
-              name = { this.state.name }
-              username = { this.state.username }
-              password = { this.state.password }
-            />
+          <View style={{justifyContent: 'center', alignItems: 'flex-end', marginRight: '10%' }}>
             <TouchableOpacity
               onPress={() => {
-                this.props.navigation.navigate('LogIn')
+                this.props.navigation.navigate('Home')
               }}
             >
-              <Text style={ this.state.fontLoaded ? styles.back : styles.else }>back</Text>
+              <Text style={ this.state.fontLoaded ? styles.home : styles.else }>home</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -93,35 +64,40 @@ export class SignUpScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  back: {
-    fontSize: 25,
+  home: {
+    fontSize: 35,
     fontFamily: 'gloria-hallelujah',
     color: '#024C2E',
   },
   body: {
     flexDirection: 'column',
-    marginTop: '30%',
+    marginTop: '7%',
   },
-  bottomImages: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-around',
+  boxTitle: {
+    fontSize: 25,
+    fontFamily: 'gloria-hallelujah',
+    color: '#024C2E',
+  },
+  boxText: {
+    fontFamily: 'source-code-pro',
+    fontSize: 25,
   },
   continue: {
     fontSize: 35,
     fontFamily: 'gloria-hallelujah',
     color: '#024C2E',
   },
-  enterBox: {
+  bodyBox: {
     paddingLeft: 10,
     alignSelf: 'center',
     borderRadius: 10,
     backgroundColor: '#E4E4E4',
     borderWidth: 2,
     width: Dimensions.get('window').height / 10 * 4,
-    marginBottom: 30,
-    height: 50,
-    flexDirection: 'row',
+    marginBottom: '10%',
+    marginTop: '10%',
+    height: '50%',
+    alignItems: 'center',
   },
   enter: {
     fontSize: 30,
@@ -149,11 +125,9 @@ const styles = StyleSheet.create({
   justInCase: {
     fontSize: 44,
   },
-  willowImage: {
-    width: 150,
-    height: 150,
-    marginTop: '30%',
-    marginLeft: '10%',
+  castleImage: {
+    width: 130,
+    height: 130,
   },
   vineImage: {
     transform: [{ rotate: '180deg'}],
