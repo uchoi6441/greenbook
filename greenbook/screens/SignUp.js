@@ -99,10 +99,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-around',
   },
-  continue: {
-    fontSize: 35,
-    fontFamily: 'gloria-hallelujah',
-    color: '#024C2E',
+  enter: {
+    fontSize: 30,
+    fontFamily: 'source-code-pro'
   },
   enterBox: {
     paddingLeft: 10,
@@ -114,10 +113,6 @@ const styles = StyleSheet.create({
     marginBottom: 30,
     height: 50,
     flexDirection: 'row',
-  },
-  enter: {
-    fontSize: 30,
-    fontFamily: 'source-code-pro'
   },
   heading: {
     height: '12%',
@@ -141,13 +136,13 @@ const styles = StyleSheet.create({
   justInCase: {
     fontSize: 44,
   },
+  vineImage: {
+    transform: [{ rotate: '180deg'}],
+  },
   willowImage: {
     width: 150,
     height: 150,
     marginTop: '30%',
     marginLeft: '10%',
-  },
-  vineImage: {
-    transform: [{ rotate: '180deg'}],
   },
 });
