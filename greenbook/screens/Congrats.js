@@ -39,15 +39,17 @@ export class CongratsScreen extends React.Component {
           />
         </View>
         <View style={ styles.bodyBox }>
-          <Text style={this.state.fontLoaded ? styles.boxTitle : styles.justInCase }>title</Text>
-          <Text style={this.state.fontLoaded ? styles.boxText : styles.justInCase }>blah</Text>
+          <Text style={this.state.fontLoaded ? styles.boxTitle : styles.justInCase }>"you've completed a sale!"</Text>
+          <Text style={this.state.fontLoaded ? styles.boxText : styles.justInCase }>text</Text>
         </View>
-        <View style={{flexDirection:'row'}}>
+        <View style={{flexDirection:'row', justifyContent: 'space-around' }}>
+          <View>
             <Image
               source={require('./../assets/images/castle.png')}
               style={ styles.castleImage }
             />
-          <View style={{justifyContent: 'center'}}>
+          </View>
+          <View style={{justifyContent: 'center', alignItems: 'flex-end', marginRight: '10%' }}>
             <TouchableOpacity
               onPress={() => {
                 this.props.navigation.navigate('Home')
@@ -64,7 +66,7 @@ export class CongratsScreen extends React.Component {
 
 const styles = StyleSheet.create({
   home: {
-    fontSize: 30,
+    fontSize: 35,
     fontFamily: 'gloria-hallelujah',
     color: '#024C2E',
   },
@@ -96,6 +98,7 @@ const styles = StyleSheet.create({
     marginBottom: '10%',
     marginTop: '10%',
     height: '50%',
+    alignItems: 'center',
   },
   enter: {
     fontSize: 30,
@@ -126,7 +129,6 @@ const styles = StyleSheet.create({
   castleImage: {
     width: 130,
     height: 130,
-    marginLeft: '10%',
   },
   vineImage: {
     transform: [{ rotate: '180deg'}],
