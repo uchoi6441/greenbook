@@ -1,8 +1,10 @@
 import React from 'react';
 import { StyleSheet, Text, Dimensions, TouchableOpacity } from 'react-native';
 import { Font } from 'expo';
+import firebase from 'firebase';
+import { generateUserKey, createUser } from './../services/user-actions';
 
-export default class HomeOptions extends React.Component {
+export default class SignUpButton extends React.Component {
   state = { fontLoaded: true };
   render() {
     const { navigate } = this.props.navigation;
@@ -10,6 +12,11 @@ export default class HomeOptions extends React.Component {
       <TouchableOpacity
         onPress={() => {
           navigate(this.props.destination)
+          generateUserKey().then((key) => {
+            myKey = key
+            const user = { id: myKey, name: this.props.name, username: this.props.username, password: this.props.password }
+            createUser(user)
+          })
         }}
         style={ styles.button }
       >
@@ -26,17 +33,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'center',
-    borderRadius: 10,
-    backgroundColor: '#E4E4E4',
-    borderWidth: 2,
-    width: Dimensions.get('window').height / 10 * 4,
-    marginBottom: 30,
   },
   buttonText: {
-    fontSize: 30,
-    fontFamily: 'source-code-pro',
+    fontFamily: 'gloria-hallelujah',
+    fontSize: 44,
+    color: '#024C2E',
   },
   buttonTextElse: {
-    fontSize: 30,
+    fontSize: 44,
+    color: '#024C2E',
   },
 });
