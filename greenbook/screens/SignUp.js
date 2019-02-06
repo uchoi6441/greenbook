@@ -9,21 +9,13 @@ export class SignUpScreen extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      fontLoaded: false,
+      fontLoaded: true,
       text: '',
       id: null,
       name: '',
       username: '',
       password: '',
     };
-  }
-  async componentDidMount() {
-    await Font.loadAsync({
-      'gloria-hallelujah': require('./../assets/fonts/GloriaHallelujah.ttf'),
-      'libre-barcode': require('./../assets/fonts/LibreBarcode128Text-Regular.ttf'),
-      'source-code-pro': require('./../assets/fonts/SourceCodePro-Light.ttf'),
-    });
-    this.setState({ fontLoaded: true });
   }
   render() {
     return (
