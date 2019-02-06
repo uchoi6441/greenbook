@@ -8,21 +8,8 @@ export class CongratsScreen extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      fontLoaded: false,
-      text: '',
-      id: null,
-      name: '',
-      username: '',
-      password: '',
+      fontLoaded: true,
     };
-  }
-  async componentDidMount() {
-    await Font.loadAsync({
-      'gloria-hallelujah': require('./../assets/fonts/GloriaHallelujah.ttf'),
-      'libre-barcode': require('./../assets/fonts/LibreBarcode128Text-Regular.ttf'),
-      'source-code-pro': require('./../assets/fonts/SourceCodePro-Light.ttf'),
-    });
-    this.setState({ fontLoaded: true });
   }
   render() {
     return (
@@ -64,29 +51,6 @@ export class CongratsScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  home: {
-    fontSize: 35,
-    fontFamily: 'gloria-hallelujah',
-    color: '#024C2E',
-  },
-  body: {
-    flexDirection: 'column',
-    marginTop: '7%',
-  },
-  boxTitle: {
-    fontSize: 25,
-    fontFamily: 'gloria-hallelujah',
-    color: '#024C2E',
-  },
-  boxText: {
-    fontFamily: 'source-code-pro',
-    fontSize: 25,
-  },
-  continue: {
-    fontSize: 35,
-    fontFamily: 'gloria-hallelujah',
-    color: '#024C2E',
-  },
   bodyBox: {
     paddingLeft: 10,
     alignSelf: 'center',
@@ -99,9 +63,18 @@ const styles = StyleSheet.create({
     height: '50%',
     alignItems: 'center',
   },
-  enter: {
-    fontSize: 30,
-    fontFamily: 'source-code-pro'
+  boxTitle: {
+    fontSize: 25,
+    fontFamily: 'gloria-hallelujah',
+    color: '#024C2E',
+  },
+  boxText: {
+    fontFamily: 'source-code-pro',
+    fontSize: 25,
+  },
+  castleImage: {
+    width: 130,
+    height: 130,
   },
   heading: {
     height: '12%',
@@ -122,12 +95,13 @@ const styles = StyleSheet.create({
     fontFamily: 'gloria-hallelujah',
     color: '#024C2E',
   },
+  home: {
+    fontSize: 35,
+    fontFamily: 'gloria-hallelujah',
+    color: '#024C2E',
+  },
   justInCase: {
     fontSize: 44,
-  },
-  castleImage: {
-    width: 130,
-    height: 130,
   },
   vineImage: {
     transform: [{ rotate: '180deg'}],
