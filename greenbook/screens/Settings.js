@@ -76,39 +76,6 @@ export class SettingsScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  save: {
-    fontSize: 35,
-    fontFamily: 'gloria-hallelujah',
-    color: '#024C2E',
-  },
-  home: {
-    fontSize: 30,
-    fontFamily: 'gloria-hallelujah',
-    color: '#024C2E',
-  },
-  body: {
-    flexDirection: 'column',
-    marginTop: '7%',
-  },
-  boxText: {
-    fontFamily: 'source-code-pro',
-    fontSize: 25,
-  },
-  passwordText: {
-    fontFamily: 'source-code-pro',
-    fontSize: 25,
-    textDecorationLine: 'underline',
-  },
-  change: {
-    fontFamily: 'source-code-pro',
-    fontSize: 20,
-    textDecorationLine: 'underline',
-  },
-  continue: {
-    fontSize: 35,
-    fontFamily: 'gloria-hallelujah',
-    color: '#024C2E',
-  },
   bodyBox: {
     paddingLeft: 10,
     alignSelf: 'center',
@@ -121,9 +88,14 @@ const styles = StyleSheet.create({
     height: '50%',
     justifyContent: 'space-around',
   },
-  enter: {
-    fontSize: 30,
-    fontFamily: 'source-code-pro'
+  boxText: {
+    fontFamily: 'source-code-pro',
+    fontSize: 25,
+  },
+  change: {
+    fontFamily: 'source-code-pro',
+    fontSize: 20,
+    textDecorationLine: 'underline',
   },
   heading: {
     height: '12%',
@@ -144,12 +116,23 @@ const styles = StyleSheet.create({
     fontFamily: 'gloria-hallelujah',
     color: '#024C2E',
   },
+  home: {
+    fontSize: 30,
+    fontFamily: 'gloria-hallelujah',
+    color: '#024C2E',
+  },
   justInCase: {
     fontSize: 44,
   },
-  castleImage: {
-    width: 130,
-    height: 130,
+  passwordText: {
+    fontFamily: 'source-code-pro',
+    fontSize: 25,
+    textDecorationLine: 'underline',
+  },
+  save: {
+    fontSize: 35,
+    fontFamily: 'gloria-hallelujah',
+    color: '#024C2E',
   },
   vineImage: {
     transform: [{ rotate: '180deg'}],

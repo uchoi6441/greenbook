@@ -83,6 +83,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-around',
   },
+  cottageImage: {
+    width: 100,
+    height: 100,
+    marginRight: 40,
+  },
   heading: {
     height: '12%',
     width: '100%',
@@ -104,11 +109,6 @@ const styles = StyleSheet.create({
   },
   justInCase: {
     fontSize: 44,
-  },
-  cottageImage: {
-    width: 100,
-    height: 100,
-    marginRight: 40,
   },
   settingsImage: {
     width: 60,
