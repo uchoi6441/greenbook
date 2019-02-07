@@ -56,16 +56,16 @@ export class LogInScreen extends React.Component {
           />
         </View>
         <View style={styles.userInfo}>
-          <Text style={ this.state.fontLoaded ?  styles.userInfoText : styles.justInCase }>username:</Text>
           <TextInput
-            style={ this.state.fontLoaded ? styles.userInfoText2 : styles.justInCase }
+            style={ this.state.fontLoaded ? styles.userInfoText : styles.justInCase }
+            placeholder="username"
             onChangeText={(username) => this.setState({username})}
           />
         </View>
         <View style={styles.userInfo}>
-          <Text style={ this.state.fontLoaded ?  styles.userInfoText : styles.justInCase }>password:</Text>
           <TextInput
-            style={ this.state.fontLoaded ? styles.userInfoText2 : styles.justInCase }
+            style={ this.state.fontLoaded ? styles.userInfoText : styles.justInCase }
+            placeholder="password"
             onChangeText={(password) => this.setState({password})}
           />
         </View>
@@ -165,12 +165,6 @@ const styles = StyleSheet.create({
     fontFamily: 'source-code-pro',
     paddingRight: 5,
     paddingTop: '7%',
-  },
-  userInfoText2: {
-    fontSize: 20,
-    fontFamily: 'source-code-pro',
-    paddingTop: '10%',
-    alignItems: 'center',
   },
   vineImage: {
     marginLeft: -12,

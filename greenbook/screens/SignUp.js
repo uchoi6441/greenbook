@@ -32,23 +32,23 @@ export class SignUpScreen extends React.Component {
         </View>
         <View style={ styles.body }>
           <View style={ styles.enterBox }>
-            <Text style={this.state.fontLoaded ? styles.enter : styles.justInCase }>name:</Text>
             <TextInput
               style={ this.state.fontLoaded ? styles.enter : styles.justInCase }
+              placeholder="name"
               onChangeText={(name) => this.setState({name})}
             />
           </View>
           <View style={ styles.enterBox }>
-            <Text style={this.state.fontLoaded ? styles.enter : styles.justInCase }>username:</Text>
             <TextInput
               style={ this.state.fontLoaded ? styles.enter : styles.justInCase }
+              placeholder="username"
               onChangeText={(username) => this.setState({username})}
             />
           </View>
           <View style={ styles.enterBox }>
-            <Text style={this.state.fontLoaded ? styles.enter : styles.justInCase }>password:</Text>
             <TextInput
               style={ this.state.fontLoaded ? styles.enter : styles.justInCase }
+              placeholder="password"
               onChangeText={(password) => this.setState({password})}
             />
           </View>
