@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Image, TextInput } from 'react-native';
 import { Font } from 'expo';
 import { StackNavigator } from 'react-navigation';
 import LogInButton from './../components/LogInButton';
+import ChangePageButton from './../components/ChangePageButton'
 import firebase from 'firebase';
 import { generateUserKey, createUser } from './../services/user-actions';
 
@@ -77,13 +78,11 @@ export class LogInScreen extends React.Component {
             username = { this.state.username }
             password = { this.state.password }
           />
-          <LogInButton
+        <ChangePageButton
             font = { this.state.fontLoaded }
             text = { 'sign up' }
             navigation = { this.props.navigation }
             destination = { 'SignUp' }
-            username = { this.state.username }
-            password = { this.state.password }
           />
         </View>
         <View style={{flexDirection: 'row'}}>
