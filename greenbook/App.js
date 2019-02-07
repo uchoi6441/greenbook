@@ -12,9 +12,9 @@ import { AboutScreen } from './screens/About';
 import { SummaryScreen } from './screens/Summary';
 
 const RootStack = createStackNavigator({
+  LogIn: { screen: LogInScreen },
   Summary: { screen: SummaryScreen },
   About: { screen: AboutScreen },
-  LogIn: { screen: LogInScreen },
   Home: { screen: HomeScreen },
   SignUp: { screen: SignUpScreen },
   Congrats: { screen: CongratsScreen },

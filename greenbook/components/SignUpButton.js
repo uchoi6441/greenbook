@@ -3,34 +3,20 @@ import { StyleSheet, Text, Dimensions, TouchableOpacity } from 'react-native';
 import { Font } from 'expo';
 import firebase from 'firebase';
 import { generateUserKey, createUser } from './../services/user-actions';
+import { createAccount } from './../services/database-actions'
 
 export default class SignUpButton extends React.Component {
-  state = { fontLoaded: true };
+  state = { fontLoaded: true }
   render() {
     const { navigate } = this.props.navigation;
     return (
       <TouchableOpacity
         onPress={() => {
-          firebase.auth().createUserWithEmailAndPassword(this.props.username, this.props.password).then(function(this.props) {
-            console.log(this.error)
-            navigate(this.destination)
-            generateUserKey().then((key) => {
-              myKey = key
-              const user = { id: myKey, name: this.props.name, username: this.props.username, password: this.props.password }
-              createUser(user)
-            })
-          }).catch(function(error) {
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            if (errorCode == 'auth/weak-password') {
-            alert('The password is too weak.');
-            } else {
-            alert(errorMessage);
-            }
-            console.log(error);
-            });
-          }}
-        style={ styles.button }
+          createAccount(this.props.username, this.props.password).then((result) => {
+            navigate(this.props.destination)
+          })
+        }}
+        style = { styles.button }
       >
         <Text style = { this.props.font ? styles.buttonText : styles.buttonTextElse }>
           { this.props.text }
@@ -39,7 +25,6 @@ export default class SignUpButton extends React.Component {
     );
   }
 }
-
 const styles = StyleSheet.create({
   button: {
     justifyContent: 'center',
