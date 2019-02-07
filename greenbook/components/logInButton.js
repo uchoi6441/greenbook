@@ -3,6 +3,8 @@ import { StyleSheet, Text, Dimensions, TouchableOpacity } from 'react-native';
 import { Font } from 'expo';
 import firebase from 'firebase';
 import { generateUserKey, createUser } from './../services/user-actions';
+import { createAccount, verifyAccount } from './../services/database-actions';
+
 
 export default class LogInButton extends React.Component {
   state = { fontLoaded: true };
@@ -11,11 +13,8 @@ export default class LogInButton extends React.Component {
     return (
       <TouchableOpacity
         onPress={() => {
-          navigate(this.props.destination)
-          generateUserKey().then((key) => {
-            myKey = key
-            const user = { id: myKey, username: this.props.username, password: this.props.password }
-            createUser(user)
+          verifyAccount(this.props.username, this.props.password).then((result) => {
+            navigate(this.props.destination)
           })
         }}
         style={ styles.button }

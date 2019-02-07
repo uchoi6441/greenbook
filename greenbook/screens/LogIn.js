@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Image, TextInput } from 'react-native';
 import { Font } from 'expo';
 import { StackNavigator } from 'react-navigation';
 import LogInButton from './../components/LogInButton';
+import ChangePageButton from './../components/ChangePageButton'
 import firebase from 'firebase';
 import { generateUserKey, createUser } from './../services/user-actions';
 
@@ -55,16 +56,16 @@ export class LogInScreen extends React.Component {
           />
         </View>
         <View style={styles.userInfo}>
-          <Text style={ this.state.fontLoaded ?  styles.userInfoText : styles.justInCase }>username:</Text>
           <TextInput
-            style={ this.state.fontLoaded ? styles.userInfoText2 : styles.justInCase }
+            style={ this.state.fontLoaded ? styles.userInfoText : styles.justInCase }
+            placeholder="username"
             onChangeText={(username) => this.setState({username})}
           />
         </View>
         <View style={styles.userInfo}>
-          <Text style={ this.state.fontLoaded ?  styles.userInfoText : styles.justInCase }>password:</Text>
           <TextInput
-            style={ this.state.fontLoaded ? styles.userInfoText2 : styles.justInCase }
+            style={ this.state.fontLoaded ? styles.userInfoText : styles.justInCase }
+            placeholder="password"
             onChangeText={(password) => this.setState({password})}
           />
         </View>
@@ -77,13 +78,11 @@ export class LogInScreen extends React.Component {
             username = { this.state.username }
             password = { this.state.password }
           />
-          <LogInButton
+        <ChangePageButton
             font = { this.state.fontLoaded }
             text = { 'sign up' }
             navigation = { this.props.navigation }
             destination = { 'SignUp' }
-            username = { this.state.username }
-            password = { this.state.password }
           />
         </View>
         <View style={{flexDirection: 'row'}}>
@@ -166,12 +165,6 @@ const styles = StyleSheet.create({
     fontFamily: 'source-code-pro',
     paddingRight: 5,
     paddingTop: '7%',
-  },
-  userInfoText2: {
-    fontSize: 20,
-    fontFamily: 'source-code-pro',
-    paddingTop: '10%',
-    alignItems: 'center',
   },
   vineImage: {
     marginLeft: -12,
