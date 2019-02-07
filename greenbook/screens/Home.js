@@ -9,17 +9,8 @@ export class HomeScreen extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      fontLoaded: false,
-      text: '',
+      fontLoaded: true,
     };
-  }
-  async componentDidMount() {
-    await Font.loadAsync({
-      'gloria-hallelujah': require('./../assets/fonts/GloriaHallelujah.ttf'),
-      'libre-barcode': require('./../assets/fonts/LibreBarcode128Text-Regular.ttf'),
-      'source-code-pro': require('./../assets/fonts/SourceCodePro-Light.ttf'),
-    });
-    this.setState({ fontLoaded: true });
   }
   render() {
     const { navigate } = this.props.navigation
@@ -92,6 +83,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-around',
   },
+  cottageImage: {
+    width: 100,
+    height: 100,
+    marginRight: 40,
+  },
   heading: {
     height: '12%',
     width: '100%',
@@ -113,11 +109,6 @@ const styles = StyleSheet.create({
   },
   justInCase: {
     fontSize: 44,
-  },
-  cottageImage: {
-    width: 100,
-    height: 100,
-    marginRight: 40,
   },
   settingsImage: {
     width: 60,

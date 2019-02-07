@@ -23,6 +23,7 @@ export class LogInScreen extends React.Component {
       'gloria-hallelujah': require('./../assets/fonts/GloriaHallelujah.ttf'),
       'libre-barcode': require('./../assets/fonts/LibreBarcode128Text-Regular.ttf'),
       'source-code-pro': require('./../assets/fonts/SourceCodePro-Light.ttf'),
+      'barcode': require('./../assets/fonts/LibreBarcode128-Regular.ttf'),
     });
     this.setState({ fontLoaded: true });
   }
@@ -125,26 +126,12 @@ const styles = StyleSheet.create({
     width: 125,
     height: 125,
   },
-  footerFive: {
-    height: '15%',
-    width: '100%',
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
   heading: {
     height: '12%',
     width: '100%',
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  headingBufferBottom: {
-    height: '6%',
-    width: '100%',
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center'
   },
   headingBufferTop: {
     height: '8%',
@@ -160,16 +147,6 @@ const styles = StyleSheet.create({
   },
   justInCase: {
     fontSize: 44,
-  },
-  logIn: {
-    fontFamily: 'gloria-hallelujah',
-    fontSize: 44,
-    color: '#024C2E',
-  },
-  signUp: {
-    fontFamily: 'gloria-hallelujah',
-    fontSize: 28,
-    color: '#024C2E',
   },
   subheadingText: {
     fontSize: 70,

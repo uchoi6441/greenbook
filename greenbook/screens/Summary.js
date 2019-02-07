@@ -8,22 +8,13 @@ export class SummaryScreen extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      fontLoaded: false,
+      fontLoaded: true,
       text: '',
       id: null,
       name: '',
       username: '',
       password: '',
     };
-  }
-  async componentDidMount() {
-    await Font.loadAsync({
-      'gloria-hallelujah': require('./../assets/fonts/GloriaHallelujah.ttf'),
-      'libre-barcode': require('./../assets/fonts/LibreBarcode128Text-Regular.ttf'),
-      'source-code-pro': require('./../assets/fonts/SourceCodePro-Light.ttf'),
-      'barcode': require('./../assets/fonts/LibreBarcode128-Regular.ttf'),
-    });
-    this.setState({ fontLoaded: true });
   }
   render() {
     return (
@@ -80,6 +71,10 @@ export class SummaryScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  bodyBox: {
+    backgroundColor: '#E4E4E4',
+    height: '45%',
+  },
   border: {
     fontFamily: 'barcode',
     fontSize: 30,
@@ -89,20 +84,6 @@ const styles = StyleSheet.create({
     width: '110%',
     height: '2%'
   },
-  save: {
-    fontSize: 35,
-    fontFamily: 'gloria-hallelujah',
-    color: '#024C2E',
-  },
-  home: {
-    fontSize: 30,
-    fontFamily: 'gloria-hallelujah',
-    color: '#024C2E',
-  },
-  body: {
-    flexDirection: 'column',
-    marginTop: '7%',
-  },
   boxText: {
     fontFamily: 'source-code-pro',
     fontSize: 25,
@@ -110,29 +91,6 @@ const styles = StyleSheet.create({
   boxTextSmall: {
     fontFamily: 'source-code-pro',
     fontSize: 20,
-  },
-  passwordText: {
-    fontFamily: 'source-code-pro',
-    fontSize: 25,
-    textDecorationLine: 'underline',
-  },
-  change: {
-    fontFamily: 'source-code-pro',
-    fontSize: 20,
-    textDecorationLine: 'underline',
-  },
-  continue: {
-    fontSize: 35,
-    fontFamily: 'gloria-hallelujah',
-    color: '#024C2E',
-  },
-  bodyBox: {
-    backgroundColor: '#E4E4E4',
-    height: '45%',
-  },
-  enter: {
-    fontSize: 30,
-    fontFamily: 'source-code-pro'
   },
   heading: {
     height: '12%',
@@ -156,13 +114,14 @@ const styles = StyleSheet.create({
   justInCase: {
     fontSize: 44,
   },
+  save: {
+    fontSize: 35,
+    fontFamily: 'gloria-hallelujah',
+    color: '#024C2E',
+  },
   textbookImage: {
     width: 100,
     height: 100,
-  },
-  castleImage: {
-    width: 130,
-    height: 130,
   },
   vineImage: {
     transform: [{ rotate: '180deg'}],

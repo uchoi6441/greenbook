@@ -13,12 +13,12 @@ import { SummaryScreen } from './screens/Summary';
 
 const RootStack = createStackNavigator({
   LogIn: { screen: LogInScreen },
-  Summary: { screen: SummaryScreen },
   About: { screen: AboutScreen },
   Home: { screen: HomeScreen },
   SignUp: { screen: SignUpScreen },
   Congrats: { screen: CongratsScreen },
   Settings: { screen: SettingsScreen },
+  Summary: { screen: SummaryScreen },
 });
 
 export default createAppContainer(RootStack);

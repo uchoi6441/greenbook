@@ -8,21 +8,8 @@ export class AboutScreen extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      fontLoaded: false,
-      text: '',
-      id: null,
-      name: '',
-      username: '',
-      password: '',
+      fontLoaded: true,
     };
-  }
-  async componentDidMount() {
-    await Font.loadAsync({
-      'gloria-hallelujah': require('./../assets/fonts/GloriaHallelujah.ttf'),
-      'libre-barcode': require('./../assets/fonts/LibreBarcode128Text-Regular.ttf'),
-      'source-code-pro': require('./../assets/fonts/SourceCodePro-Light.ttf'),
-    });
-    this.setState({ fontLoaded: true });
   }
   render() {
     return (
@@ -71,42 +58,9 @@ export class AboutScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  save: {
-    fontSize: 35,
-    fontFamily: 'gloria-hallelujah',
-    color: '#024C2E',
-  },
-  home: {
-    fontSize: 30,
-    fontFamily: 'gloria-hallelujah',
-    color: '#024C2E',
-  },
   body: {
     flexDirection: 'column',
     marginTop: '7%',
-  },
-  boxText: {
-    fontFamily: 'source-code-pro',
-    fontSize: 25,
-  },
-  boxTextSmall: {
-    fontFamily: 'source-code-pro',
-    fontSize: 20,
-  },
-  passwordText: {
-    fontFamily: 'source-code-pro',
-    fontSize: 25,
-    textDecorationLine: 'underline',
-  },
-  change: {
-    fontFamily: 'source-code-pro',
-    fontSize: 20,
-    textDecorationLine: 'underline',
-  },
-  continue: {
-    fontSize: 35,
-    fontFamily: 'gloria-hallelujah',
-    color: '#024C2E',
   },
   bodyBox: {
     paddingLeft: 10,
@@ -119,9 +73,27 @@ const styles = StyleSheet.create({
     marginTop: '10%',
     height: '50%',
   },
-  enter: {
-    fontSize: 30,
-    fontFamily: 'source-code-pro'
+  boxText: {
+    fontFamily: 'source-code-pro',
+    fontSize: 25,
+  },
+  boxTextSmall: {
+    fontFamily: 'source-code-pro',
+    fontSize: 20,
+  },
+  castleImage: {
+    width: 130,
+    height: 130,
+  },
+  change: {
+    fontFamily: 'source-code-pro',
+    fontSize: 20,
+    textDecorationLine: 'underline',
+  },
+  continue: {
+    fontSize: 35,
+    fontFamily: 'gloria-hallelujah',
+    color: '#024C2E',
   },
   heading: {
     height: '12%',
@@ -142,16 +114,31 @@ const styles = StyleSheet.create({
     fontFamily: 'gloria-hallelujah',
     color: '#024C2E',
   },
+  home: {
+    fontSize: 30,
+    fontFamily: 'gloria-hallelujah',
+    color: '#024C2E',
+  },
   justInCase: {
     fontSize: 44,
+  },
+  enter: {
+    fontSize: 30,
+    fontFamily: 'source-code-pro'
+  },
+  passwordText: {
+    fontFamily: 'source-code-pro',
+    fontSize: 25,
+    textDecorationLine: 'underline',
+  },
+  save: {
+    fontSize: 35,
+    fontFamily: 'gloria-hallelujah',
+    color: '#024C2E',
   },
   textbookImage: {
     width: 100,
     height: 100,
-  },
-  castleImage: {
-    width: 130,
-    height: 130,
   },
   vineImage: {
     transform: [{ rotate: '180deg'}],
