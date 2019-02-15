@@ -60,7 +60,7 @@ export class HomeScreen extends React.Component {
             <Image source = { require('./../assets/images/settings.png') } style = { styles.settingsImage }/>
           </TouchableOpacity>
           <TouchableOpacity onPress={() =>
-            navigate('Home')
+            navigate('About')
             }
           >
             <Image source = { require('./../assets/images/cottage.png') } style = { styles.cottageImage }/>

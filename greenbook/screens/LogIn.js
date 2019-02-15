@@ -15,7 +15,7 @@ export class LogInScreen extends React.Component {
       fontLoaded: false,
       text: '',
       id: null,
-      username: '',
+      email: '',
       password: '',
     };
   }
@@ -58,8 +58,8 @@ export class LogInScreen extends React.Component {
         <View style={styles.userInfo}>
           <TextInput
             style={ this.state.fontLoaded ? styles.userInfoText : styles.justInCase }
-            placeholder="username"
-            onChangeText={(username) => this.setState({username})}
+            placeholder="email"
+            onChangeText={(email) => this.setState({email})}
           />
         </View>
         <View style={styles.userInfo}>
@@ -75,7 +75,7 @@ export class LogInScreen extends React.Component {
             text = { 'log in' }
             navigation = { this.props.navigation }
             destination = { 'Home' }
-            username = { this.state.username }
+            email = { this.state.email }
             password = { this.state.password }
           />
           <ChangePageButton

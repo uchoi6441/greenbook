@@ -13,7 +13,7 @@ export default class LogInButton extends React.Component {
     return (
       <TouchableOpacity
         onPress={() => {
-          verifyAccount(this.props.username, this.props.password).then((result) => {
+          verifyAccount(this.props.email, this.props.password).then((result) => {
             navigate(this.props.destination)
           })
         }}

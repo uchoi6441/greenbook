@@ -8,7 +8,7 @@ export function createUser(user) {
     firebase.database().ref(`users/${ user.id }`).set({
       id: user.id,
       //name: user.name,
-      username: user.username,
+      email: user.email,
       password: user.password,
     });
     resolve(true)
