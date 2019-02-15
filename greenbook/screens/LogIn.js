@@ -114,6 +114,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: Dimensions.get('window').height / 100 * 5,
+    marginBottom: Dimensions.get('window').height / 100 * 5,
   },
   heading: {
     height: Dimensions.get('window').height / 100 * 12,

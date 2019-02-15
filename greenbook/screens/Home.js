@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Dimensions } from 'react-native';
 import { Font } from 'expo';
 import { StackNavigator } from 'react-navigation';
 import HomeOptions from './../components/HomeOptions';
@@ -63,7 +63,7 @@ export class HomeScreen extends React.Component {
             navigate('About')
             }
           >
-            <Image source = { require('./../assets/images/cottage.png') } style = { styles.cottageImage }/>
+            <Image source = { require('./../assets/images/about.png') } style = { styles.aboutImage }/>
           </TouchableOpacity>
         </View>
       </View>
@@ -72,6 +72,11 @@ export class HomeScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  aboutImage: {
+    width: Dimensions.get('window').width / 5,
+    height: Dimensions.get('window').width / 5,
+    marginLeft: Dimensions.get('window').width / 10,
+  },
   body: {
     justifyContent: 'center',
     flexDirection: 'column',
@@ -81,23 +86,16 @@ const styles = StyleSheet.create({
   bottomImages: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-around',
-  },
-  cottageImage: {
-    width: 100,
-    height: 100,
-    marginRight: 40,
+    justifyContent: 'center',
   },
   heading: {
-    height: '12%',
-    width: '100%',
+    height: Dimensions.get('window').height / 100 * 12,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
   headingBufferTop: {
     height: '8%',
-    width: '100%',
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center'
@@ -111,9 +109,9 @@ const styles = StyleSheet.create({
     fontSize: 44,
   },
   settingsImage: {
-    width: 60,
-    height: 60,
-    marginLeft: 40,
+    width: Dimensions.get('window').width / 5,
+    height: Dimensions.get('window').width / 5,
+    marginRight: Dimensions.get('window').width / 10,
   },
   vineImage: {
     transform: [{ rotate: '180deg'}],
