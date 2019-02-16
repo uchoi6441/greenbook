@@ -13,7 +13,7 @@ export class SignUpScreen extends React.Component {
       text: '',
       id: null,
       name: '',
-      username: '',
+      email: '',
       password: '',
     };
   }
@@ -42,7 +42,7 @@ export class SignUpScreen extends React.Component {
             <TextInput
               style={ this.state.fontLoaded ? styles.enter : styles.justInCase }
               placeholder="username"
-              onChangeText={(username) => this.setState({username})}
+              onChangeText={(email) => this.setState({email})}
             />
           </View>
           <View style={ styles.enterBox }>

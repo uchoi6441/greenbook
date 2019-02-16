@@ -29,8 +29,9 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: '#E4E4E4',
     borderWidth: 2,
-    width: Dimensions.get('window').height / 10 * 4,
-    marginBottom: 30,
+    width: Dimensions.get('window').width / 10 * 8,
+    height: Dimensions.get('window').height / 13,
+    marginBottom: Dimensions.get('window').width / 9,
   },
   buttonText: {
     fontSize: 30,

@@ -5,7 +5,7 @@ export function createAccount(name, username, password) {
   return new Promise((resolve, reject) => {
     firebase.auth().createUserWithEmailAndPassword(username, password).then(function() {
       var user = firebase.auth().currentUser
-      var uid = user.uid;
+      var uid = user.uid
       createUser({id: uid, name: name, username: username, password: password }).then((result) => {
         resolve(true)
       })
