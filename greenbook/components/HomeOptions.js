@@ -30,7 +30,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#E4E4E4',
     borderWidth: 2,
     width: Dimensions.get('window').width / 10 * 8,
-    marginBottom: Dimensions.get('window').height / 10,
+    height: Dimensions.get('window').height / 13,
+    marginBottom: Dimensions.get('window').width / 9,
   },
   buttonText: {
     fontSize: 30,

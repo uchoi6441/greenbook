@@ -87,6 +87,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
+    marginTop: -50,
   },
   heading: {
     height: Dimensions.get('window').height / 100 * 12,
