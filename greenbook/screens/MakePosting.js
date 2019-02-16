@@ -17,7 +17,7 @@ export class MakePostingScreen extends React.Component {
       <View style={{ flex: 1, backgroundColor: '#fff' }}>
         <View style={ styles.headingBufferTop }/>
         <View style={ styles.heading }>
-          <Text style={ this.state.fontLoaded ? styles.headingText : styles.justInCase }>make a posting</Text>
+          <Text style={ this.state.fontLoaded ? styles.headingText : styles.else }>make a posting</Text>
         </View>
         <View style={{ alignItems: 'center', marginTop: -30 }}>
           <Image
@@ -27,7 +27,7 @@ export class MakePostingScreen extends React.Component {
         </View>
         <View style={ styles.body }>
           <View style={ styles.greyBar }>
-
+            <Text style={ this.state.fontLoaded ? styles.greyBarText : styles.else }>providing the ISBN code will help other students find your book!</Text>
           </View>
         </View>
         <View style={ styles.bottomButtons }>
@@ -59,7 +59,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     flexDirection: 'column',
     alignContent: 'space-between',
-    marginTop: '30%',
   },
   bottomButtons: {
     flexDirection: 'row',
@@ -73,6 +72,12 @@ const styles = StyleSheet.create({
   greyBar: {
     backgroundColor: '#A8A8A8',
     height: 50,
+    flexWrap: 'wrap',
+  },
+  greyBarText: {
+    fontFamily: 'source-code-pro',
+    fontSize: 15,
+    alignSelf: 'center',
   },
   heading: {
     height: Dimensions.get('window').height / 100 * 12,
