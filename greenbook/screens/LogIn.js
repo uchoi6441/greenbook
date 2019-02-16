@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, TextInput } from 'react-native';
+import { StyleSheet, Text, View, Image, TextInput, Dimensions } from 'react-native';
 import { Font } from 'expo';
 import { StackNavigator } from 'react-navigation';
 import LogInButton from './../components/LogInButton';
@@ -15,7 +15,7 @@ export class LogInScreen extends React.Component {
       fontLoaded: false,
       text: '',
       id: null,
-      username: '',
+      email: '',
       password: '',
     };
   }
@@ -37,7 +37,7 @@ export class LogInScreen extends React.Component {
           <Text style={ this.state.fontLoaded ? styles.headingText : styles.justInCase }>green</Text>
           <Text style={ this.state.fontLoaded ? styles.subheadingText : styles.justInCase }>book</Text>
         </View>
-        <View style={{flexDirection: 'row', paddingTop: '10%'}}>
+        <View style={{flexDirection: 'row', paddingTop: Dimensions.get('window').height / 100 * 7}}>
           <Image
             source={require('./../assets/images/vine.png')}
             style={styles.vineImage}
@@ -58,8 +58,8 @@ export class LogInScreen extends React.Component {
         <View style={styles.userInfo}>
           <TextInput
             style={ this.state.fontLoaded ? styles.userInfoText : styles.justInCase }
-            placeholder="username"
-            onChangeText={(username) => this.setState({username})}
+            placeholder="email"
+            onChangeText={(email) => this.setState({email})}
           />
         </View>
         <View style={styles.userInfo}>
@@ -75,17 +75,17 @@ export class LogInScreen extends React.Component {
             text = { 'log in' }
             navigation = { this.props.navigation }
             destination = { 'Home' }
-            username = { this.state.username }
+            email = { this.state.email }
             password = { this.state.password }
           />
-        <ChangePageButton
+          <ChangePageButton
             font = { this.state.fontLoaded }
             text = { 'sign up' }
             navigation = { this.props.navigation }
             destination = { 'SignUp' }
           />
         </View>
-        <View style={{flexDirection: 'row'}}>
+        <View style={{flexDirection: 'row', height: Dimensions.get('window').height / 100 * 7}}>
           <Image
             source={require('./../assets/images/vine.png')}
             style={styles.vineImage2}
@@ -101,12 +101,6 @@ export class LogInScreen extends React.Component {
           <Image
             source={require('./../assets/images/vine.png')}
             style={styles.vineImage2}
-          />
-        </View>
-        <View style={{alignItems: 'center', justifyContent: 'center', paddingTop: '5%'}}>
-          <Image
-            source={require('./../assets/images/book.png')}
-            style={styles.bookImage}
           />
         </View>
       </View>
@@ -119,22 +113,17 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: '10%',
-  },
-  bookImage: {
-    width: 125,
-    height: 125,
+    marginTop: Dimensions.get('window').height / 100 * 5,
+    marginBottom: Dimensions.get('window').height / 100 * 5,
   },
   heading: {
-    height: '12%',
-    width: '100%',
+    height: Dimensions.get('window').height / 100 * 12,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
   headingBufferTop: {
-    height: '8%',
-    width: '100%',
+    height: Dimensions.get('window').height / 100 * 8,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center'
@@ -153,18 +142,17 @@ const styles = StyleSheet.create({
     fontFamily: 'libre-barcode',
   },
   userInfo: {
-    width: '100%',
     flexDirection: 'row',
     backgroundColor: '#fff',
     alignItems: 'center',
-    paddingLeft: '10%',
+    paddingLeft: Dimensions.get('window').width / 100 * 10,
     flexWrap: 'wrap',
   },
   userInfoText: {
     fontSize: 30,
     fontFamily: 'source-code-pro',
     paddingRight: 5,
-    paddingTop: '7%',
+    paddingTop: Dimensions.get('window').height / 100 * 2,
   },
   vineImage: {
     marginLeft: -12,

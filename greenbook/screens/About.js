@@ -18,7 +18,7 @@ export class AboutScreen extends React.Component {
         <View style={ styles.heading }>
           <Text style={ this.state.fontLoaded ? styles.headingText : styles.justInCase }>about</Text>
         </View>
-        <View style={{ alignItems: 'center', marginTop: -30 }}>
+        <View style={{ alignItems: 'center', marginTop: -20 }}>
           <Image
             source={require('./../assets/images/vine.png')}
             style={ styles.vineImage }
@@ -26,7 +26,7 @@ export class AboutScreen extends React.Component {
         </View>
         <View style={ styles.bodyBox }>
           <Text style={this.state.fontLoaded ? styles.boxText : styles.justInCase }>greenbook is a textbook exchange app for Dartmouth students.</Text>
-          <Text style={this.state.fontLoaded ? styles.boxText : styles.justInCase }>reduce your carbon footpring, buy books faster and for less money!</Text>
+          <Text style={this.state.fontLoaded ? styles.boxText : styles.justInCase }>reduce your carbon footprint, buy books faster and for less money!</Text>
           <Text style={this.state.fontLoaded ? styles.boxTextSmall : styles.justInCase }>send feedback to greenbook@gmail.com</Text>
         </View>
         <View style={{justifyContent: 'space-around', alignItems: 'center', marginTop: -30 }}>
@@ -35,7 +35,7 @@ export class AboutScreen extends React.Component {
               this.props.navigation.navigate('Home')
             }}
           >
-            <Text style={ this.state.fontLoaded ? styles.save : styles.else }>home</Text>
+            <Text style={ this.state.fontLoaded ? styles.home : styles.else }>home</Text>
           </TouchableOpacity>
           <View style={{flexDirection: 'row'}}>
             <Image
@@ -58,12 +58,9 @@ export class AboutScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  body: {
-    flexDirection: 'column',
-    marginTop: '7%',
-  },
   bodyBox: {
-    paddingLeft: 10,
+    paddingTop: Dimensions.get('window').width / 12,
+    paddingLeft: Dimensions.get('window').width / 12,
     alignSelf: 'center',
     borderRadius: 10,
     backgroundColor: '#E4E4E4',
@@ -81,30 +78,13 @@ const styles = StyleSheet.create({
     fontFamily: 'source-code-pro',
     fontSize: 20,
   },
-  castleImage: {
-    width: 130,
-    height: 130,
-  },
-  change: {
-    fontFamily: 'source-code-pro',
-    fontSize: 20,
-    textDecorationLine: 'underline',
-  },
-  continue: {
-    fontSize: 35,
-    fontFamily: 'gloria-hallelujah',
-    color: '#024C2E',
-  },
   heading: {
-    height: '12%',
-    width: '100%',
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
   headingBufferTop: {
-    height: '8%',
-    width: '100%',
+    height: Dimensions.get('window').width / 8,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center'
@@ -115,30 +95,16 @@ const styles = StyleSheet.create({
     color: '#024C2E',
   },
   home: {
-    fontSize: 30,
+    fontSize: 35,
     fontFamily: 'gloria-hallelujah',
     color: '#024C2E',
   },
   justInCase: {
     fontSize: 44,
   },
-  enter: {
-    fontSize: 30,
-    fontFamily: 'source-code-pro'
-  },
-  passwordText: {
-    fontFamily: 'source-code-pro',
-    fontSize: 25,
-    textDecorationLine: 'underline',
-  },
-  save: {
-    fontSize: 35,
-    fontFamily: 'gloria-hallelujah',
-    color: '#024C2E',
-  },
   textbookImage: {
-    width: 100,
-    height: 100,
+    width: Dimensions.get('window').width / 4,
+    height: Dimensions.get('window').width / 4,
   },
   vineImage: {
     transform: [{ rotate: '180deg'}],
