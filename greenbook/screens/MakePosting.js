@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Dimensions } from 'react-native';
+import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Dimensions, FlatList } from 'react-native';
 import { Font } from 'expo';
 import { StackNavigator } from 'react-navigation';
 
@@ -10,7 +10,13 @@ export class MakePostingScreen extends React.Component {
     this.state = {
       fontLoaded: true,
       isbn: '',
+      dept: '',
+      prof: '',
+      numb: '',
     };
+  }
+  deptSelected(dept) {
+    this.state.dept = dept;
   }
   render() {
     const { navigate } = this.props.navigation
@@ -29,39 +35,116 @@ export class MakePostingScreen extends React.Component {
         <View style={ styles.body }>
           <View style={ styles.greyBar }>
             <Text style={ this.state.fontLoaded ? styles.greyBarText : styles.else }>providing the ISBN code will help other students find your book!</Text>
+            <Text style={ this.state.fontLoaded ? styles.greyBarText : styles.else }>all other inputs are optional.</Text>
           </View>
           <View style={styles.postingView}>
-            <View style={{flexDirection:'row'}}>
-              <Text style={ this.state.fontLoaded ? styles.isbn : styles.else }>ISBN:</Text>
-              <View style={{backgroundColor: '#EAEFEA', borderRadius: 20, width: '70%', alignItems: 'center'}}>
+            <View style={{flexDirection:'row', flex: 1, alignItems: 'center'}}>
+              <Text style={ this.state.fontLoaded ? styles.isbn : styles.else }>ISBN: </Text>
+              <View style={ styles.response }>
                 <TextInput
-                  style={ this.state.fontLoaded ? styles.isbnText : styles.justInCase }
+                  style={ this.state.fontLoaded ? styles.isbnText : styles.else }
                   onChangeText={(isbn) => this.setState({isbn})}
                 />
               </View>
             </View>
             <View style={{borderBottomWidth: 2, width: '90%', alignSelf: 'center'}}/>
-            <View style={{flexDirection:'row', alignItems: 'flex-end'}}>
-              <Text style={this.state.fontLoaded ? styles.courseProf : style.else}>department:</Text>
-                <View style={{}}>
-
+            <View style={{flex: 3, justifyContent: 'space-around'}}>
+              <View style={{flexDirection:'row'}}>
+                <Text style={this.state.fontLoaded ? styles.courseProf : style.else}>department:</Text>
+                <View style={ styles.deptResponse }>
+                  <FlatList
+                    data={[
+                      {key: 'AAAS'},
+                      {key: 'ANTH'},
+                      {key: 'ARAB'},
+                      {key: 'ARTH'},
+                      {key: 'ASCL'},
+                      {key: 'ASTR'},
+                      {key: 'BIOL'},
+                      {key: 'CHEM'},
+                      {key: 'CHIN'},
+                      {key: 'CLST'},
+                      {key: 'COCO'},
+                      {key: 'COGS'},
+                      {key: 'COLT'},
+                      {key: 'COSC'},
+                      {key: 'CRWT'},
+                      {key: 'EARS'},
+                      {key: 'ECON'},
+                      {key: 'EDUC'},
+                      {key: 'ENGL'},
+                      {key: 'ENGS'},
+                      {key: 'ENVS'},
+                      {key: 'FILM'},
+                      {key: 'FREN'},
+                      {key: 'FRIT'},
+                      {key: 'FYS'},
+                      {key: 'GEOG'},
+                      {key: 'GERM'},
+                      {key: 'GOVT'},
+                      {key: 'GRK'},
+                      {key: 'HEBR'},
+                      {key: 'HIST'},
+                      {key: 'HUM'},
+                      {key: 'INTS'},
+                      {key: 'ITAL'},
+                      {key: 'JAPN'},
+                      {key: 'JWST'},
+                      {key: 'LACS'},
+                      {key: 'LAT'},
+                      {key: 'LATS'},
+                      {key: 'LING'},
+                      {key: 'MATH'},
+                      {key: 'MES'},
+                      {key: 'MUS'},
+                      {key: 'NAS'},
+                      {key: 'PBPL'},
+                      {key: 'PHIL'},
+                      {key: 'PHYS'},
+                      {key: 'PORT'},
+                      {key: 'PSYC'},
+                      {key: 'QSS'},
+                      {key: 'REL'},
+                      {key: 'RUSS'},
+                      {key: 'SART'},
+                      {key: 'SOCY'},
+                      {key: 'SPAN'},
+                      {key: 'SPEE'},
+                      {key: 'THEA'},
+                      {key: 'TUCK'},
+                      {key: 'WGSS'},
+                      {key: 'WRIT'},
+                    ]}
+                    renderItem = {({ item }) => (
+                      <TouchableOpacity onPress={() =>
+                        { this.deptSelected(item.key)
+                        this.forceUpdate() }
+                      }>
+                        <Text style={this.state.fontLoaded ? styles.isbnText : styles.else}>{item.key}</Text>
+                      </TouchableOpacity>
+                    )}
+                  />
                 </View>
-            </View>
-            <Text style={this.state.fontLoaded ? styles.optional : style.else}>(optional)</Text>
-            <View style={{flexDirection:'row', alignItems: 'flex-end'}}>
-              <Text style={this.state.fontLoaded ? styles.courseProf : style.else}>course number:</Text>
-              <View style={{backgroundColor: '#EAEFEA', borderRadius: 20}}>
-
               </View>
-              <Text style={this.state.fontLoaded ? styles.optional : style.else}>(optional)</Text>
-            </View>
-            <View style={{flexDirection:'row', alignItems: 'flex-end'}}>
-              <Text style={this.state.fontLoaded ? styles.courseProf : style.else}>professor:</Text>
-              <View style={{backgroundColor: '#EAEFEA', borderRadius: 20}}>
-
+              <View style={{flexDirection:'row'}}>
+                <Text style={this.state.fontLoaded ? styles.courseProf : style.else}>course number:</Text>
+                <View style={ styles.response }>
+                  <TextInput
+                    style={ this.state.fontLoaded ? styles.isbnText : styles.else }
+                    onChangeText={(numb) => this.setState({numb})}
+                  />
+                </View>
+              </View>
+              <View style={{flexDirection:'row'}}>
+                <Text style={this.state.fontLoaded ? styles.courseProf : style.else}>professor:</Text>
+                <View style={ styles.response }>
+                  <TextInput
+                    style={ this.state.fontLoaded ? styles.isbnText : styles.else }
+                    onChangeText={(prof) => this.setState({prof})}
+                  />
+                </View>
               </View>
             </View>
-            <Text style={this.state.fontLoaded ? styles.optional : style.else}>(optional)</Text>
           </View>
         </View>
         <View style={ styles.bottomButtons }>
@@ -102,6 +185,7 @@ const styles = StyleSheet.create({
     fontSize: 25,
     fontFamily: 'gloria-hallelujah',
     color: '#024C2E',
+    marginTop: -25,
   },
   bottomImage: {
     alignItems: 'center',
@@ -114,12 +198,11 @@ const styles = StyleSheet.create({
     marginLeft: '1%',
   },
   else: {
-    fontSize: 44,
+    fontSize: 20,
   },
   greyBar: {
     backgroundColor: '#A8A8A8',
-    height: 50,
-    flexWrap: 'wrap',
+
     alignContent: 'center',
   },
   greyBarText: {
@@ -153,13 +236,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontFamily: 'source-code-pro',
   },
-  optional: {
-    fontSize: 20,
-    fontFamily: 'source-code-pro',
-    marginLeft: '1%',
-  },
   postingView: {
-    paddingTop: Dimensions.get('window').width / 12,
     alignSelf: 'center',
     borderRadius: 10,
     borderWidth: 2,
@@ -167,6 +244,20 @@ const styles = StyleSheet.create({
     marginBottom: '10%',
     marginTop: '10%',
     height: Dimensions.get('window').height / 10 * 4,
+  },
+  response: {
+    backgroundColor: '#EAEFEA',
+    borderRadius: 20,
+    paddingLeft: '2%',
+    flexGrow: 1,
+    alignSelf: 'center',
+  },
+  deptResponse: {
+    backgroundColor: '#EAEFEA',
+    borderRadius: 20,
+    paddingLeft: '2%',
+    flexGrow: 1,
+    height: 90,
   },
   vineImage: {
     transform: [{ rotate: '180deg'}],
