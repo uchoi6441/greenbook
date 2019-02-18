@@ -9,6 +9,7 @@ export class MakePostingScreen extends React.Component {
     super(props)
     this.state = {
       fontLoaded: true,
+      isbn: '',
     };
   }
   render() {
@@ -29,6 +30,39 @@ export class MakePostingScreen extends React.Component {
           <View style={ styles.greyBar }>
             <Text style={ this.state.fontLoaded ? styles.greyBarText : styles.else }>providing the ISBN code will help other students find your book!</Text>
           </View>
+          <View style={styles.postingView}>
+            <View style={{flexDirection:'row'}}>
+              <Text style={ this.state.fontLoaded ? styles.isbn : styles.else }>ISBN:</Text>
+              <View style={{backgroundColor: '#EAEFEA', borderRadius: 20, width: '70%', alignItems: 'center'}}>
+                <TextInput
+                  style={ this.state.fontLoaded ? styles.isbnText : styles.justInCase }
+                  onChangeText={(isbn) => this.setState({isbn})}
+                />
+              </View>
+            </View>
+            <View style={{borderBottomWidth: 2, width: '90%', alignSelf: 'center'}}/>
+            <View style={{flexDirection:'row', alignItems: 'flex-end'}}>
+              <Text style={this.state.fontLoaded ? styles.courseProf : style.else}>department:</Text>
+                <View style={{}}>
+
+                </View>
+            </View>
+            <Text style={this.state.fontLoaded ? styles.optional : style.else}>(optional)</Text>
+            <View style={{flexDirection:'row', alignItems: 'flex-end'}}>
+              <Text style={this.state.fontLoaded ? styles.courseProf : style.else}>course number:</Text>
+              <View style={{backgroundColor: '#EAEFEA', borderRadius: 20}}>
+
+              </View>
+              <Text style={this.state.fontLoaded ? styles.optional : style.else}>(optional)</Text>
+            </View>
+            <View style={{flexDirection:'row', alignItems: 'flex-end'}}>
+              <Text style={this.state.fontLoaded ? styles.courseProf : style.else}>professor:</Text>
+              <View style={{backgroundColor: '#EAEFEA', borderRadius: 20}}>
+
+              </View>
+            </View>
+            <Text style={this.state.fontLoaded ? styles.optional : style.else}>(optional)</Text>
+          </View>
         </View>
         <View style={ styles.bottomButtons }>
           <TouchableOpacity
@@ -36,14 +70,14 @@ export class MakePostingScreen extends React.Component {
               this.props.navigation.navigate('Home')
             }}
           >
-            <Text style={ this.state.fontLoaded ? styles.back : styles.else }>cancel</Text>
+            <Text style={ this.state.fontLoaded ? styles.bottomButtonsText : styles.else }>cancel</Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
               this.props.navigation.navigate('Home')
             }}
           >
-            <Text style={ this.state.fontLoaded ? styles.back : styles.else }>post</Text>
+            <Text style={ this.state.fontLoaded ? styles.bottomButtonsText : styles.else }>post</Text>
           </TouchableOpacity>
         </View>
         <View style={ styles.bottomImage }>
@@ -62,22 +96,35 @@ const styles = StyleSheet.create({
   },
   bottomButtons: {
     flexDirection: 'row',
+    justifyContent: 'space-around'
+  },
+  bottomButtonsText: {
+    fontSize: 25,
+    fontFamily: 'gloria-hallelujah',
+    color: '#024C2E',
   },
   bottomImage: {
-    flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: -50,
+  },
+  courseProf: {
+    fontSize: 25,
+    fontFamily: 'source-code-pro',
+    marginLeft: '1%',
+  },
+  else: {
+    fontSize: 44,
   },
   greyBar: {
     backgroundColor: '#A8A8A8',
     height: 50,
     flexWrap: 'wrap',
+    alignContent: 'center',
   },
   greyBarText: {
     fontFamily: 'source-code-pro',
     fontSize: 15,
-    alignSelf: 'center',
   },
   heading: {
     height: Dimensions.get('window').height / 100 * 12,
@@ -96,8 +143,30 @@ const styles = StyleSheet.create({
     fontFamily: 'gloria-hallelujah',
     color: '#024C2E',
   },
-  else: {
-    fontSize: 44,
+  isbn: {
+    fontSize: 25,
+    fontFamily: 'gloria-hallelujah',
+    color: '#024C2E',
+    marginLeft: '1%',
+  },
+  isbnText: {
+    fontSize: 20,
+    fontFamily: 'source-code-pro',
+  },
+  optional: {
+    fontSize: 20,
+    fontFamily: 'source-code-pro',
+    marginLeft: '1%',
+  },
+  postingView: {
+    paddingTop: Dimensions.get('window').width / 12,
+    alignSelf: 'center',
+    borderRadius: 10,
+    borderWidth: 2,
+    width: Dimensions.get('window').width / 10 * 9,
+    marginBottom: '10%',
+    marginTop: '10%',
+    height: Dimensions.get('window').height / 10 * 4,
   },
   vineImage: {
     transform: [{ rotate: '180deg'}],
