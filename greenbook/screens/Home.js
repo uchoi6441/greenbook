@@ -43,7 +43,7 @@ export class HomeScreen extends React.Component {
             font = { this.state.fontLoaded }
             text = { 'my postings' }
             navigation = { this.props.navigation }
-            destination = { 'Home' }
+            destination = { 'MyPostings' }
           />
           <HomeOptions
             font = { this.state.fontLoaded }
