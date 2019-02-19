@@ -11,7 +11,7 @@ export function createPosting(posting) {
       professor: posting.prof,
       user: user.uid,
     });
-    firebase.database().ref(`users/${ user.uid }/postings`).update({
+    firebase.database().ref(`users/${ user.uid }/postings/${ PostKey }`).set({
       "isbn" : posting.isbn,
       "course" : posting.dept + " " + posting.numb,
       "professor" : posting.prof,

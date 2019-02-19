@@ -11,14 +11,37 @@ export class MakePostingScreen extends React.Component {
     this.state = {
       fontLoaded: true,
       isbn: '',
-      dept: '',
       prof: '',
       numb: '',
+      price: '',
+      pressedDept: [],
     };
   }
-  deptSelected(dept) {
-    this.state.dept = dept;
-  }
+  pressedDeptState = (value) => {
+    if (this.state.pressedDept.includes(value)) {
+      return true
+    }
+    else {
+      return false
+    }
+  };
+  pressedDeptChange = (value) => {
+    var isIn = false;
+    var idx = 0;
+    this.state.pressedDept.forEach((item, index) => {
+      if (value == item) {
+        isIn = true;
+        idx = index;
+      }
+    })
+    if (isIn) {
+      this.state.pressedDept.splice(idx, 1);
+    }
+    else {
+      this.state.pressedDept = [];
+      this.state.pressedDept.push(value);
+    }
+  };
   render() {
     const { navigate } = this.props.navigation
     return (
@@ -50,6 +73,15 @@ export class MakePostingScreen extends React.Component {
             </View>
             <View style={{borderBottomWidth: 2, width: '90%', alignSelf: 'center'}}/>
             <View style={{flex: 3, justifyContent: 'space-around'}}>
+              <View style={{flexDirection:'row'}}>
+                <Text style={this.state.fontLoaded ? styles.courseProf : style.else}>price:</Text>
+                <View style={ styles.response }>
+                  <TextInput
+                    style={ this.state.fontLoaded ? styles.isbnText : styles.else }
+                    onChangeText={(price) => this.setState({price})}
+                  />
+                </View>
+              </View>
               <View style={{flexDirection:'row'}}>
                 <Text style={this.state.fontLoaded ? styles.courseProf : style.else}>department:</Text>
                 <View style={ styles.deptResponse }>
@@ -118,10 +150,10 @@ export class MakePostingScreen extends React.Component {
                     ]}
                     renderItem = {({ item }) => (
                       <TouchableOpacity onPress={() =>
-                        { this.deptSelected(item.key)
+                        { this.pressedDeptChange(item.key)
                         this.forceUpdate() }
                       }>
-                        <Text style={this.state.fontLoaded ? styles.isbnText : styles.else}>{item.key}</Text>
+                        <Text style={ this.pressedDeptState(item.key) ? styles.deptSelected : styles.isbnText }>{item.key}</Text>
                       </TouchableOpacity>
                     )}
                   />
@@ -158,7 +190,7 @@ export class MakePostingScreen extends React.Component {
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
-              createPosting({ isbn: this.state.isbn, dept: this.state.dept, numb: this.state.numb, prof: this.state.prof }).then((result) => {
+              createPosting({ isbn: this.state.isbn, dept: this.state.pressedDept[0], numb: this.state.numb, prof: this.state.prof, price: this.state.price }).then((result) => {
                 navigate("Home")
               })
             }}
@@ -188,25 +220,30 @@ const styles = StyleSheet.create({
     fontSize: 25,
     fontFamily: 'gloria-hallelujah',
     color: '#024C2E',
-    marginTop: -25,
   },
   bottomImage: {
     alignItems: 'center',
     justifyContent: 'center',
-
   },
   courseProf: {
     fontSize: 25,
     fontFamily: 'source-code-pro',
     marginLeft: '1%',
   },
+  deptResponse: {
+    backgroundColor: '#EAEFEA',
+    borderRadius: 20,
+    paddingLeft: '2%',
+    flexGrow: 1,
+    height: 65,
+  },
   else: {
     fontSize: 20,
   },
   greyBar: {
     backgroundColor: '#A8A8A8',
-
     alignContent: 'center',
+    marginBottom: '2%',
   },
   greyBarText: {
     fontFamily: 'source-code-pro',
@@ -239,13 +276,18 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontFamily: 'source-code-pro',
   },
+  deptSelected: {
+    fontSize: 20,
+    fontFamily: 'source-code-pro',
+    color: '#024C2E',
+  },
   postingView: {
     alignSelf: 'center',
     borderRadius: 10,
     borderWidth: 2,
     width: Dimensions.get('window').width / 10 * 9,
-    marginBottom: '10%',
-    marginTop: '10%',
+    marginBottom: '3%',
+    marginTop: '3%',
     height: Dimensions.get('window').height / 10 * 4,
   },
   response: {
@@ -255,18 +297,12 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     alignSelf: 'center',
   },
-  deptResponse: {
-    backgroundColor: '#EAEFEA',
-    borderRadius: 20,
-    paddingLeft: '2%',
-    flexGrow: 1,
-    height: 90,
-  },
   vineImage: {
     transform: [{ rotate: '180deg'}],
+    marginBottom: '2%',
   },
   wellImage: {
-    width: Dimensions.get('window').width / 2,
-    height: Dimensions.get('window').width / 2,
+    width: Dimensions.get('window').width / 3,
+    height: Dimensions.get('window').width / 3,
   },
 });
