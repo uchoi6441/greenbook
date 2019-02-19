@@ -5,23 +5,25 @@ export function createPosting(posting) {
     var user = firebase.auth().currentUser
     var PostRef = firebase.database().ref(`postings`).push()
     var PostKey = PostRef.key
-    firebase.database().ref(`postings/${ PostKey }`).set({
+    var postingUpdate = {}
+    postingUpdate[`postings/${ PostKey }`] = {
       isbn: posting.isbn,
       course: posting.dept + " " + posting.numb,
       professor: posting.prof,
       user: user.uid,
-    });
-    firebase.database().ref(`users/${ user.uid }/postings/${ PostKey }`).set({
-      "isbn" : posting.isbn,
-      "course" : posting.dept + " " + posting.numb,
-      "professor" : posting.prof,
-    });
-    firebase.database().ref(`books/${ posting.isbn }/${ PostKey }`).set({
+    };
+    postingUpdate[`books/${ posting.isbn }/${ PostKey }`] = {
       isbn: posting.isbn,
       course: posting.dept + " " + posting.numb,
       professor: posting.prof,
       user: user.uid,
-    });
+    };
+    postingUpdate[`users/${ user.uid }/postings/${ PostKey }`] = {
+      isbn : posting.isbn,
+      course : posting.dept + " " + posting.numb,
+      professor : posting.prof,
+    };
+    firebase.database().ref().update(postingUpdate);
     resolve(true)
   })
 }
