@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Dimensions, FlatList } from 'react-native';
 import { Font } from 'expo';
 import { StackNavigator } from 'react-navigation';
+import { createPosting } from './../services/posting-actions';
 
 export class MakePostingScreen extends React.Component {
   static navigationOptions = { header: null };
@@ -182,14 +183,16 @@ export class MakePostingScreen extends React.Component {
         <View style={ styles.bottomButtons }>
           <TouchableOpacity
             onPress={() => {
-              this.props.navigation.navigate('Home')
+              navigate("Home")
             }}
           >
             <Text style={ this.state.fontLoaded ? styles.bottomButtonsText : styles.else }>cancel</Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
-              this.props.navigation.navigate('Home')
+              createPosting({ isbn: this.state.isbn, dept: this.state.pressedDept[0], numb: this.state.numb, prof: this.state.prof, price: this.state.price }).then((result) => {
+                navigate("Home")
+              })
             }}
           >
             <Text style={ this.state.fontLoaded ? styles.bottomButtonsText : styles.else }>post</Text>

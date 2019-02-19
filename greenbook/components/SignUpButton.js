@@ -12,7 +12,7 @@ export default class SignUpButton extends React.Component {
     return (
       <TouchableOpacity
         onPress={() => {
-          createAccount(this.props.username, this.props.password).then((result) => {
+          createAccount(this.props.name, this.props.username, this.props.password).then((result) => {
             navigate(this.props.destination)
           })
         }}

@@ -6,9 +6,8 @@ import moment from 'moment'
 export function createUser(user) {
   return new Promise((resolve, reject) => {
     firebase.database().ref(`users/${ user.id }`).set({
-      id: user.id,
-      //name: user.name,
-      email: user.email,
+      name: user.name,
+      username: user.username,
       password: user.password,
     });
     resolve(true)

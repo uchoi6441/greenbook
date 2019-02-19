@@ -67,7 +67,7 @@ export class SignUpScreen extends React.Component {
               navigation = { this.props.navigation }
               destination = { 'Home' }
               name = { this.state.name }
-              username = { this.state.username }
+              username = { this.state.email }
               password = { this.state.password }
             />
             <TouchableOpacity
