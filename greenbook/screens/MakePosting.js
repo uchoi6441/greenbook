@@ -240,6 +240,7 @@ const styles = StyleSheet.create({
   greyBar: {
     backgroundColor: '#A8A8A8',
     alignContent: 'center',
+    marginBottom: '2%',
   },
   greyBarText: {
     fontFamily: 'source-code-pro',
@@ -295,9 +296,10 @@ const styles = StyleSheet.create({
   },
   vineImage: {
     transform: [{ rotate: '180deg'}],
+    marginBottom: '2%',
   },
   wellImage: {
-    width: Dimensions.get('window').width / 2,
-    height: Dimensions.get('window').width / 2,
+    width: Dimensions.get('window').width / 3,
+    height: Dimensions.get('window').width / 3,
   },
 });
