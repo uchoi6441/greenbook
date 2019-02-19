@@ -190,7 +190,7 @@ const styles = StyleSheet.create({
   bottomImage: {
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: -50,
+    
   },
   courseProf: {
     fontSize: 25,
