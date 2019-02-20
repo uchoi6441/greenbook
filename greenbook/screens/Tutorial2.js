@@ -49,7 +49,7 @@ export class Tutorial2Screen extends React.Component {
               navigate('Tutorial3')
               }
             >
-              <Text style={styles.next}>next</Text>
+              <Text style={styles.next}>continue tutorial</Text>
             </TouchableOpacity>
           </View>
       </View>
