@@ -41,7 +41,7 @@ export class SignUpScreen extends React.Component {
           <View style={ styles.enterBox }>
             <TextInput
               style={ this.state.fontLoaded ? styles.enter : styles.justInCase }
-              placeholder="username"
+              placeholder="email"
               onChangeText={(email) => this.setState({email})}
             />
           </View>
@@ -60,7 +60,7 @@ export class SignUpScreen extends React.Component {
               style={ styles.willowImage }
             />
           </View>
-          <View style={{flexDirection: 'column', alignItems: 'flex-end', marginTop: '10%' }}>
+          <View style={{flexDirection: 'column', alignItems: 'flex-end', marginTop: Dimensions.get('window').height / 35, marginLeft: Dimensions.get('window').width / 15 }}>
             <SignUpButton
               font = { this.state.fontLoaded }
               text = { 'continue' }
@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
   },
   body: {
     flexDirection: 'column',
-    marginTop: '30%',
+    marginTop: Dimensions.get('window').height / 13,
   },
   bottomImages: {
     flexDirection: 'row',
@@ -109,21 +109,19 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: '#E4E4E4',
     borderWidth: 2,
-    width: Dimensions.get('window').height / 10 * 4,
-    marginBottom: 30,
-    height: 50,
+    width: Dimensions.get('window').width / 10 * 9,
+    marginBottom: Dimensions.get('window').height / 15,
+    height: Dimensions.get('window').height / 14,
     flexDirection: 'row',
   },
   heading: {
-    height: '12%',
-    width: '100%',
+    height: Dimensions.get('window').height / 100 * 12,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
   headingBufferTop: {
-    height: '8%',
-    width: '100%',
+    height: Dimensions.get('window').height / 100 * 8,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center'
@@ -140,9 +138,9 @@ const styles = StyleSheet.create({
     transform: [{ rotate: '180deg'}],
   },
   willowImage: {
-    width: 150,
-    height: 150,
-    marginTop: '30%',
-    marginLeft: '10%',
+    width: Dimensions.get('window').width / 3,
+    height: Dimensions.get('window').width / 3,
+    marginTop: Dimensions.get('window').height / 15,
+    marginLeft: Dimensions.get('window').width / 18,
   },
 });
