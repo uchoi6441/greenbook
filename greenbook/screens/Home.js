@@ -16,9 +16,18 @@ export class HomeScreen extends React.Component {
     const { navigate } = this.props.navigation
     return (
       <View style={{ flex: 1, backgroundColor: '#fff' }}>
+        <View style={{justifyContent: 'flex-start', alignSelf: 'flex-start', marginTop: Dimensions.get('window').height / 25, marginLeft: Dimensions.get('window').width / 15}}>
+          <TouchableOpacity
+            onPress={() => {
+              navigate("LogIn")
+            }}
+          >
+            <Text style={ this.state.fontLoaded ? styles.logOut : styles.else}>log out</Text>
+          </TouchableOpacity>
+        </View>
         <View style={ styles.headingBufferTop }/>
         <View style={ styles.heading }>
-          <Text style={ this.state.fontLoaded ? styles.headingText : styles.justInCase }>home</Text>
+          <Text style={ this.state.fontLoaded ? styles.headingText : styles.else }>home</Text>
         </View>
         <View style={{ alignItems: 'center', marginTop: -30 }}>
           <Image
@@ -89,6 +98,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginTop: -50,
   },
+  else: {
+    fontSize: 44,
+  },
   heading: {
     height: Dimensions.get('window').height / 100 * 12,
     backgroundColor: '#fff',
@@ -96,7 +108,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   headingBufferTop: {
-    height: Dimensions.get('window').height / 100 * 8,
+    height: Dimensions.get('window').height / 100,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center'
@@ -106,8 +118,10 @@ const styles = StyleSheet.create({
     fontFamily: 'gloria-hallelujah',
     color: '#024C2E',
   },
-  justInCase: {
-    fontSize: 44,
+  logOut: {
+    fontSize: 15,
+    fontFamily: 'gloria-hallelujah',
+    color: '#024C2E',
   },
   settingsImage: {
     width: Dimensions.get('window').width / 5,

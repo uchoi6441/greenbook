@@ -49,6 +49,7 @@ export class SignUpScreen extends React.Component {
             <TextInput
               style={ this.state.fontLoaded ? styles.enter : styles.justInCase }
               placeholder="password"
+              secureTextEntry={true}
               onChangeText={(password) => this.setState({password})}
             />
           </View>
@@ -65,7 +66,7 @@ export class SignUpScreen extends React.Component {
               font = { this.state.fontLoaded }
               text = { 'continue' }
               navigation = { this.props.navigation }
-              destination = { 'Home' }
+              destination = { 'Tutorial1' }
               name = { this.state.name }
               username = { this.state.email }
               password = { this.state.password }

@@ -66,6 +66,7 @@ export class LogInScreen extends React.Component {
           <TextInput
             style={ this.state.fontLoaded ? styles.userInfoText : styles.else }
             placeholder="password"
+            secureTextEntry={true}
             onChangeText={(password) => this.setState({password})}
           />
         </View>
