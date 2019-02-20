@@ -1,7 +1,8 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Dimensions, FlatList } from 'react-native';
+import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Dimensions, FlatList, ListItem } from 'react-native';
 import { Font } from 'expo';
 import { StackNavigator } from 'react-navigation';
+import { getMyPostings } from './../services/posting-actions'
 
 export class MyPostingsScreen extends React.Component {
   static navigationOptions = { header: null };
@@ -9,7 +10,13 @@ export class MyPostingsScreen extends React.Component {
     super(props)
     this.state = {
       fontLoaded: true,
+      data: []
     };
+  }
+  componentWillMount() {
+    getMyPostings().then((result) => {
+      this.setState({ data: result })
+    })
   }
   render() {
     const { navigate } = this.props.navigation
@@ -38,9 +45,16 @@ export class MyPostingsScreen extends React.Component {
         </View>
         <View style={ styles.body }>
           <View style = { styles.borderBox }>
-            <Text style={this.state.fontLoaded ? styles.border : styles.else }>hellomynameisjennyandyoucantunderstand</Text>
+            <Text style={ this.state.fontLoaded ? styles.border : styles.else }>hellomynameisjennyandyoucantunderstand</Text>
           </View>
-
+          <View style = {{ height: '30%', width: '100%' }}>
+            <FlatList
+              data = { this.state.data }
+              renderItem = {({ item }) => (
+                  <Text>{item.isbn}</Text>
+              )}
+            />
+          </View>
           <View style = { styles.borderBox }>
             <Text style={this.state.fontLoaded ? styles.border : styles.else }>hellomynameisjennyandyoucantunderstand</Text>
           </View>
