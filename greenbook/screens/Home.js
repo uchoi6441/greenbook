@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   headingBufferTop: {
-    height: '8%',
+    height: Dimensions.get('window').height / 100 * 8,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center'
