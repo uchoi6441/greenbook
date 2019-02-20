@@ -71,13 +71,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     flexDirection: 'column',
     alignContent: 'space-between',
-    marginTop: '30%',
+    marginTop: Dimensions.get('window').height / 100 * 2,
   },
   bottomImages: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: -50,
+
   },
   heading: {
     height: Dimensions.get('window').height / 100 * 12,
