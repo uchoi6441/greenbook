@@ -29,27 +29,27 @@ export class HomeScreen extends React.Component {
         <View style={ styles.body }>
           <HomeOptions
             font = { this.state.fontLoaded }
-            text = { 'find' }
-            navigation = { this.props.navigation }
-            destination = { 'Home' }
-          />
-          <HomeOptions
-            font = { this.state.fontLoaded }
             text = { 'sell' }
             navigation = { this.props.navigation }
             destination = { 'MakePosting' }
           />
           <HomeOptions
             font = { this.state.fontLoaded }
-            text = { 'my postings' }
+            text = { 'find' }
             navigation = { this.props.navigation }
-            destination = { 'MyPostings' }
+            destination = { 'Home' }
           />
           <HomeOptions
             font = { this.state.fontLoaded }
             text = { 'messages' }
             navigation = { this.props.navigation }
             destination = { 'Home' }
+          />
+          <HomeOptions
+            font = { this.state.fontLoaded }
+            text = { 'my postings' }
+            navigation = { this.props.navigation }
+            destination = { 'MyPostings' }
           />
         </View>
         <View style={ styles.bottomImages }>
