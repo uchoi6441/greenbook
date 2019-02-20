@@ -1,10 +1,10 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, TextInput, Dimensions, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Dimensions } from 'react-native';
 import { Font } from 'expo';
 import { StackNavigator } from 'react-navigation';
 import HomeOptions from './../components/HomeOptions';
 
-export class Tutorial1Screen extends React.Component {
+export class Tutorial2Screen extends React.Component {
   static navigationOptions = { header: null };
   constructor(props) {
     super(props)
@@ -27,15 +27,15 @@ export class Tutorial1Screen extends React.Component {
             />
           </View>
           <View style={ styles.body }>
-            <Text style={{fontSize: 20, fontFamily: 'gloria-hallelujah', color: '#024C2E'}}>SELL your used textbook</Text>
+            <View style={styles.homeOptionsNoMargin}>
+              <Text style = { this.state.fontLoaded ? styles.homeOptionsText : styles.else }>sell</Text>
+            </View>
+            <Text style={{fontSize: 20, fontFamily: 'gloria-hallelujah', color: '#024C2E'}}>FIND a textbook</Text>
             <View style={{flexDirection: 'row'}}>
               <Image source = { require('./../assets/images/arrow.png') } style = { styles.arrowImage }/>
               <View style={styles.homeOptions}>
-                <Text style = { this.state.fontLoaded ? styles.homeOptionsText : styles.else }>sell</Text>
+                <Text style = { this.state.fontLoaded ? styles.homeOptionsText : styles.else }>find</Text>
               </View>
-            </View>
-            <View style={styles.homeOptions}>
-              <Text style = { this.state.fontLoaded ? styles.homeOptionsText : styles.else }>find</Text>
             </View>
             <View style={styles.homeOptions}>
               <Text style = { this.state.fontLoaded ? styles.homeOptionsText : styles.else }>messages</Text>
@@ -46,7 +46,7 @@ export class Tutorial1Screen extends React.Component {
           </View>
           <View style={ styles.bottomImages }>
             <TouchableOpacity onPress={() =>
-              navigate('Tutorial2')
+              navigate('Tutorial3')
               }
             >
               <Text style={styles.next}>next</Text>
@@ -106,6 +106,16 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window').width / 10 * 8,
     height: Dimensions.get('window').height / 13,
     marginBottom: Dimensions.get('window').width / 9,
+  },
+  homeOptionsNoMargin: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignSelf: 'center',
+    borderRadius: 10,
+    backgroundColor: '#E4E4E4',
+    borderWidth: 2,
+    width: Dimensions.get('window').width / 10 * 8,
+    height: Dimensions.get('window').height / 13,
   },
   homeOptionsText: {
     fontSize: 30,
