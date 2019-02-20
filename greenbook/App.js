@@ -11,6 +11,7 @@ import { SettingsScreen } from './screens/Settings';
 import { AboutScreen } from './screens/About';
 import { SummaryScreen } from './screens/Summary';
 import { MakePostingScreen } from './screens/MakePosting';
+import { MyPostingsScreen } from './screens/MyPostings';
 
 const RootStack = createStackNavigator({
   LogIn: { screen: LogInScreen },
@@ -21,6 +22,7 @@ const RootStack = createStackNavigator({
   Settings: { screen: SettingsScreen },
   Summary: { screen: SummaryScreen },
   MakePosting: { screen: MakePostingScreen },
+  MyPostings: { screen: MyPostingsScreen },
 });
 
 export default createAppContainer(RootStack);

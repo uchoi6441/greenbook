@@ -34,8 +34,8 @@ export class LogInScreen extends React.Component {
       <View style={{flex: 1, backgroundColor: '#fff'}}>
         <View style={styles.headingBufferTop}/>
         <View style={styles.heading}>
-          <Text style={ this.state.fontLoaded ? styles.headingText : styles.justInCase }>green</Text>
-          <Text style={ this.state.fontLoaded ? styles.subheadingText : styles.justInCase }>book</Text>
+          <Text style={ this.state.fontLoaded ? styles.headingText : styles.else }>green</Text>
+          <Text style={ this.state.fontLoaded ? styles.subheadingText : styles.else }>book</Text>
         </View>
         <View style={{flexDirection: 'row', paddingTop: Dimensions.get('window').height / 100 * 7}}>
           <Image
@@ -57,17 +57,20 @@ export class LogInScreen extends React.Component {
         </View>
         <View style={styles.userInfo}>
           <TextInput
-            style={ this.state.fontLoaded ? styles.userInfoText : styles.justInCase }
+            style={ this.state.fontLoaded ? styles.userInfoText : styles.else }
             placeholder="email"
             onChangeText={(email) => this.setState({email})}
           />
         </View>
         <View style={styles.userInfo}>
           <TextInput
-            style={ this.state.fontLoaded ? styles.userInfoText : styles.justInCase }
+            style={ this.state.fontLoaded ? styles.userInfoText : styles.else }
             placeholder="password"
             onChangeText={(password) => this.setState({password})}
           />
+        </View>
+        <View style={{alignItems: 'center', marginTop: Dimensions.get('window').height / 25}}>
+          <Text style={ this.state.fontLoaded ? styles.forgot : styles.else }>forgot my password</Text>
         </View>
         <View style={styles.bodyFive}>
           <LogInButton
@@ -113,8 +116,16 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: Dimensions.get('window').height / 100 * 5,
+    marginTop: Dimensions.get('window').height / 31,
     marginBottom: Dimensions.get('window').height / 100 * 5,
+  },
+  else: {
+    fontSize: 44,
+  },
+  forgot: {
+    fontSize: 15,
+    fontFamily: 'gloria-hallelujah',
+    color: '#024C2E',
   },
   heading: {
     height: Dimensions.get('window').height / 100 * 12,
@@ -132,9 +143,6 @@ const styles = StyleSheet.create({
     fontSize: 35,
     fontFamily: 'gloria-hallelujah',
     color: '#024C2E',
-  },
-  justInCase: {
-    fontSize: 44,
   },
   subheadingText: {
     fontSize: 70,

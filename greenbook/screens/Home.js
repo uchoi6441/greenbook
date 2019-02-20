@@ -29,19 +29,13 @@ export class HomeScreen extends React.Component {
         <View style={ styles.body }>
           <HomeOptions
             font = { this.state.fontLoaded }
-            text = { 'find' }
-            navigation = { this.props.navigation }
-            destination = { 'Home' }
-          />
-          <HomeOptions
-            font = { this.state.fontLoaded }
             text = { 'sell' }
             navigation = { this.props.navigation }
             destination = { 'MakePosting' }
           />
           <HomeOptions
             font = { this.state.fontLoaded }
-            text = { 'my postings' }
+            text = { 'find' }
             navigation = { this.props.navigation }
             destination = { 'Home' }
           />
@@ -50,6 +44,12 @@ export class HomeScreen extends React.Component {
             text = { 'messages' }
             navigation = { this.props.navigation }
             destination = { 'Home' }
+          />
+          <HomeOptions
+            font = { this.state.fontLoaded }
+            text = { 'my postings' }
+            navigation = { this.props.navigation }
+            destination = { 'MyPostings' }
           />
         </View>
         <View style={ styles.bottomImages }>
@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   headingBufferTop: {
-    height: '8%',
+    height: Dimensions.get('window').height / 100 * 8,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center'
