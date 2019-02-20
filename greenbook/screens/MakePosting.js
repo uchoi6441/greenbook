@@ -248,6 +248,8 @@ const styles = StyleSheet.create({
   greyBarText: {
     fontFamily: 'source-code-pro',
     fontSize: 15,
+    flexWrap: 'wrap',
+    marginLeft: '2%',
   },
   heading: {
     height: Dimensions.get('window').height / 100 * 12,
