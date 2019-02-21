@@ -48,15 +48,12 @@ export class BulletinBoardScreen extends React.Component {
             </View>
             <FlatList
               data={[
-                {key: '1', title: {}, edition: {}, publisher: {}, author: {}, ISBN: {}, course: {}, quantity: {}, lowPrice: {}},
+                {key: '1', navigation: 'Home', title: 'Hey', edition: 4, publisher: 'Me', author: 'myself', ISBN: '554-34', course: 'bio12', quantity: 2, lowPrice: 20},
               ]}
               renderItem = {({ item }) => (
-                <TouchableOpacity onPress={() =>
-                  { navigate(item.navigation) }
-                }>
                   <BulletinBoardPosting
                     font = { this.state.fontLoaded }
-                    navigation = { this.props.navigation }
+                    navigation = { item.navigation }
                     destination = { 'Home' }
                     title = { item.title }
                     edition = { item.edition }
@@ -67,7 +64,6 @@ export class BulletinBoardScreen extends React.Component {
                     quantity = { item.quantity }
                     lowPrice = { item.lowPrice }
                   />
-                </TouchableOpacity>
               )}
               ItemSeparatorComponent={this.renderSeparator}
             />
