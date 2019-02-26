@@ -241,7 +241,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   greyBar: {
-    backgroundColor: '#A8A8A8',
+    backgroundColor: '#CFCFCF',
     alignContent: 'center',
     marginBottom: '2%',
   },

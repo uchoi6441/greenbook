@@ -5,10 +5,11 @@ import { Font } from 'expo';
 export default class BulletinBoardPosting extends React.Component {
   state = { fontLoaded: true };
   render() {
+    const { navigate } = this.props.navigation;
     return (
       <TouchableOpacity
         onPress={() => {
-          navigate(this.props.navigation)
+          navigate(this.props.destination)
         }}
         style={ styles.posting }
       >
@@ -38,20 +39,20 @@ const styles = StyleSheet.create({
   posting: {
     justifyContent: 'flex-start',
     backgroundColor: '#E4E4E4',
-    width: '100%',
-    height: Dimensions.get('window').height / 13,
-    marginBottom: Dimensions.get('window').width / 9,
+    paddingLeft: Dimensions.get('window').width / 20,
+    paddingBottom: Dimensions.get('window').height / 100,
+    paddingTop: Dimensions.get('window').height / 100,
   },
   buttonText: {
-    fontSize: 10,
+    fontSize: 15,
     fontFamily: 'source-code-pro',
   },
   titleText: {
-    fontSize: 10,
+    fontSize: 20,
     fontFamily: 'source-code-pro',
     textDecorationLine: 'underline',
   },
   buttonTextElse: {
-    fontSize: 10,
+    fontSize: 15,
   },
 });

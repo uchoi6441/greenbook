@@ -16,10 +16,8 @@ export class BulletinBoardScreen extends React.Component {
     return (
       <View
         style={{
-          height: 1,
-          width: "86%",
-          backgroundColor: "#CED0CE",
-          marginLeft: "14%"
+          height: 2,
+          backgroundColor: "#000000",
         }}
       />
     );
@@ -48,13 +46,15 @@ export class BulletinBoardScreen extends React.Component {
             </View>
             <FlatList
               data={[
-                {key: '1', navigation: 'Home', title: 'Hey', edition: 4, publisher: 'Me', author: 'myself', ISBN: '554-34', course: 'bio12', quantity: 2, lowPrice: 20},
+                {key: '1', destination: 'Home', title: 'The Voyageur', edition: false, publisher: 'Minnesota Historical Society Press', author: 'Grace Lee Nute', ISBN: '0-87351-213-8', course: 'hist12', quantity: 1, lowPrice: 20},
+                {key: '2', destination: 'Home', title: 'Witches, Rakes, and Rogues', edition: 2, publisher: 'Commonwealth Editions', author: 'D. Brenton Simons', ISBN: null, course: 'engl30', quantity: 2, lowPrice: 30},
+                {key: '3', destination: 'Home', title: 'Hey', edition: 4, publisher: 'Me', author: 'myself', ISBN: '554-34', course: 'bio12', quantity: 2, lowPrice: 20},
               ]}
               renderItem = {({ item }) => (
                   <BulletinBoardPosting
+                    navigation = { this.props.navigation }
                     font = { this.state.fontLoaded }
-                    navigation = { item.navigation }
-                    destination = { 'Home' }
+                    destination = { item.destination }
                     title = { item.title }
                     edition = { item.edition }
                     publisher = { item.publisher }
@@ -67,6 +67,7 @@ export class BulletinBoardScreen extends React.Component {
               )}
               ItemSeparatorComponent={this.renderSeparator}
             />
+            <View style={{alignSelf:'stretch', backgroundColor: '#E4E4E4'}}/>
             <View style={styles.borderBox}>
               <Text style={this.state.fontLoaded ? styles.border : styles.else }>hellomynameisjennyandyoucantunderstand</Text>
             </View>
@@ -93,6 +94,7 @@ const styles = StyleSheet.create({
     alignContent: 'space-between',
   },
   bottomButtons: {
+    marginTop: Dimensions.get('window').height / 17,
     flexDirection: 'row',
     justifyContent: 'space-around'
   },
@@ -108,19 +110,20 @@ const styles = StyleSheet.create({
   },
   borderBox: {
     width: '110%',
+    height: '4%',
   },
   else: {
     fontSize: 20,
   },
   greyBar: {
-    backgroundColor: '#A8A8A8',
+    backgroundColor: '#CFCFCF',
     alignContent: 'center',
     marginBottom: '2%',
+    flexWrap: 'wrap',
   },
   greyBarText: {
     fontFamily: 'source-code-pro',
     fontSize: 15,
-    flexWrap: 'wrap',
     marginLeft: '2%',
   },
   heading: {
@@ -139,6 +142,9 @@ const styles = StyleSheet.create({
     fontSize: 35,
     fontFamily: 'gloria-hallelujah',
     color: '#024C2E',
+  },
+  searchView: {
+    height: Dimensions.get('window').height / 2,
   },
   vineImage: {
     transform: [{ rotate: '180deg'}],
