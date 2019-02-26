@@ -191,7 +191,7 @@ export class MakePostingScreen extends React.Component {
           <TouchableOpacity
             onPress={() => {
               createPosting({ isbn: this.state.isbn, dept: this.state.pressedDept[0], numb: this.state.numb, prof: this.state.prof, price: this.state.price }).then((result) => {
-                navigate("Home")
+                navigate({ routeName: 'MyPostings', key: Math.random() * 10000 })
               })
             }}
           >

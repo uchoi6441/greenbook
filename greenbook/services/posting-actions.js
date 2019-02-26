@@ -13,7 +13,7 @@ export function createPosting(posting) {
       course: posting.dept + " " + posting.numb,
       professor: posting.prof,
       price: posting.price,
-      timestamp: moment.now(),
+      timestamp: moment().format('MM/DD/YY'),
       key: PostKey,
       user: user.uid,
     };
@@ -22,7 +22,7 @@ export function createPosting(posting) {
       course: posting.dept + " " + posting.numb,
       professor: posting.prof,
       price: posting.price,
-      timestamp: moment.now(),
+      timestamp: moment().format('MM/DD/YY'),
       key: PostKey,
       user: user.uid,
     };
@@ -30,7 +30,7 @@ export function createPosting(posting) {
       isbn : posting.isbn,
       course : posting.dept + " " + posting.numb,
       professor : posting.prof,
-      timestamp: moment.now(),
+      timestamp: moment().format('MM/DD/YY'),
       key: PostKey,
       price:posting.price,
     };
@@ -50,5 +50,19 @@ export function getMyPostings() {
       });
       resolve(postings)
     })
+  })
+}
+
+export function deletePosting(postkey, isbn) {
+  return new Promise((resolve, reject) => {
+    var user = firebase.auth().currentUser
+    var uid = user.uid
+    var updates = {
+      ['users/'+uid+'/postings/'+postkey]: null,
+      ['postings/'+postkey]: null,
+      ['books/' +isbn+'/'+postkey]: null
+    }
+    firebase.database().ref().update(updates);
+    resolve(true)
   })
 }
