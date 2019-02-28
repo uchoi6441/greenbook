@@ -46,16 +46,19 @@ export class Tutorial0Screen extends React.Component {
           <Text style={this.state.fontLoaded ? styles.boxText : styles.else }>greenbook helps Dartmouth students buy cheaper textbooks, sell back their used books, and save the environment at the same time!</Text>
           <View style={{flexDirection: 'row'}}>
             <Text style={this.state.fontLoaded ? styles.boxText : styles.else }>join our </Text>
-            <Text style={this.state.fontloaded ? styles.greenText : styles.else}>~green~</Text>
-            <Text style={this.state.fontLoaded ? styles.boxText : styles.else }> community by taking the tutorial now!</Text>
+            <Text style={this.state.fontLoaded ? styles.greenText : styles.else}>~green~</Text>
+            <Text style={this.state.fontLoaded ? styles.boxText : styles.else }> community by</Text>
           </View>
+          <Text style={this.state.fontLoaded ? styles.boxText : styles.else }>walking through the tutorial now!</Text>
         </View>
-        <TouchableOpacity onPress={() =>
-          navigate('Tutorial1')
-          }
-        >
-          <Text style={styles.next}>start tutorial</Text>
-        </TouchableOpacity>
+        <View style={{alignItems: 'center'}}>
+          <TouchableOpacity onPress={() =>
+            navigate('Tutorial1')
+            }
+          >
+            <Text style={styles.next}>start tutorial</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     );
   }
@@ -63,16 +66,15 @@ export class Tutorial0Screen extends React.Component {
 
 const styles = StyleSheet.create({
   bodyBox: {
-    paddingTop: Dimensions.get('window').width / 12,
-    paddingLeft: Dimensions.get('window').width / 12,
+    paddingTop: '5%',
+    paddingLeft: Dimensions.get('window').width / 14,
     alignSelf: 'center',
     borderRadius: 10,
     backgroundColor: '#E4E4E4',
     borderWidth: 2,
     width: Dimensions.get('window').height / 10 * 4,
-    marginBottom: '10%',
-    marginTop: '10%',
-    height: '50%',
+    marginTop: Dimensions.get('window').height / 100 * 2,
+    height: Dimensions.get('window').height / 2,
   },
   boxText: {
     fontFamily: 'source-code-pro',
@@ -82,6 +84,7 @@ const styles = StyleSheet.create({
     fontFamily: 'gloria-hallelujah',
     fontSize: 15,
     color: '#024C2E',
+    justifyContent: 'center',
   },
   heading: {
     height: Dimensions.get('window').height / 100 * 12,
@@ -101,7 +104,7 @@ const styles = StyleSheet.create({
     color: '#024C2E',
   },
   else: {
-    fontSize: 44,
+    fontSize: 15,
   },
   next: {
     fontSize: 35,
@@ -114,6 +117,6 @@ const styles = StyleSheet.create({
     fontFamily: 'libre-barcode',
   },
   vineImage: {
-    transform: [{ rotate: '180deg'}],
+    marginLeft: -12,
   },
 });
