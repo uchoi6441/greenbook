@@ -9,9 +9,6 @@ export function createAccount(name, username, password) {
       createUser({id: uid, name: name, username: username, password: password }).then((result) => {
         resolve(true)
       })
-      if (user.emailVerified) {
-        console.log("verified")
-      }
     }).catch(function(error) {
       var errorCode = error.code;
       var errorMessage = error.message;
