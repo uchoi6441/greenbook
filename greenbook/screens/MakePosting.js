@@ -241,13 +241,15 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   greyBar: {
-    backgroundColor: '#A8A8A8',
+    backgroundColor: '#CFCFCF',
     alignContent: 'center',
     marginBottom: '2%',
   },
   greyBarText: {
     fontFamily: 'source-code-pro',
     fontSize: 15,
+    flexWrap: 'wrap',
+    marginLeft: '2%',
   },
   heading: {
     height: Dimensions.get('window').height / 100 * 12,

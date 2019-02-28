@@ -46,7 +46,7 @@ export class HomeScreen extends React.Component {
             font = { this.state.fontLoaded }
             text = { 'find' }
             navigation = { this.props.navigation }
-            destination = { 'Home' }
+            destination = { 'BulletinBoard' }
           />
           <HomeOptions
             font = { this.state.fontLoaded }
