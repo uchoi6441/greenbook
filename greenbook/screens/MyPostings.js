@@ -1,7 +1,9 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Dimensions, FlatList } from 'react-native';
+import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Dimensions, FlatList, ListItem } from 'react-native';
 import { Font } from 'expo';
 import { StackNavigator } from 'react-navigation';
+import { getMyPostings } from './../services/posting-actions'
+import MyPostingsButton from './../components/MyPostingsButton'
 
 export class MyPostingsScreen extends React.Component {
   static navigationOptions = { header: null };
@@ -9,7 +11,13 @@ export class MyPostingsScreen extends React.Component {
     super(props)
     this.state = {
       fontLoaded: true,
+      data: []
     };
+  }
+  componentWillMount() {
+    getMyPostings().then((result) => {
+      this.setState({ data: result })
+    })
   }
   render() {
     const { navigate } = this.props.navigation
@@ -38,13 +46,27 @@ export class MyPostingsScreen extends React.Component {
         </View>
         <View style={ styles.body }>
           <View style = { styles.borderBox }>
-            <Text style={this.state.fontLoaded ? styles.border : styles.else }>hellomynameisjennyandyoucantunderstand</Text>
+            <Text style={ this.state.fontLoaded ? styles.border : styles.else }>hellomynameisjennyandyoucantunderstand</Text>
           </View>
-
+          <View style = {{ height: '92%', width: '100%' }}>
+            <FlatList
+              data = { this.state.data }
+              renderItem = {({ item }) => (
+                <MyPostingsButton
+                  font = { this.state.fontLoaded }
+                  title = { item.isbn }
+                  price = { item.price }
+                  time = { item.timestamp }
+                  postkey = { item.key }
+                  navigation = { this.props.navigation }
+                />
+              )}
+            />
+          </View>
           <View style = { styles.borderBox }>
             <Text style={this.state.fontLoaded ? styles.border : styles.else }>hellomynameisjennyandyoucantunderstand</Text>
           </View>
-          
+
         </View>
         <View style={ styles.bottomButtons }>
           <TouchableOpacity
@@ -71,8 +93,9 @@ const styles = StyleSheet.create({
   body: {
     justifyContent: 'center',
     flexDirection: 'column',
-    alignContent: 'space-between',
+    alignContent: 'space-around',
     backgroundColor: '#E9E9E9',
+    height: '50%',
   },
   border: {
     fontFamily: 'barcode',
@@ -81,6 +104,7 @@ const styles = StyleSheet.create({
   },
   borderBox: {
     width: '110%',
+    height: '4%',
   },
   bottomButtons: {
     justifyContent: 'space-around',
