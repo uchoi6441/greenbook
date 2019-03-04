@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Dimensions, FlatList } from 'react-native';
 import { Font } from 'expo';
-import { StackNavigator } from 'react-navigation';
 import BulletinBoardPosting from './../components/BulletinBoardPosting';
 
 export class BulletinBoardScreen extends React.Component {
