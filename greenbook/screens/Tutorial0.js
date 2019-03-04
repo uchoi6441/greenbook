@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, TextInput, Dimensions, TouchableOpacity } from 'react-native';
 import { Font } from 'expo';
-import { StackNavigator } from 'react-navigation';
 import HomeOptions from './../components/HomeOptions';
 
 export class Tutorial0Screen extends React.Component {

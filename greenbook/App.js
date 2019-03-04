@@ -2,7 +2,7 @@ import React from 'react';
 import * as firebaseConfig from './services/firebase-config';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import { Font } from 'expo';
-import { createStackNavigator, createAppContainer } from 'react-navigation';
+import { createAppContainer } from 'react-navigation';
 import { FluidNavigator } from 'react-navigation-fluid-transitions';
 import { LogInScreen } from './screens/LogIn';
 import { HomeScreen } from './screens/Home';

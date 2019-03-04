@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, TextInput, Dimensions } from 'react-native';
 import { Font } from 'expo';
-import { StackNavigator } from 'react-navigation';
 import LogInButton from './../components/LogInButton';
 import ChangePageButton from './../components/ChangePageButton'
 import firebase from 'firebase';

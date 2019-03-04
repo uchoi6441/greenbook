@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Dimensions, FlatList, ListItem } from 'react-native';
 import { Font } from 'expo';
-import { StackNavigator } from 'react-navigation';
 import { getMyPostings } from './../services/posting-actions'
 import MyPostingsButton from './../components/MyPostingsButton'
 import { FluidNavigator, Transition } from 'react-navigation-fluid-transitions';

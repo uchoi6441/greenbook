@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Dimensions, FlatList } from 'react-native';
 import { Font } from 'expo';
-import { StackNavigator } from 'react-navigation';
 import { createPosting } from './../services/posting-actions';
 
 export class MakePostingScreen extends React.Component {
