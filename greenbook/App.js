@@ -3,6 +3,7 @@ import * as firebaseConfig from './services/firebase-config';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import { Font } from 'expo';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
+import { FluidNavigator } from 'react-navigation-fluid-transitions';
 import { LogInScreen } from './screens/LogIn';
 import { HomeScreen } from './screens/Home';
 import { SignUpScreen } from './screens/SignUp';
@@ -18,7 +19,7 @@ import { Tutorial2Screen } from './screens/Tutorial2';
 import { Tutorial3Screen } from './screens/Tutorial3';
 import { BulletinBoardScreen } from './screens/BulletinBoard';
 
-const RootStack = createStackNavigator({
+const RootStack = FluidNavigator({
   LogIn: { screen: LogInScreen },
   About: { screen: AboutScreen },
   Home: { screen: HomeScreen },
