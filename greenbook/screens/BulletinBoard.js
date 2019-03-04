@@ -38,7 +38,11 @@ export class BulletinBoardScreen extends React.Component {
         </View>
         <View style={ styles.body }>
           <View style={ styles.greyBar }>
-            <Text style={ this.state.fontLoaded ? styles.greyBarText : styles.else }>search by title, ISBN, course, professor, author...</Text>
+            <TextInput
+              style={ this.state.fontLoaded ? styles.greyBarText : styles.else }
+              placeholder="search by title, ISBN, course, professor, author..."
+              placeholderTextColor='#000'
+            />
           </View>
           <View style={styles.searchView}>
             <View style={styles.borderBox}>
@@ -119,11 +123,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#CFCFCF',
     alignContent: 'center',
     marginBottom: '2%',
+    height: Dimensions.get('window').height / 100 * 4,
     flexWrap: 'wrap',
   },
   greyBarText: {
     fontFamily: 'source-code-pro',
-    fontSize: 15,
+    fontSize: 20,
     marginLeft: '2%',
   },
   heading: {
