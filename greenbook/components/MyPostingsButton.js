@@ -32,7 +32,7 @@ export default class MyPostingsButton extends React.Component {
           <View style = {{ width: '35%', borderLeftWidth: 2, paddingLeft: 10, justifyContent: 'space-evenly' }}>
             <TouchableOpacity
               onPress={() => {
-                navigate("Home")
+                navigate("MakePosting")
               }}
             >
               <Text style={ this.state.fontLoaded ? styles.link : styles.linkElse }>edit price</Text>
@@ -40,7 +40,7 @@ export default class MyPostingsButton extends React.Component {
             <TouchableOpacity
               onPress={() => {
                 deletePosting(this.props.postkey, this.props.title).then((result) => {
-                  navigate({ routeName: 'MyPostings', key: Math.random() * 10000 })
+                  navigate({ routeName: 'MyPostings', key: (Math.random() * 10000).toString() })
                 })
               }}
             >
