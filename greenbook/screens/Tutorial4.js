@@ -29,13 +29,13 @@ export class Tutorial4Screen extends React.Component {
             <View style={styles.homeOptions}>
               <Text style = { this.state.fontLoaded ? styles.homeOptionsText : styles.else }>sell</Text>
             </View>
-            <View style={styles.homeOptionsNoMargin}>
+            <View style={styles.homeOptions}>
               <Text style = { this.state.fontLoaded ? styles.homeOptionsText : styles.else }>find</Text>
             </View>
-            <View style={styles.homeOptions}>
+            <View style={styles.homeOptionsNoMargin}>
               <Text style = { this.state.fontLoaded ? styles.homeOptionsText : styles.else }>messages</Text>
             </View>
-            <Text style={{fontSize: 20, fontFamily: 'gloria-hallelujah', color: '#024C2E'}}>VIEW your postings and track your class textbooks</Text>
+            <Text style={{fontSize: 20, fontFamily: 'gloria-hallelujah', color: '#024C2E'}}>VIEW your postings and TRACK your class textbooks</Text>
             <View style={{flexDirection: 'row'}}>
               <Image source = { require('./../assets/images/arrow.png') } style = { styles.arrowImage }/>
               <View style={styles.homeOptions}>
