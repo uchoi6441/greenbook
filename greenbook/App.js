@@ -17,6 +17,7 @@ import { Tutorial0Screen } from './screens/Tutorial0';
 import { Tutorial1Screen } from './screens/Tutorial1';
 import { Tutorial2Screen } from './screens/Tutorial2';
 import { Tutorial3Screen } from './screens/Tutorial3';
+import { Tutorial4Screen } from './screens/Tutorial4';
 import { BulletinBoardScreen } from './screens/BulletinBoard';
 
 const RootStack = FluidNavigator({
@@ -33,6 +34,7 @@ const RootStack = FluidNavigator({
   Tutorial1: { screen: Tutorial1Screen },
   Tutorial2: { screen: Tutorial2Screen },
   Tutorial3: { screen: Tutorial3Screen },
+  Tutorial4: { screen: Tutorial4Screen },
   BulletinBoard: { screen: BulletinBoardScreen },
 });
 
