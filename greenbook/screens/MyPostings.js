@@ -74,7 +74,7 @@ export class MyPostingsScreen extends React.Component {
         <View style={ styles.bottomButtons }>
           <TouchableOpacity
             onPress={() => {
-              navigate({ routeName: 'MakePosting', key: Math.random() * 10000 })
+              navigate("MakePosting")
             }}
           >
             <Text style={ this.state.fontLoaded ? styles.bottomButtonsText : styles.else }>new posting</Text>
