@@ -18,29 +18,6 @@ export class LogInScreen extends React.Component {
       password: '',
     };
   }
-  componentWillMount() {
-    const REQUEST_URL  = "https://api.isbndb.com/book/9781934759486"
-    const REST_KEY = "jnqd6k8zNGaHqOmBOAwWX1KJeta8iPx6DzZKit4b"
-    fetch(REQUEST_URL, {
-      method: 'GET',
-      headers: {
-        'X-API-KEY': REST_KEY
-      },
-      }).then((response) => response.json())
-        .then((responseJson) => {
-          return responseJson.movies;
-        })
-        .catch((error) => {
-          console.error(error);
-    });
-    fetch(REQUEST_URL, headers = REST_KEY)
-      .then((response) => response.json())
-      .then((responseData) => {
-        // this.setState() will cause the new data to be applied to the UI that is created by the `render` function below.
-        console.log(responseData)
-      })
-    .done();
-  }
   async componentDidMount() {
     await Font.loadAsync({
       'gloria-hallelujah': require('./../assets/fonts/GloriaHallelujah.ttf'),
