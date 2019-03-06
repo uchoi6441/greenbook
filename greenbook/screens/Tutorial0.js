@@ -17,8 +17,8 @@ export class Tutorial0Screen extends React.Component {
       <View style={{ flex: 1, backgroundColor: '#fff' }}>
         <View style={styles.headingBufferTop}/>
         <View style={styles.heading}>
-          <Text style={ this.state.fontLoaded ? styles.headingText : styles.else }>green</Text>
-          <Text style={ this.state.fontLoaded ? styles.subheadingText : styles.else }>book</Text>
+          <Text style={ this.state.fontLoaded ? styles.headingText : styles.else }>trade</Text>
+          <Text style={ this.state.fontLoaded ? styles.subheadingText : styles.else }>roots</Text>
         </View>
         <View style={{flexDirection: 'row', paddingTop: Dimensions.get('window').height / 100 * 7}}>
           <Image
@@ -40,9 +40,9 @@ export class Tutorial0Screen extends React.Component {
         </View>
         <View style={ styles.bodyBox }>
           <Text style={this.state.fontLoaded ? styles.boxText : styles.else }>congratulations!</Text>
-          <Text style={this.state.fontLoaded ? styles.boxText : styles.else }>youve successfully made a greenbook account.</Text>
-          <Text style={this.state.fontLoaded ? styles.boxText : styles.else }>greenbook is a textbook exchange app for Dartmouth students.</Text>
-          <Text style={this.state.fontLoaded ? styles.boxText : styles.else }>greenbook helps Dartmouth students buy cheaper textbooks, sell back their used books, and save the environment at the same time!</Text>
+          <Text style={this.state.fontLoaded ? styles.boxText : styles.else }>youve successfully made a traderoots account.</Text>
+          <Text style={this.state.fontLoaded ? styles.boxText : styles.else }>traderoots is a textbook exchange app for Dartmouth students.</Text>
+          <Text style={this.state.fontLoaded ? styles.boxText : styles.else }>traderoots helps Dartmouth students buy cheaper textbooks, sell back their used books, and save the environment at the same time!</Text>
           <View style={{flexDirection: 'row'}}>
             <Text style={this.state.fontLoaded ? styles.boxText : styles.else }>join our </Text>
             <Text style={this.state.fontLoaded ? styles.greenText : styles.else}>~green~</Text>

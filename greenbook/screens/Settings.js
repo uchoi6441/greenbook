@@ -59,14 +59,7 @@ export class SettingsScreen extends React.Component {
               this.props.navigation.navigate('Home')
             }}
           >
-            <Text style={ this.state.fontLoaded ? styles.save : styles.else }>save</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => {
-              this.props.navigation.navigate('Home')
-            }}
-          >
-            <Text style={ this.state.fontLoaded ? styles.home : styles.else }>home</Text>
+            <Text style={ this.state.fontLoaded ? styles.save : styles.else }>home</Text>
           </TouchableOpacity>
         </View>
       </View>
