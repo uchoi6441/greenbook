@@ -27,9 +27,9 @@ export class AboutScreen extends React.Component {
         </View>
         </Transition>
         <View style={ styles.bodyBox }>
-          <Text style={this.state.fontLoaded ? styles.boxText : styles.else }>greenbook is a textbook exchange app for Dartmouth students.</Text>
+          <Text style={this.state.fontLoaded ? styles.boxText : styles.else }>traderoots is a textbook exchange app for Dartmouth students.</Text>
           <Text style={this.state.fontLoaded ? styles.boxText : styles.else }>reduce your carbon footprint, buy books faster and for less money!</Text>
-          <Text style={this.state.fontLoaded ? styles.boxTextSmall : styles.else }>send feedback to greenbook@gmail.com</Text>
+          <Text style={this.state.fontLoaded ? styles.boxTextSmall : styles.else }>send feedback to traderoots@gmail.com</Text>
         </View>
         <View style={{justifyContent: 'space-around', alignItems: 'center', marginTop: -30 }}>
           <TouchableOpacity

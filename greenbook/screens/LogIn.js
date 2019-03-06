@@ -56,8 +56,8 @@ export class LogInScreen extends React.Component {
       <View style={{flex: 1, backgroundColor: '#fff'}}>
         <View style={styles.headingBufferTop}/>
         <View style={styles.heading}>
-          <Text style={ this.state.fontLoaded ? styles.headingText : styles.else }>green</Text>
-          <Text style={ this.state.fontLoaded ? styles.subheadingText : styles.else }>book</Text>
+          <Text style={ this.state.fontLoaded ? styles.headingText : styles.else }>trade</Text>
+          <Text style={ this.state.fontLoaded ? styles.subheadingText : styles.else }>roots</Text>
         </View>
         <View style={{flexDirection: 'row', paddingTop: Dimensions.get('window').height / 100 * 7}}>
           <Image
