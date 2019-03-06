@@ -1,7 +1,7 @@
 import React from 'react';
 import { Dimensions, StyleSheet, Text, View, Image, TextInput, TouchableOpacity } from 'react-native';
 import { Font } from 'expo';
-import { StackNavigator } from 'react-navigation';
+import { FluidNavigator, Transition } from 'react-navigation-fluid-transitions';
 
 export class AboutScreen extends React.Component {
   static navigationOptions = { header: null };
@@ -16,18 +16,20 @@ export class AboutScreen extends React.Component {
       <View style={{ flex: 1, backgroundColor: '#fff' }}>
         <View style={ styles.headingBufferTop }/>
         <View style={ styles.heading }>
-          <Text style={ this.state.fontLoaded ? styles.headingText : styles.justInCase }>about</Text>
+          <Text style={ this.state.fontLoaded ? styles.headingText : styles.else }>about</Text>
         </View>
+        <Transition shared='vine'>
         <View style={{ alignItems: 'center', marginTop: -20 }}>
           <Image
             source={require('./../assets/images/vine.png')}
             style={ styles.vineImage }
           />
         </View>
+        </Transition>
         <View style={ styles.bodyBox }>
-          <Text style={this.state.fontLoaded ? styles.boxText : styles.justInCase }>greenbook is a textbook exchange app for Dartmouth students.</Text>
-          <Text style={this.state.fontLoaded ? styles.boxText : styles.justInCase }>reduce your carbon footprint, buy books faster and for less money!</Text>
-          <Text style={this.state.fontLoaded ? styles.boxTextSmall : styles.justInCase }>send feedback to greenbook@gmail.com</Text>
+          <Text style={this.state.fontLoaded ? styles.boxText : styles.else }>greenbook is a textbook exchange app for Dartmouth students.</Text>
+          <Text style={this.state.fontLoaded ? styles.boxText : styles.else }>reduce your carbon footprint, buy books faster and for less money!</Text>
+          <Text style={this.state.fontLoaded ? styles.boxTextSmall : styles.else }>send feedback to greenbook@gmail.com</Text>
         </View>
         <View style={{justifyContent: 'space-around', alignItems: 'center', marginTop: -30 }}>
           <TouchableOpacity
@@ -99,7 +101,7 @@ const styles = StyleSheet.create({
     fontFamily: 'gloria-hallelujah',
     color: '#024C2E',
   },
-  justInCase: {
+  else: {
     fontSize: 44,
   },
   textbookImage: {

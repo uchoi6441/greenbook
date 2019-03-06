@@ -1,7 +1,6 @@
 import React from 'react';
 import { Dimensions, StyleSheet, Text, View, Image, TextInput, TouchableOpacity } from 'react-native';
 import { Font } from 'expo';
-import { StackNavigator } from 'react-navigation';
 import SignUpButton from './../components/SignUpButton';
 
 export class SignUpScreen extends React.Component {
@@ -66,7 +65,7 @@ export class SignUpScreen extends React.Component {
               font = { this.state.fontLoaded }
               text = { 'continue' }
               navigation = { this.props.navigation }
-              destination = { 'Tutorial1' }
+              destination = { 'Tutorial0' }
               name = { this.state.name }
               username = { this.state.email }
               password = { this.state.password }

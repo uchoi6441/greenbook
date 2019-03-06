@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, TextInput, Dimensions, TouchableOpacity } from 'react-native';
 import { Font } from 'expo';
-import { StackNavigator } from 'react-navigation';
 import HomeOptions from './../components/HomeOptions';
 
 export class Tutorial1Screen extends React.Component {
@@ -77,7 +76,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-
   },
   heading: {
     height: Dimensions.get('window').height / 100 * 12,

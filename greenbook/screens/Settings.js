@@ -1,7 +1,6 @@
 import React from 'react';
 import { Dimensions, StyleSheet, Text, View, Image, TextInput, TouchableOpacity } from 'react-native';
 import { Font } from 'expo';
-import { StackNavigator } from 'react-navigation';
 
 export class SettingsScreen extends React.Component {
   static navigationOptions = { header: null };
