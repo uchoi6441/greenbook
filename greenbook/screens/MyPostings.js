@@ -20,6 +20,18 @@ export class MyPostingsScreen extends React.Component {
       this.setState({ data: result })
     })
   }
+  renderSeparator = () => {
+    return (
+      <View
+        style={{
+          height: 2,
+          backgroundColor: "#000000",
+          alignSelf: 'center',
+          width: Dimensions.get('window').width / 10 * 9,
+        }}
+      />
+    );
+  };
   render() {
     const { navigate } = this.props.navigation
     return (
@@ -34,7 +46,7 @@ export class MyPostingsScreen extends React.Component {
             style={ styles.vineImage }
           />
         </View>
-        <View style={{flexDirection: 'row', justifyContent: 'center'}}>
+        <View style={{flexDirection: 'row', justifyContent: 'center', marginBottom: 10 }}>
           <Text style={styles.pressedTab}>my postings</Text>
           <Text style={styles.tab}> // </Text>
           <TouchableOpacity
@@ -62,6 +74,7 @@ export class MyPostingsScreen extends React.Component {
                   navigation = { this.props.navigation }
                 />
               )}
+              ItemSeparatorComponent={this.renderSeparator}
             />
           </View>
           <View style = { styles.borderBox }>

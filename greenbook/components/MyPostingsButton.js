@@ -24,7 +24,7 @@ export default class MyPostingsButton extends React.Component {
               <Text style = { this.props.font ? styles.info : styles.infoElse }>
                 ${ this.props.price }
               </Text>
-              <Text style = { this.props.font ? styles.info : styles.infoElse }>
+              <Text style = { this.props.font ? styles.time : styles.infoElse }>
                 { this.props.time }
               </Text>
             </View>
@@ -83,6 +83,10 @@ const styles = StyleSheet.create({
   info: {
     fontFamily: 'source-code-pro',
     fontSize: 20,
+  },
+  time: {
+    fontFamily: 'source-code-pro',
+    fontSize: 12,
   },
   infoElse: {
     fontSize: 20,
