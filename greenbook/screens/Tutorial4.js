@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Dimensions 
 import { Font } from 'expo';
 import HomeOptions from './../components/HomeOptions';
 
-export class Tutorial3Screen extends React.Component {
+export class Tutorial4Screen extends React.Component {
   static navigationOptions = { header: null };
   constructor(props) {
     super(props)
@@ -32,23 +32,23 @@ export class Tutorial3Screen extends React.Component {
             <View style={styles.homeOptionsNoMargin}>
               <Text style = { this.state.fontLoaded ? styles.homeOptionsText : styles.else }>find</Text>
             </View>
-            <Text style={{fontSize: 20, fontFamily: 'gloria-hallelujah', color: '#024C2E'}}>MESSAGE sellers</Text>
+            <View style={styles.homeOptions}>
+              <Text style = { this.state.fontLoaded ? styles.homeOptionsText : styles.else }>messages</Text>
+            </View>
+            <Text style={{fontSize: 20, fontFamily: 'gloria-hallelujah', color: '#024C2E'}}>VIEW your postings and track your class textbooks</Text>
             <View style={{flexDirection: 'row'}}>
               <Image source = { require('./../assets/images/arrow.png') } style = { styles.arrowImage }/>
               <View style={styles.homeOptions}>
-                <Text style = { this.state.fontLoaded ? styles.homeOptionsText : styles.else }>messages</Text>
+                <Text style = { this.state.fontLoaded ? styles.homeOptionsText : styles.else }>my postings</Text>
               </View>
-            </View>
-            <View style={styles.homeOptions}>
-              <Text style = { this.state.fontLoaded ? styles.homeOptionsText : styles.else }>my postings</Text>
             </View>
           </View>
           <View style={ styles.bottomImages }>
             <TouchableOpacity onPress={() =>
-              navigate('Tutorial4')
+              navigate('Home')
               }
             >
-              <Text style={styles.next}>continue tutorial</Text>
+              <Text style={styles.next}>lets go</Text>
             </TouchableOpacity>
           </View>
       </View>

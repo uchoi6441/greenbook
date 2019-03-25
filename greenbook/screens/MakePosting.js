@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Dimensions, FlatList } from 'react-native';
 import { Font } from 'expo';
-import { StackNavigator } from 'react-navigation';
 import { createPosting } from './../services/posting-actions';
 
 export class MakePostingScreen extends React.Component {
@@ -59,7 +58,7 @@ export class MakePostingScreen extends React.Component {
         <View style={ styles.body }>
           <View style={ styles.greyBar }>
             <Text style={ this.state.fontLoaded ? styles.greyBarText : styles.else }>providing the ISBN code will help other students find your book!</Text>
-            <Text style={ this.state.fontLoaded ? styles.greyBarText : styles.else }>all other inputs are optional.</Text>
+            <Text style={ this.state.fontLoaded ? styles.greyBarText : styles.else }>all other inputs besides price are optional.</Text>
           </View>
           <View style={styles.postingView}>
             <View style={{flexDirection:'row', flex: 1, alignItems: 'center'}}>
@@ -241,13 +240,15 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   greyBar: {
-    backgroundColor: '#A8A8A8',
+    backgroundColor: '#CFCFCF',
     alignContent: 'center',
     marginBottom: '2%',
   },
   greyBarText: {
     fontFamily: 'source-code-pro',
     fontSize: 15,
+    flexWrap: 'wrap',
+    marginLeft: '2%',
   },
   heading: {
     height: Dimensions.get('window').height / 100 * 12,

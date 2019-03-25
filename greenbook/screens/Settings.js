@@ -1,7 +1,6 @@
 import React from 'react';
 import { Dimensions, StyleSheet, Text, View, Image, TextInput, TouchableOpacity } from 'react-native';
 import { Font } from 'expo';
-import { StackNavigator } from 'react-navigation';
 
 export class SettingsScreen extends React.Component {
   static navigationOptions = { header: null };
@@ -60,14 +59,7 @@ export class SettingsScreen extends React.Component {
               this.props.navigation.navigate('Home')
             }}
           >
-            <Text style={ this.state.fontLoaded ? styles.save : styles.else }>save</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => {
-              this.props.navigation.navigate('Home')
-            }}
-          >
-            <Text style={ this.state.fontLoaded ? styles.home : styles.else }>home</Text>
+            <Text style={ this.state.fontLoaded ? styles.save : styles.else }>home</Text>
           </TouchableOpacity>
         </View>
       </View>

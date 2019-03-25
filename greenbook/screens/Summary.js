@@ -1,7 +1,6 @@
 import React from 'react';
 import { Dimensions, StyleSheet, Text, View, Image, TextInput, TouchableOpacity } from 'react-native';
 import { Font } from 'expo';
-import { StackNavigator } from 'react-navigation';
 
 export class SummaryScreen extends React.Component {
   static navigationOptions = { header: null };
@@ -34,9 +33,9 @@ export class SummaryScreen extends React.Component {
         </View>
         <View style={ styles.bodyBox }>
           <View style={{marginLeft: '3%', marginRight: '5%'}}>
-            <Text style={this.state.fontLoaded ? styles.boxText : styles.justInCase }>greenbook is a textbook exchange app for Dartmouth students.</Text>
+            <Text style={this.state.fontLoaded ? styles.boxText : styles.justInCase }>traderoots is a textbook exchange app for Dartmouth students.</Text>
             <Text style={this.state.fontLoaded ? styles.boxText : styles.justInCase }>reduce your carbon footpring, buy books faster and for less money!</Text>
-            <Text style={this.state.fontLoaded ? styles.boxTextSmall : styles.justInCase }>send feedback to greenbook@gmail.com</Text>
+            <Text style={this.state.fontLoaded ? styles.boxTextSmall : styles.justInCase }>send feedback to traderoots@gmail.com</Text>
           </View>
         </View>
         <View style = { styles.borderBox }>
