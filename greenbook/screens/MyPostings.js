@@ -53,7 +53,7 @@ export class MyPostingsScreen extends React.Component {
               navigate('MyTags')
             }}
           >
-            <Text style={styles.tab}>my tags</Text>
+            <Text style={styles.tab}> / my tags</Text>
           </TouchableOpacity>
         </View>
         <View style={ styles.body }>
@@ -108,7 +108,8 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignContent: 'space-around',
     backgroundColor: '#E9E9E9',
-    height: '50%',
+    marginTop: Dimensions.get('window').height / 100 * 2,
+    height: Dimensions.get('window').height / 2,
   },
   border: {
     fontFamily: 'barcode',
@@ -117,7 +118,6 @@ const styles = StyleSheet.create({
   },
   borderBox: {
     width: '110%',
-    height: '4%',
   },
   bottomButtons: {
     justifyContent: 'space-around',

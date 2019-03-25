@@ -41,17 +41,17 @@ export class NewTagScreen extends React.Component {
         </View>
         <View style={ styles.body }>
           <View style={ styles.greyBar }>
-            <TextInput
-              style={ this.state.fontLoaded ? styles.greyBarText : styles.else }
-              placeholder="type a title, ISBN, course, professor, or author..."
-              placeholderTextColor='#000'
-            />
+            <Text style={ this.state.fontLoaded ? styles.greyBarText : styles.else }>you will be notified if any of your tags appear on the bulletin board</Text>
           </View>
           <View style = { styles.borderBox }>
             <Text style={ this.state.fontLoaded ? styles.border : styles.else }>hellomynameisjennyandyoucantunderstand</Text>
           </View>
           <View style={ styles.greyBar }>
-            <Text style={ this.state.fontLoaded ? styles.greyBarText : styles.else }>you will be notified if any of your tags appear on the bulletin board</Text>
+            <TextInput
+              style={ this.state.fontLoaded ? styles.greyBarText : styles.else }
+              placeholder="type a title, ISBN, course, professor, or author..."
+              placeholderTextColor='#000'
+            />
           </View>
           <View style = {{ height: '92%', width: '100%' }}>
             <FlatList
@@ -72,7 +72,15 @@ export class NewTagScreen extends React.Component {
                 source={require('./../assets/images/tag.png')}
                 style={ styles.tagImage }
               />
+              <TouchableOpacity
+                onPress={() => {
+                  createPosting({ isbn: this.state.isbn, dept: this.state.pressedDept[0], numb: this.state.numb, prof: this.state.prof, price: this.state.price }).then((result) => {
+                    navigate({ routeName: 'MyPostings', key: (Math.random() * 10000).toString() })
+                  })
+                }}
+              >
               <Text style={this.state.fontLoaded ? styles.addTag : styles.else}>add tag</Text>
+              </TouchableOpacity>
             </View>
           </View>
           <View style = { styles.borderBox }>
@@ -139,6 +147,16 @@ const styles = StyleSheet.create({
   },
   else: {
     fontSize: 20,
+  },
+  greyBar: {
+    backgroundColor: '#CFCFCF',
+    alignContent: 'center',
+    marginBottom: '2%',
+  },
+  greyBarText: {
+    fontFamily: 'source-code-pro',
+    fontSize: 15,
+    marginLeft: '2%',
   },
   heading: {
     height: Dimensions.get('window').height / 100 * 12,

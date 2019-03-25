@@ -1,23 +1,28 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Dimensions, FlatList, ListItem } from 'react-native';
+import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Dimensions, FlatList, ListItem, Modal } from 'react-native';
 import { Font } from 'expo';
-import { getMyTags } from './../services/posting-actions'
-import MyTagsButton from './../components/MyPostingsButton'
+import { getMyTags } from './../services/tag-actions'
+import MyTagsButton from './../components/MyTagsButton'
 import { FluidNavigator } from 'react-navigation-fluid-transitions';
 
-export class MyPostingsScreen extends React.Component {
+export class MyTagsScreen extends React.Component {
   static navigationOptions = { header: null };
   constructor(props) {
     super(props)
     this.state = {
       fontLoaded: true,
-      data: []
+      data: [],
+      modalVisible: false,
+      tagItem: '',
     };
   }
   componentWillMount() {
     getMyTags().then((result) => {
       this.setState({ data: result })
     })
+  }
+  setModalVisible(visible) {
+    this.setState({modalVisible: visible});
   }
   renderSeparator = () => {
     return (
@@ -51,11 +56,33 @@ export class MyPostingsScreen extends React.Component {
               navigate('MyPostings')
             }}
           >
-            <Text style={styles.tab}>my postings</Text>
+          <Text style={styles.tab}>my postings / </Text>
           </TouchableOpacity>
           <Text style={styles.pressedTab}>my tags</Text>
         </View>
         <View style={ styles.body }>
+        <Modal
+          animationType="slide"
+          transparent={false}
+          visible={this.state.modalVisible}
+          onRequestClose={() => {
+            Alert.alert('Modal has been closed.');
+          }}>
+          <View style={{marginTop: 22}}>
+            <View>
+              <Text>Hello World!</Text>
+              <TouchableOpacity
+                onPress={() => {
+                  this.setModalVisible(!this.state.modalVisible);
+                  createTag({ item: this.state.tagItem }).then((result) => {
+                    navigate({ routeName: 'MyTags', key: (Math.random() * 10000).toString() })
+                  })
+                }}>
+                <Text>Add tag</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </Modal>
           <View style = { styles.borderBox }>
             <Text style={ this.state.fontLoaded ? styles.border : styles.else }>hellomynameisjennyandyoucantunderstand</Text>
           </View>
@@ -63,12 +90,26 @@ export class MyPostingsScreen extends React.Component {
             <Text style={ this.state.fontLoaded ? styles.greyBarText : styles.else }>you will be notified if any of your tags appear on the bulletin board</Text>
           </View>
           <View style = {{ height: '92%', width: '100%' }}>
+            <View style={styles.add}>
+              <Image
+                source={require('./../assets/images/tag.png')}
+                style={ styles.tagImage }
+              />
+              <TouchableOpacity
+                onPress={() => {
+                  this.setModalVisible(true);
+                }}
+              >
+                <Text style={this.state.fontLoaded ? styles.addTag : styles.else}>add tag</Text>
+              </TouchableOpacity>
+            </View>
             <FlatList
               data = { this.state.data }
               renderItem = {({ item }) => (
                 <MyTagsButton
                   font = { this.state.fontLoaded }
                   thisTag = { item.thisTag }
+                  tagkey = { item.key }
                 />
               )}
               ItemSeparatorComponent={this.renderSeparator}
@@ -79,13 +120,6 @@ export class MyPostingsScreen extends React.Component {
           </View>
         </View>
         <View style={ styles.bottomButtons }>
-          <TouchableOpacity
-            onPress={() => {
-              navigate("NewTag")
-            }}
-          >
-            <Text style={ this.state.fontLoaded ? styles.bottomButtonsText : styles.else }>new tag</Text>
-          </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
               navigate("Home")
@@ -100,12 +134,22 @@ export class MyPostingsScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  add: {
+    justifyContent: 'flex-start',
+    flexDirection: 'row',
+  },
+  addTag: {
+    fontFamily: 'source-code-pro',
+    fontSize: 15,
+    textDecorationLine: 'underline',
+  },
   body: {
     justifyContent: 'center',
     flexDirection: 'column',
     alignContent: 'space-around',
     backgroundColor: '#E9E9E9',
-    height: '50%',
+    marginTop: Dimensions.get('window').height / 100 * 2,
+    height: Dimensions.get('window').height / 2,
   },
   border: {
     fontFamily: 'barcode',
@@ -114,7 +158,6 @@ const styles = StyleSheet.create({
   },
   borderBox: {
     width: '110%',
-    height: '4%',
   },
   bottomButtons: {
     justifyContent: 'space-around',
@@ -127,6 +170,16 @@ const styles = StyleSheet.create({
   },
   else: {
     fontSize: 20,
+  },
+  greyBar: {
+    backgroundColor: '#CFCFCF',
+    alignContent: 'center',
+    marginBottom: '2%',
+  },
+  greyBarText: {
+    fontFamily: 'source-code-pro',
+    fontSize: 15,
+    marginLeft: '2%',
   },
   heading: {
     height: Dimensions.get('window').height / 100 * 12,
@@ -153,6 +206,10 @@ const styles = StyleSheet.create({
   tab: {
     fontFamily: 'source-code-pro',
     fontSize: 20,
+  },
+  tagImage: {
+    width: 25,
+    height: 25,
   },
   vineImage: {
     transform: [{ rotate: '180deg'}],

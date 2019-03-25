@@ -21,6 +21,7 @@ import { Tutorial4Screen } from './screens/Tutorial4';
 import { BulletinBoardScreen } from './screens/BulletinBoard';
 import { BulletinBoardNoneFoundScreen } from './screens/BulletinBoardNoneFound';
 import { NewTagScreen } from './screens/NewTag';
+import { MyTagsScreen } from './screens/MyTags';
 
 const RootStack = FluidNavigator({
   LogIn: { screen: LogInScreen },
@@ -39,6 +40,7 @@ const RootStack = FluidNavigator({
   Tutorial4: { screen: Tutorial4Screen },
   BulletinBoard: { screen: BulletinBoardScreen },
   BulletinBoardNoneFound: { screen: BulletinBoardNoneFoundScreen },
+  MyTags: { screen: MyTagsScreen },
   NewTag: { screen: NewTagScreen },
 });
 

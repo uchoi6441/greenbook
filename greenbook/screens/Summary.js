@@ -34,7 +34,7 @@ export class SummaryScreen extends React.Component {
         <View style={ styles.bodyBox }>
           <View style={{marginLeft: '3%', marginRight: '5%'}}>
             <Text style={this.state.fontLoaded ? styles.boxText : styles.justInCase }>greenbook is a textbook exchange app for Dartmouth students.</Text>
-            <Text style={this.state.fontLoaded ? styles.boxText : styles.justInCase }>reduce your carbon footpring, buy books faster and for less money!</Text>
+            <Text style={this.state.fontLoaded ? styles.boxText : styles.justInCase }>reduce your carbon footprint, buy books faster and for less money!</Text>
             <Text style={this.state.fontLoaded ? styles.boxTextSmall : styles.justInCase }>send feedback to greenbook@gmail.com</Text>
           </View>
         </View>
