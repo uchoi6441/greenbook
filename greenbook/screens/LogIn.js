@@ -20,27 +20,20 @@ export class LogInScreen extends React.Component {
     };
   }
   componentWillMount() {
-    const REQUEST_URL  = "https://api.isbndb.com/book/9781934759486"
-    const REST_KEY = "jnqd6k8zNGaHqOmBOAwWX1KJeta8iPx6DzZKit4b"
-    fetch(REQUEST_URL, {
-      method: 'GET',
-      headers: {
-        'X-API-KEY': REST_KEY
-      },
-      }).then((response) => response.json())
-        .then((responseJson) => {
-          return responseJson.movies;
+    let headers = {
+    "Content-Type": 'application/json',
+    "X-API-Key": 'YOUR_REST_KEY'
+    }
+    fetch('https://api.isbndb.com/book/9781934759486', {headers: headers})
+        .then(response => {
+            return response.json();
         })
-        .catch((error) => {
-          console.error(error);
-    });
-    fetch(REQUEST_URL, headers = REST_KEY)
-      .then((response) => response.json())
-      .then((responseData) => {
-        // this.setState() will cause the new data to be applied to the UI that is created by the `render` function below.
-        console.log(responseData)
-      })
-    .done();
+        .then(json => {
+            console.log(json)
+        })
+        .catch(error => {
+            console.error('Error:', error)
+        });      
   }
   async componentDidMount() {
     await Font.loadAsync({
