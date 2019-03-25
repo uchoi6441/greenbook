@@ -1,11 +1,9 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Dimensions, FlatList } from 'react-native';
 import { Font } from 'expo';
-import BulletinBoardPosting from './../components/BulletinBoardPosting';
 import TrendingSearches from './../components/TrendingSearches';
 
-
-export class BulletinBoardScreen extends React.Component {
+export class BulletinBoardNoneFoundScreen extends React.Component {
   static navigationOptions = { header: null };
   constructor(props) {
     super(props)
@@ -47,31 +45,16 @@ export class BulletinBoardScreen extends React.Component {
           </View>
           <View style={styles.searchView}>
             <View style={styles.borderBox}>
-              <Text style={this.state.fontLoaded ? styles.border : styles.else }>hellomynameisjennyandyoucantunderstand</Text>
+              <Text style={ this.state.fontLoaded ? styles.border : styles.else }>hellomynameisjennyandyoucantunderstand</Text>
             </View>
-            <FlatList
-              data={[
-                {key: '1', destination: 'Home', title: 'The Voyageur', edition: false, publisher: 'Minnesota Historical Society Press', author: 'Grace Lee Nute', ISBN: '0-87351-213-8', course: 'hist12', quantity: 1, lowPrice: 20},
-                {key: '2', destination: 'Home', title: 'Witches, Rakes, and Rogues', edition: 2, publisher: 'Commonwealth Editions', author: 'D. Brenton Simons', ISBN: null, course: 'engl30', quantity: 2, lowPrice: 30},
-                {key: '3', destination: 'Home', title: 'Hey', edition: 4, publisher: 'Me', author: 'myself', ISBN: '554-34', course: 'bio12', quantity: 2, lowPrice: 20},
-              ]}
-              renderItem = {({ item }) => (
-                  <BulletinBoardPosting
-                    navigation = { this.props.navigation }
-                    font = { this.state.fontLoaded }
-                    destination = { item.destination }
-                    title = { item.title }
-                    edition = { item.edition }
-                    publisher = { item.publisher }
-                    author = { item.author }
-                    ISBN = { item.ISBN }
-                    course = { item.course }
-                    quantity = { item.quantity }
-                    lowPrice = { item.lowPrice }
-                  />
-              )}
-              ItemSeparatorComponent={this.renderSeparator}
-            />
+            <View style={{alignItems: 'center', justifyContent: 'center'}}>
+              <Text style={ this.state.fontLoaded ? styles.noneFound : styles.else }>no postings found!</Text>
+              <Text style={ this.state.fontLoaded ? styles.noneFound : styles.else }>try a different search</Text>
+              <Text style={ this.state.fontLoaded ? styles.noneFound : styles.else }>or</Text>
+              <TouchableOpacity>
+                <Text style={ this.state.fontLoaded ? styles.notify : styles.else }>notify me when a relevant posting is made</Text>
+              </TouchableOpacity>
+            </View>
             <View style={{alignSelf:'stretch', backgroundColor: '#E4E4E4'}}/>
             <View style={styles.borderBox}>
               <Text style={this.state.fontLoaded ? styles.border : styles.else }>hellomynameisjennyandyoucantunderstand</Text>
@@ -84,7 +67,7 @@ export class BulletinBoardScreen extends React.Component {
               navigate("Home")
             }}
           >
-            <Text style={ this.state.fontLoaded ? styles.bottomButtonsText : styles.else }>home</Text>
+            <Text style={ this.state.fontLoaded ? styles.homeText : styles.else }>home</Text>
           </TouchableOpacity>
           <Text style={ this.state.fontLoaded ? styles.trending : styles.else}>trending searches...</Text>
           <View style={{flexDirection:'row', justifyContent: 'space-around'}}>
@@ -115,7 +98,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around'
   },
-  bottomButtonsText: {
+  homeText: {
     fontSize: 25,
     fontFamily: 'gloria-hallelujah',
     color: '#024C2E',
@@ -161,8 +144,29 @@ const styles = StyleSheet.create({
     fontFamily: 'gloria-hallelujah',
     color: '#024C2E',
   },
+  notify: {
+    fontFamily: 'source-code-pro',
+    fontSize: 25,
+    textDecorationLine: 'underline',
+  },
+  noneFound: {
+    fontFamily: 'source-code-pro',
+    fontSize: 25,
+  },
   searchView: {
     height: Dimensions.get('window').height / 2,
+  },
+  trending: {
+    fontSize: 20,
+    fontFamily: 'gloria-hallelujah',
+    color: '#024C2E',
+  },
+  trendingButtons: {
+    borderRadius: 10,
+    backgroundColor: '#E4E4E4',
+    width: Dimensions.get('window').width / 10 * 3,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   vineImage: {
     transform: [{ rotate: '180deg'}],

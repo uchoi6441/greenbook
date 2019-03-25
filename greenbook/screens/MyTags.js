@@ -1,10 +1,9 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Dimensions, FlatList, ListItem } from 'react-native';
 import { Font } from 'expo';
-import { getMyPostings } from './../services/posting-actions'
-import MyPostingsButton from './../components/MyPostingsButton'
+import { getMyTags } from './../services/posting-actions'
+import MyTagsButton from './../components/MyPostingsButton'
 import { FluidNavigator } from 'react-navigation-fluid-transitions';
-
 
 export class MyPostingsScreen extends React.Component {
   static navigationOptions = { header: null };
@@ -16,7 +15,7 @@ export class MyPostingsScreen extends React.Component {
     };
   }
   componentWillMount() {
-    getMyPostings().then((result) => {
+    getMyTags().then((result) => {
       this.setState({ data: result })
     })
   }
@@ -38,7 +37,7 @@ export class MyPostingsScreen extends React.Component {
       <View style={{ flex: 1, backgroundColor: '#fff' }}>
         <View style={ styles.headingBufferTop }/>
         <View style={ styles.heading }>
-          <Text style={ this.state.fontLoaded ? styles.headingText : styles.else }>my postings</Text>
+          <Text style={ this.state.fontLoaded ? styles.headingText : styles.else }>my tags</Text>
         </View>
         <View style={{ alignItems: 'center', marginTop: -30 }}>
           <Image
@@ -47,30 +46,29 @@ export class MyPostingsScreen extends React.Component {
           />
         </View>
         <View style={{flexDirection: 'row', justifyContent: 'center', marginBottom: 10 }}>
-          <Text style={styles.pressedTab}>my postings</Text>
           <TouchableOpacity
             onPress={() => {
-              navigate('MyTags')
+              navigate('MyPostings')
             }}
           >
-            <Text style={styles.tab}>my tags</Text>
+            <Text style={styles.tab}>my postings</Text>
           </TouchableOpacity>
+          <Text style={styles.pressedTab}>my tags</Text>
         </View>
         <View style={ styles.body }>
           <View style = { styles.borderBox }>
             <Text style={ this.state.fontLoaded ? styles.border : styles.else }>hellomynameisjennyandyoucantunderstand</Text>
           </View>
+          <View style={ styles.greyBar }>
+            <Text style={ this.state.fontLoaded ? styles.greyBarText : styles.else }>you will be notified if any of your tags appear on the bulletin board</Text>
+          </View>
           <View style = {{ height: '92%', width: '100%' }}>
             <FlatList
               data = { this.state.data }
               renderItem = {({ item }) => (
-                <MyPostingsButton
+                <MyTagsButton
                   font = { this.state.fontLoaded }
-                  title = { item.isbn }
-                  price = { item.price }
-                  time = { item.timestamp }
-                  postkey = { item.key }
-                  navigation = { this.props.navigation }
+                  thisTag = { item.thisTag }
                 />
               )}
               ItemSeparatorComponent={this.renderSeparator}
@@ -79,15 +77,14 @@ export class MyPostingsScreen extends React.Component {
           <View style = { styles.borderBox }>
             <Text style={this.state.fontLoaded ? styles.border : styles.else }>hellomynameisjennyandyoucantunderstand</Text>
           </View>
-
         </View>
         <View style={ styles.bottomButtons }>
           <TouchableOpacity
             onPress={() => {
-              navigate("MakePosting")
+              navigate("NewTag")
             }}
           >
-            <Text style={ this.state.fontLoaded ? styles.bottomButtonsText : styles.else }>new posting</Text>
+            <Text style={ this.state.fontLoaded ? styles.bottomButtonsText : styles.else }>new tag</Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
