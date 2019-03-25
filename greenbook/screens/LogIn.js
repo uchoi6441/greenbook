@@ -19,22 +19,6 @@ export class LogInScreen extends React.Component {
       password: '',
     };
   }
-  componentWillMount() {
-    let headers = {
-    "Content-Type": 'application/json',
-    "X-API-Key": 'YOUR_REST_KEY'
-    }
-    fetch('https://api.isbndb.com/book/9781934759486', {headers: headers})
-        .then(response => {
-            return response.json();
-        })
-        .then(json => {
-            console.log(json)
-        })
-        .catch(error => {
-            console.error('Error:', error)
-        });      
-  }
   async componentDidMount() {
     await Font.loadAsync({
       'gloria-hallelujah': require('./../assets/fonts/GloriaHallelujah.ttf'),

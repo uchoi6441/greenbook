@@ -39,7 +39,7 @@ export default class MyPostingsButton extends React.Component {
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => {
-                deletePosting(this.props.postkey, this.props.title).then((result) => {
+                deletePosting(this.props.postkey, this.props.isbn).then((result) => {
                   navigate({ routeName: 'MyPostings', key: Math.random() * 10000 })
                 })
               }}
