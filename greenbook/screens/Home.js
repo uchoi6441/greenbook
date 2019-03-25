@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Dimensions } from 'react-native';
 import { Font } from 'expo';
 import HomeOptions from './../components/HomeOptions';
-import { FluidNavigator, Transition } from 'react-navigation-fluid-transitions';
+import { FluidNavigator } from 'react-navigation-fluid-transitions';
 
 
 export class HomeScreen extends React.Component {
@@ -30,14 +30,12 @@ export class HomeScreen extends React.Component {
         <View style={ styles.heading }>
           <Text style={ this.state.fontLoaded ? styles.headingText : styles.else }>home</Text>
         </View>
-        <Transition shared='vine'>
-          <View style={{ alignItems: 'center', marginTop: -30 }}>
-            <Image
-              source={require('./../assets/images/vine.png')}
-              style={ styles.vineImage }
-            />
-          </View>
-        </Transition>
+        <View style={{ alignItems: 'center', marginTop: -30 }}>
+          <Image
+            source={require('./../assets/images/vine.png')}
+            style={ styles.vineImage }
+          />
+        </View>
         <View style={ styles.body }>
           <HomeOptions
             font = { this.state.fontLoaded }

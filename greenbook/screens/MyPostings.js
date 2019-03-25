@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Dimensions,
 import { Font } from 'expo';
 import { getMyPostings } from './../services/posting-actions'
 import MyPostingsButton from './../components/MyPostingsButton'
-import { FluidNavigator, Transition } from 'react-navigation-fluid-transitions';
+import { FluidNavigator } from 'react-navigation-fluid-transitions';
 
 
 export class MyPostingsScreen extends React.Component {
@@ -28,14 +28,12 @@ export class MyPostingsScreen extends React.Component {
         <View style={ styles.heading }>
           <Text style={ this.state.fontLoaded ? styles.headingText : styles.else }>my postings</Text>
         </View>
-        <Transition shared='vine'>
-          <View style={{ alignItems: 'center', marginTop: -30 }}>
-            <Image
-              source={require('./../assets/images/vine.png')}
-              style={ styles.vineImage }
-            />
-          </View>
-        </Transition>
+        <View style={{ alignItems: 'center', marginTop: -30 }}>
+          <Image
+            source={require('./../assets/images/vine.png')}
+            style={ styles.vineImage }
+          />
+        </View>
         <View style={{flexDirection: 'row', justifyContent: 'center'}}>
           <Text style={styles.pressedTab}>my postings</Text>
           <Text style={styles.tab}> // </Text>
