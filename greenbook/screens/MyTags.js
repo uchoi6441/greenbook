@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Dimensions, FlatList, ListItem, Modal } from 'react-native';
 import { Font } from 'expo';
-import { getMyTags } from './../services/tag-actions'
+import { getMyTags, createTag, deleteTag } from './../services/tag-actions'
 import MyTagsButton from './../components/MyTagsButton'
 import { FluidNavigator } from 'react-navigation-fluid-transitions';
 
@@ -61,28 +61,34 @@ export class MyTagsScreen extends React.Component {
           <Text style={styles.pressedTab}>my tags</Text>
         </View>
         <View style={ styles.body }>
-        <Modal
-          animationType="slide"
-          transparent={false}
-          visible={this.state.modalVisible}
-          onRequestClose={() => {
-            Alert.alert('Modal has been closed.');
-          }}>
-          <View style={{marginTop: 22}}>
-            <View>
+          <Modal
+            animationType="slide"
+            transparent={false}
+            visible={this.state.modalVisible}
+            onRequestClose={() => {
+              Alert.alert('Modal has been closed.');
+            }}>
+            <View style={styles.modal}>
               <Text>Hello World!</Text>
-              <TouchableOpacity
-                onPress={() => {
-                  this.setModalVisible(!this.state.modalVisible);
-                  createTag({ item: this.state.tagItem }).then((result) => {
-                    navigate({ routeName: 'MyTags', key: (Math.random() * 10000).toString() })
-                  })
-                }}>
-                <Text>Add tag</Text>
-              </TouchableOpacity>
+              <TextInput
+                style={ this.state.fontLoaded ? styles.userInfoText : styles.else }
+                placeholder="type a title, ISBN, course, professor, or author..."
+                placeholderTextColor='#000'
+                onChangeText={(tagItem) => this.setState({tagItem})}
+              />
+              <View style={{justifyContent: 'center'}}>
+                <TouchableOpacity
+                  onPress={() => {
+                    this.setModalVisible(!this.state.modalVisible);
+                    createTag({ item: this.state.tagItem }).then((result) => {
+                      navigate({ routeName: 'MyTags', key: (Math.random() * 10000).toString() })
+                    })
+                  }}>
+                  <Text style={this.state.fontLoaded ? styles.makeNewTag : styles.else}>Add tag</Text>
+                </TouchableOpacity>
+              </View>
             </View>
-          </View>
-        </Modal>
+          </Modal>
           <View style = { styles.borderBox }>
             <Text style={ this.state.fontLoaded ? styles.border : styles.else }>hellomynameisjennyandyoucantunderstand</Text>
           </View>
@@ -148,7 +154,6 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignContent: 'space-around',
     backgroundColor: '#E9E9E9',
-    marginTop: Dimensions.get('window').height / 100 * 2,
     height: Dimensions.get('window').height / 2,
   },
   border: {
@@ -197,6 +202,18 @@ const styles = StyleSheet.create({
     fontSize: 35,
     fontFamily: 'gloria-hallelujah',
     color: '#024C2E',
+  },
+  makeNewTag: {
+    fontSize: 25,
+    fontFamily: 'gloria-hallelujah',
+    color: '#024C2E',
+  },
+  modal: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 4,
+    justifyContent: 'space-around',
+    flex: .6
   },
   pressedTab: {
     fontFamily: 'source-code-pro',
