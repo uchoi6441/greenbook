@@ -80,6 +80,16 @@ export function getMyPostings() {
   })
 }
 
+export function getPosting(PostKey) {
+  return new Promise((resolve, reject) => {
+    var user = firebase.auth().currentUser
+    var uid = user.uid
+    firebase.database().ref(`users/${uid}/postings/${PostKey}`).once('value').then(snapshot => {
+      resolve(snapshot.val())
+    })
+  })
+}
+
 export function deletePosting(postkey, isbn) {
   return new Promise((resolve, reject) => {
     var user = firebase.auth().currentUser

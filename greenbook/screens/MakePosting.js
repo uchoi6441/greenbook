@@ -182,7 +182,7 @@ export class MakePostingScreen extends React.Component {
         <View style={ styles.bottomButtons }>
           <TouchableOpacity
             onPress={() => {
-              navigate("Home")
+              navigate({ routeName: 'MyPostings', key: (Math.random() * 10000).toString() })
             }}
           >
             <Text style={ this.state.fontLoaded ? styles.bottomButtonsText : styles.else }>cancel</Text>
@@ -191,7 +191,7 @@ export class MakePostingScreen extends React.Component {
             onPress={() => {
               if (this.state.price != '' && this.state.isbn != '') {
                 createPosting({ isbn: this.state.isbn, dept: this.state.pressedDept[0], numb: this.state.numb, prof: this.state.prof, price: this.state.price }).then((result) => {
-                  navigate({ routeName: 'MyPostings', key: Math.random() * 10000 })
+                  navigate({ routeName: 'MyPostings', key: (Math.random() * 10000).toString() })
                 })
               }
               else {

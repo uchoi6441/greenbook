@@ -11,7 +11,7 @@ export default class MyPostingsButton extends React.Component {
     return (
       <TouchableOpacity
         onPress={() => {
-            navigate(this.props.destination)
+            navigate("PostingSummary", {title: this.props.title, isbn: this.props.isbn, price: this.props.price, course: this.props.course, professor: this.props.professor, time: this.props.time, postkey: this.props.postkey})
         }}
         style={ styles.postingBox }
       >
@@ -32,7 +32,7 @@ export default class MyPostingsButton extends React.Component {
           <View style = {{ width: '35%', borderLeftWidth: 2, paddingLeft: 10, justifyContent: 'space-evenly' }}>
             <TouchableOpacity
               onPress={() => {
-                navigate("Home")
+                navigate("MakePosting")
               }}
             >
               <Text style={ this.state.fontLoaded ? styles.link : styles.linkElse }>edit price</Text>
@@ -40,7 +40,7 @@ export default class MyPostingsButton extends React.Component {
             <TouchableOpacity
               onPress={() => {
                 deletePosting(this.props.postkey, this.props.isbn).then((result) => {
-                  navigate({ routeName: 'MyPostings', key: Math.random() * 10000 })
+                  navigate({ routeName: 'MyPostings', key: (Math.random() * 10000).toString() })
                 })
               }}
             >
