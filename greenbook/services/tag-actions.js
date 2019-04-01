@@ -6,7 +6,7 @@ export function createTag(tag) {
     var user = firebase.auth().currentUser
     var TagRef = firebase.database().ref(`tags`).push()
     var TagKey = TagRef.key
-    var TagUpdate = {}
+    var tagUpdate = {}
     tagUpdate[`tags/${ TagKey }`] = {
       item: tag.item,
       timestamp: moment().format('MM/DD/YY'),

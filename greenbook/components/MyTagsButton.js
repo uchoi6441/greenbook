@@ -1,20 +1,14 @@
 import React from 'react';
 import { StyleSheet, Text, Dimensions, TouchableOpacity, View } from 'react-native';
 import { Font } from 'expo';
-import { deletePosting } from './../services/posting-actions'
+import { deleteTag } from './../services/tag-actions'
 import moment from 'moment'
 
 export default class MyTagsButton extends React.Component {
   state = { fontLoaded: true };
   render() {
-    const { navigate } = this.props.navigation;
     return (
-      <TouchableOpacity
-        onPress={() => {
-            navigate(this.props.destination)
-        }}
-        style={ styles.postingBox }
-      >
+      <View style = {styles.postingBox}>
         <View style = {styles.button} >
           <View style = {{ width: '65%', paddingRight: 10 }}>
             <Text style = { this.props.font ? styles.buttonText : styles.buttonTextElse }>
@@ -24,8 +18,8 @@ export default class MyTagsButton extends React.Component {
           <View style = {{ width: '35%', borderLeftWidth: 2, paddingLeft: 10, justifyContent: 'space-evenly' }}>
             <TouchableOpacity
               onPress={() => {
-                deletePosting(this.props.postkey, this.props.title).then((result) => {
-                  navigate({ routeName: 'MyPostings', key: (Math.random() * 10000).toString() })
+                deleteTag(this.props.tagkey).then((result) => {
+                  navigate({ routeName: 'MyTags', key: (Math.random() * 10000).toString() })
                 })
               }}
             >
@@ -33,7 +27,7 @@ export default class MyTagsButton extends React.Component {
             </TouchableOpacity>
           </View>
         </View>
-      </TouchableOpacity>
+      </View>
     );
   }
 }
@@ -50,7 +44,7 @@ const styles = StyleSheet.create({
     width: '80%',
     height: '80%',
     backgroundColor: 'white',
-    justifyContent: 'flex-start',
+    justifyContent: 'center',
     flexDirection: 'row',
     borderRadius: 10,
     borderWidth: 2,

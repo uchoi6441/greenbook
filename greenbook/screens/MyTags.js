@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Dimensions, FlatList, ListItem, Modal } from 'react-native';
 import { Font } from 'expo';
-import { getMyTags, createTag, deleteTag } from './../services/tag-actions'
+import { getMyTags, createTag } from './../services/tag-actions'
 import MyTagsButton from './../components/MyTagsButton'
 import { FluidNavigator } from 'react-navigation-fluid-transitions';
 
@@ -50,7 +50,7 @@ export class MyTagsScreen extends React.Component {
             style={ styles.vineImage }
           />
         </View>
-        <View style={{flexDirection: 'row', justifyContent: 'center', marginBottom: 10 }}>
+        <View style={{flexDirection: 'row', justifyContent: 'center', marginBottom: 50 }}>
           <TouchableOpacity
             onPress={() => {
               navigate('MyPostings')
@@ -62,14 +62,13 @@ export class MyTagsScreen extends React.Component {
         </View>
         <View style={ styles.body }>
           <Modal
-            animationType="slide"
             transparent={false}
             visible={this.state.modalVisible}
             onRequestClose={() => {
               Alert.alert('Modal has been closed.');
             }}>
             <View style={styles.modal}>
-              <Text>Hello World!</Text>
+              <Text style={ this.state.fontLoaded ? styles.headingText : styles.else }>make a new tag</Text>
               <TextInput
                 style={ this.state.fontLoaded ? styles.userInfoText : styles.else }
                 placeholder="type a title, ISBN, course, professor, or author..."
@@ -84,7 +83,7 @@ export class MyTagsScreen extends React.Component {
                       navigate({ routeName: 'MyTags', key: (Math.random() * 10000).toString() })
                     })
                   }}>
-                  <Text style={this.state.fontLoaded ? styles.makeNewTag : styles.else}>Add tag</Text>
+                  <Text style={this.state.fontLoaded ? styles.makeNewTag : styles.else}>add tag</Text>
                 </TouchableOpacity>
               </View>
             </View>
@@ -109,6 +108,7 @@ export class MyTagsScreen extends React.Component {
                 <Text style={this.state.fontLoaded ? styles.addTag : styles.else}>add tag</Text>
               </TouchableOpacity>
             </View>
+            <View style = {{ height: '92%', width: '100%' }}>
             <FlatList
               data = { this.state.data }
               renderItem = {({ item }) => (
@@ -120,6 +120,7 @@ export class MyTagsScreen extends React.Component {
               )}
               ItemSeparatorComponent={this.renderSeparator}
             />
+            </View>
           </View>
           <View style = { styles.borderBox }>
             <Text style={this.state.fontLoaded ? styles.border : styles.else }>hellomynameisjennyandyoucantunderstand</Text>
@@ -214,6 +215,13 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     justifyContent: 'space-around',
     flex: .6
+  },
+  postingBox: {
+    width: '100%',
+    height: Dimensions.get('window').height / 5.5,
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignSelf: 'center',
   },
   pressedTab: {
     fontFamily: 'source-code-pro',
