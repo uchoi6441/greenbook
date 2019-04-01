@@ -71,15 +71,15 @@ export class MyTagsScreen extends React.Component {
               <Text style={ this.state.fontLoaded ? styles.headingText : styles.else }>make a new tag</Text>
               <TextInput
                 style={ this.state.fontLoaded ? styles.userInfoText : styles.else }
-                placeholder="type a title, ISBN, course, professor, or author..."
+                placeholder="type a title, ISBN, course, or author..."
                 placeholderTextColor='#000'
                 onChangeText={(tagItem) => this.setState({tagItem})}
               />
               <View style={{justifyContent: 'center'}}>
                 <TouchableOpacity
                   onPress={() => {
-                    this.setModalVisible(!this.state.modalVisible);
                     createTag({ item: this.state.tagItem }).then((result) => {
+                      this.setModalVisible(!this.state.modalVisible);
                       navigate({ routeName: 'MyTags', key: (Math.random() * 10000).toString() })
                     })
                   }}>
@@ -116,6 +116,7 @@ export class MyTagsScreen extends React.Component {
                   font = { this.state.fontLoaded }
                   thisTag = { item.thisTag }
                   tagkey = { item.key }
+                  navigation = { this.props.navigation }
                 />
               )}
               ItemSeparatorComponent={this.renderSeparator}

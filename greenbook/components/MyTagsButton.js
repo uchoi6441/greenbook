@@ -7,6 +7,7 @@ import moment from 'moment'
 export default class MyTagsButton extends React.Component {
   state = { fontLoaded: true };
   render() {
+    const { navigate } = this.props.navigation;
     return (
       <View style = {styles.postingBox}>
         <View style = {styles.button} >
