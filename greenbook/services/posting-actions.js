@@ -25,7 +25,6 @@ export function createPosting(posting) {
       var PostKey = PostRef.key
       var postingUpdate = {}
       var book = result.book
-      console.log(book.edition)
       postingUpdate[`postings/${ PostKey }`] = {
         course: posting.dept + " " + posting.numb,
         professor: posting.prof,
