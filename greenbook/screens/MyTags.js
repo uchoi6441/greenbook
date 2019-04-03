@@ -114,7 +114,7 @@ export class MyTagsScreen extends React.Component {
               renderItem = {({ item }) => (
                 <MyTagsButton
                   font = { this.state.fontLoaded }
-                  thisTag = { item.thisTag }
+                  thisTag = { item.item }
                   tagkey = { item.key }
                   navigation = { this.props.navigation }
                 />
@@ -154,9 +154,8 @@ const styles = StyleSheet.create({
   body: {
     justifyContent: 'center',
     flexDirection: 'column',
-    alignContent: 'space-around',
     backgroundColor: '#E9E9E9',
-    height: Dimensions.get('window').height / 2,
+    height: Dimensions.get('window').height / 2.2,
   },
   border: {
     fontFamily: 'barcode',
@@ -182,6 +181,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#CFCFCF',
     alignContent: 'center',
     marginBottom: '2%',
+    marginTop: -15,
   },
   greyBarText: {
     fontFamily: 'source-code-pro',
@@ -216,13 +216,6 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     justifyContent: 'space-around',
     flex: .6
-  },
-  postingBox: {
-    width: '100%',
-    height: Dimensions.get('window').height / 5.5,
-    justifyContent: 'center',
-    alignItems: 'center',
-    alignSelf: 'center',
   },
   pressedTab: {
     fontFamily: 'source-code-pro',

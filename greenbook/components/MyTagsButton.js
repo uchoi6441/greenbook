@@ -11,7 +11,7 @@ export default class MyTagsButton extends React.Component {
     return (
       <View style = {styles.postingBox}>
         <View style = {styles.button} >
-          <View style = {{ width: '65%', paddingRight: 10 }}>
+          <View style = {{ width: '65%', paddingRight: 10, alignSelf: 'center' }}>
             <Text style = { this.props.font ? styles.buttonText : styles.buttonTextElse }>
               { this.props.thisTag }
             </Text>
@@ -59,17 +59,6 @@ const styles = StyleSheet.create({
   buttonTextElse: {
     fontSize: 24,
     color: '#024C2E',
-  },
-  info: {
-    fontFamily: 'source-code-pro',
-    fontSize: 20,
-  },
-  time: {
-    fontFamily: 'source-code-pro',
-    fontSize: 12,
-  },
-  infoElse: {
-    fontSize: 20,
   },
   link: {
     fontFamily: 'source-code-pro',
