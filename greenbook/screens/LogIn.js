@@ -58,6 +58,7 @@ export class LogInScreen extends React.Component {
           <TextInput
             style={ this.state.fontLoaded ? styles.userInfoText : styles.else }
             placeholder="email"
+            autoCorrect={false}
             onChangeText={(email) => this.setState({email})}
           />
         </View>
@@ -66,6 +67,7 @@ export class LogInScreen extends React.Component {
             style={ this.state.fontLoaded ? styles.userInfoText : styles.else }
             placeholder="password"
             secureTextEntry={true}
+            autoCorrect={false}
             onChangeText={(password) => this.setState({password})}
           />
         </View>

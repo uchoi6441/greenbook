@@ -57,8 +57,7 @@ export class MakePostingScreen extends React.Component {
         </View>
         <View style={ styles.body }>
           <View style={ styles.greyBar }>
-            <Text style={ this.state.fontLoaded ? styles.greyBarText : styles.else }>providing the ISBN code will help other students find your book!</Text>
-            <Text style={ this.state.fontLoaded ? styles.greyBarText : styles.else }>all other inputs besides price are optional.</Text>
+            <Text style={ this.state.fontLoaded ? styles.greyBarText : styles.else }>providing the ISBN code will help other students find your book! other search parameters are optional.</Text>
           </View>
           <View style={styles.postingView}>
             <View style={{flexDirection:'row', flex: 1, alignItems: 'center'}}>
@@ -66,6 +65,7 @@ export class MakePostingScreen extends React.Component {
               <View style={ styles.response }>
                 <TextInput
                   style={ this.state.fontLoaded ? styles.isbnText : styles.else }
+                  autoCorrect={false}
                   onChangeText={(isbn) => this.setState({isbn})}
                 />
               </View>
@@ -77,6 +77,7 @@ export class MakePostingScreen extends React.Component {
                 <View style={ styles.response }>
                   <TextInput
                     style={ this.state.fontLoaded ? styles.isbnText : styles.else }
+                    autoCorrect={false}
                     onChangeText={(price) => this.setState({price})}
                   />
                 </View>
@@ -163,6 +164,7 @@ export class MakePostingScreen extends React.Component {
                 <View style={ styles.response }>
                   <TextInput
                     style={ this.state.fontLoaded ? styles.isbnText : styles.else }
+                    autoCorrect={false}
                     onChangeText={(numb) => this.setState({numb})}
                   />
                 </View>
@@ -172,6 +174,7 @@ export class MakePostingScreen extends React.Component {
                 <View style={ styles.response }>
                   <TextInput
                     style={ this.state.fontLoaded ? styles.isbnText : styles.else }
+                    autoCorrect={false}
                     onChangeText={(prof) => this.setState({prof})}
                   />
                 </View>
@@ -247,7 +250,6 @@ const styles = StyleSheet.create({
   greyBarText: {
     fontFamily: 'source-code-pro',
     fontSize: 15,
-    flexWrap: 'wrap',
     marginLeft: '2%',
   },
   heading: {

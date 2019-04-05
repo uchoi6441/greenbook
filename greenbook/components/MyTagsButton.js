@@ -1,46 +1,26 @@
 import React from 'react';
 import { StyleSheet, Text, Dimensions, TouchableOpacity, View } from 'react-native';
 import { Font } from 'expo';
-import { deletePosting } from './../services/posting-actions'
+import { deleteTag } from './../services/tag-actions'
 import moment from 'moment'
 
-export default class MyPostingsButton extends React.Component {
+export default class MyTagsButton extends React.Component {
   state = { fontLoaded: true };
   render() {
     const { navigate } = this.props.navigation;
     return (
-      <TouchableOpacity
-        onPress={() => {
-            navigate(this.props.destination)
-        }}
-        style={ styles.postingBox }
-      >
+      <View style = {styles.postingBox}>
         <View style = {styles.button} >
-          <View style = {{ width: '65%', paddingRight: 10 }}>
+          <View style = {{ width: '65%', paddingRight: 10, alignSelf: 'center' }}>
             <Text style = { this.props.font ? styles.buttonText : styles.buttonTextElse }>
-              { this.props.title }
+              { this.props.thisTag }
             </Text>
-            <View style = {{ flexDirection: 'row', justifyContent: 'space-between' }}>
-              <Text style = { this.props.font ? styles.info : styles.infoElse }>
-                ${ this.props.price }
-              </Text>
-              <Text style = { this.props.font ? styles.time : styles.infoElse }>
-                { this.props.time }
-              </Text>
-            </View>
           </View>
           <View style = {{ width: '35%', borderLeftWidth: 2, paddingLeft: 10, justifyContent: 'space-evenly' }}>
             <TouchableOpacity
               onPress={() => {
-                navigate("MakePosting")
-              }}
-            >
-              <Text style={ this.state.fontLoaded ? styles.link : styles.linkElse }>edit price</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => {
-                deletePosting(this.props.postkey, this.props.isbn).then((result) => {
-                  navigate({ routeName: 'MyPostings', key: (Math.random() * 10000).toString() })
+                deleteTag(this.props.tagkey).then((result) => {
+                  navigate({ routeName: 'MyTags', key: (Math.random() * 10000).toString() })
                 })
               }}
             >
@@ -48,7 +28,7 @@ export default class MyPostingsButton extends React.Component {
             </TouchableOpacity>
           </View>
         </View>
-      </TouchableOpacity>
+      </View>
     );
   }
 }
@@ -65,7 +45,7 @@ const styles = StyleSheet.create({
     width: '80%',
     height: '80%',
     backgroundColor: 'white',
-    justifyContent: 'flex-start',
+    justifyContent: 'center',
     flexDirection: 'row',
     borderRadius: 10,
     borderWidth: 2,
@@ -79,17 +59,6 @@ const styles = StyleSheet.create({
   buttonTextElse: {
     fontSize: 24,
     color: '#024C2E',
-  },
-  info: {
-    fontFamily: 'source-code-pro',
-    fontSize: 20,
-  },
-  time: {
-    fontFamily: 'source-code-pro',
-    fontSize: 12,
-  },
-  infoElse: {
-    fontSize: 20,
   },
   link: {
     fontFamily: 'source-code-pro',

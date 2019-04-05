@@ -12,29 +12,36 @@ export class AboutScreen extends React.Component {
     };
   }
   render() {
+    const { navigate } = this.props.navigation
     return (
       <View style={{ flex: 1, backgroundColor: '#fff' }}>
         <View style={ styles.headingBufferTop }/>
         <View style={ styles.heading }>
           <Text style={ this.state.fontLoaded ? styles.headingText : styles.else }>about</Text>
         </View>
-        <Transition shared='vine'>
         <View style={{ alignItems: 'center', marginTop: -20 }}>
           <Image
             source={require('./../assets/images/vine.png')}
             style={ styles.vineImage }
           />
         </View>
-        </Transition>
         <View style={ styles.bodyBox }>
-          <Text style={this.state.fontLoaded ? styles.boxText : styles.else }>traderoots is a textbook exchange app for Dartmouth students.</Text>
-          <Text style={this.state.fontLoaded ? styles.boxText : styles.else }>reduce your carbon footprint, buy books faster and for less money!</Text>
-          <Text style={this.state.fontLoaded ? styles.boxTextSmall : styles.else }>send feedback to traderoots@gmail.com</Text>
+          <View style={{flexDirection: 'row'}}>
+            <Text style={this.state.fontLoaded ? styles.boxTradeText : styles.else }>trade</Text>
+            <Text style={this.state.fontLoaded ? styles.boxRootsText : styles.else }>roots</Text>
+            <Text style={this.state.fontLoaded ? styles.boxText : styles.else }> is a textbook exchange app for </Text>
+            <Text style={this.state.fontLoaded ? styles.greenText : styles.else}>Dartmouth</Text>
+            <Text style={this.state.fontLoaded ? styles.boxText : styles.else }> students. with </Text>
+            <Text style={this.state.fontLoaded ? styles.boxTradeText : styles.else }>trade</Text>
+            <Text style={this.state.fontLoaded ? styles.boxRootsText : styles.else }>roots</Text>
+            <Text style={this.state.fontLoaded ? styles.boxText : styles.else }> you can reduce your carbon footprint, buy books faster and for less money, and sell back your used textbooks!</Text>
+          </View>
+          <Text style={this.state.fontLoaded ? styles.boxTextSmall : styles.else }>send feedback to greenbook@gmail.com</Text>
         </View>
         <View style={{justifyContent: 'space-around', alignItems: 'center', marginTop: -30 }}>
           <TouchableOpacity
             onPress={() => {
-              this.props.navigation.navigate('Home')
+              navigate('Home')
             }}
           >
             <Text style={ this.state.fontLoaded ? styles.home : styles.else }>home</Text>
@@ -61,24 +68,41 @@ export class AboutScreen extends React.Component {
 
 const styles = StyleSheet.create({
   bodyBox: {
-    paddingTop: Dimensions.get('window').width / 12,
-    paddingLeft: Dimensions.get('window').width / 12,
+    paddingTop: '5%',
+    paddingLeft: Dimensions.get('window').width / 14,
     alignSelf: 'center',
     borderRadius: 10,
     backgroundColor: '#E4E4E4',
     borderWidth: 2,
     width: Dimensions.get('window').height / 10 * 4,
-    marginBottom: '10%',
-    marginTop: '10%',
-    height: '50%',
+    marginTop: Dimensions.get('window').height / 100 * 2,
+    height: Dimensions.get('window').height / 2,
+  },
+  boxRootsText: {
+    fontFamily: 'libre-barcode',
+    fontSize: 15,
   },
   boxText: {
     fontFamily: 'source-code-pro',
-    fontSize: 25,
+    fontSize: 15,
   },
   boxTextSmall: {
     fontFamily: 'source-code-pro',
     fontSize: 20,
+  },
+  boxTradeText: {
+    fontFamily: 'gloria-hallelujah',
+    color: '#024C2E',
+    fontSize: 15,
+  },
+  else: {
+    fontSize: 44,
+  },
+  greenText: {
+    fontFamily: 'gloria-hallelujah',
+    fontSize: 15,
+    color: '#024C2E',
+    justifyContent: 'center',
   },
   heading: {
     backgroundColor: '#fff',
@@ -100,9 +124,6 @@ const styles = StyleSheet.create({
     fontSize: 35,
     fontFamily: 'gloria-hallelujah',
     color: '#024C2E',
-  },
-  else: {
-    fontSize: 44,
   },
   textbookImage: {
     width: Dimensions.get('window').width / 4,
