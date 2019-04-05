@@ -20,6 +20,9 @@ import { Tutorial2Screen } from './screens/Tutorial2';
 import { Tutorial3Screen } from './screens/Tutorial3';
 import { Tutorial4Screen } from './screens/Tutorial4';
 import { BulletinBoardScreen } from './screens/BulletinBoard';
+import { BulletinBoardNoneFoundScreen } from './screens/BulletinBoardNoneFound';
+import { NewTagScreen } from './screens/NewTag';
+import { MyTagsScreen } from './screens/MyTags';
 
 const RootStack = FluidNavigator({
   LogIn: { screen: LogInScreen },
@@ -38,6 +41,9 @@ const RootStack = FluidNavigator({
   Tutorial3: { screen: Tutorial3Screen },
   Tutorial4: { screen: Tutorial4Screen },
   BulletinBoard: { screen: BulletinBoardScreen },
+  BulletinBoardNoneFound: { screen: BulletinBoardNoneFoundScreen },
+  MyTags: { screen: MyTagsScreen },
+  NewTag: { screen: NewTagScreen },
 });
 
 export default createAppContainer(RootStack);

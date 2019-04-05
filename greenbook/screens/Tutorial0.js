@@ -17,38 +17,16 @@ export class Tutorial0Screen extends React.Component {
       <View style={{ flex: 1, backgroundColor: '#fff' }}>
         <View style={styles.headingBufferTop}/>
         <View style={styles.heading}>
+          <Text style={ this.state.fontLoaded ? styles.headingText : styles.else }>welcome to</Text>
           <Text style={ this.state.fontLoaded ? styles.headingText : styles.else }>trade</Text>
           <Text style={ this.state.fontLoaded ? styles.subheadingText : styles.else }>roots</Text>
         </View>
-        <View style={{flexDirection: 'row', paddingTop: Dimensions.get('window').height / 100 * 7}}>
-          <Image
-            source={require('./../assets/images/vine.png')}
-            style={styles.vineImage}
-          />
-          <Image
-            source={require('./../assets/images/vine.png')}
-            style={styles.vineImage}
-          />
-          <Image
-            source={require('./../assets/images/vine.png')}
-            style={styles.vineImage}
-          />
-          <Image
-            source={require('./../assets/images/vine.png')}
-            style={styles.vineImage}
-          />
-        </View>
         <View style={ styles.bodyBox }>
-          <Text style={this.state.fontLoaded ? styles.boxText : styles.else }>congratulations!</Text>
-          <Text style={this.state.fontLoaded ? styles.boxText : styles.else }>youve successfully made a traderoots account.</Text>
-          <Text style={this.state.fontLoaded ? styles.boxText : styles.else }>traderoots is a textbook exchange app for Dartmouth students.</Text>
-          <Text style={this.state.fontLoaded ? styles.boxText : styles.else }>traderoots helps Dartmouth students buy cheaper textbooks, sell back their used books, and save the environment at the same time!</Text>
-          <View style={{flexDirection: 'row'}}>
-            <Text style={this.state.fontLoaded ? styles.boxText : styles.else }>join our </Text>
-            <Text style={this.state.fontLoaded ? styles.greenText : styles.else}>~green~</Text>
-            <Text style={this.state.fontLoaded ? styles.boxText : styles.else }> community by</Text>
-          </View>
-          <Text style={this.state.fontLoaded ? styles.boxText : styles.else }>walking through the tutorial now!</Text>
+          <Text style={this.state.fontLoaded ? styles.boxTradeText : styles.else }>trade</Text>
+          <Text style={this.state.fontLoaded ? styles.boxRootsText : styles.else }>roots</Text>
+          <Text style={this.state.fontLoaded ? styles.boxText : styles.else }> is a textbook exchange app for </Text>
+          <Text style={this.state.fontLoaded ? styles.greenText : styles.else}>Dartmouth</Text>
+          <Text style={this.state.fontLoaded ? styles.boxText : styles.else }> students. if youre eady to buy cheaper textbooks, sell your used textbooks, and save the environment at the same time, then lets get started!</Text>
         </View>
         <View style={{alignItems: 'center'}}>
           <TouchableOpacity onPress={() =>
@@ -74,9 +52,22 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window').height / 10 * 4,
     marginTop: Dimensions.get('window').height / 100 * 2,
     height: Dimensions.get('window').height / 2,
+    flexDirection: 'row',
+  },
+  boxRootsText: {
+    fontFamily: 'libre-barcode',
+    fontSize: 15,
   },
   boxText: {
     fontFamily: 'source-code-pro',
+    fontSize: 15,
+  },
+  boxTradeText: {
+    fontFamily: 'gloria-hallelujah',
+    color: '#024C2E',
+    fontSize: 15,
+  },
+  else: {
     fontSize: 15,
   },
   greenText: {
@@ -101,9 +92,6 @@ const styles = StyleSheet.create({
     fontSize: 35,
     fontFamily: 'gloria-hallelujah',
     color: '#024C2E',
-  },
-  else: {
-    fontSize: 15,
   },
   next: {
     fontSize: 35,

@@ -1,12 +1,10 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Dimensions, FlatList, ListItem } from 'react-native';
 import { Font } from 'expo';
-import { getMyPostings } from './../services/posting-actions'
-import MyPostingsButton from './../components/MyPostingsButton'
+import MyTagsButton from './../components/MyPostingsButton'
 import { FluidNavigator } from 'react-navigation-fluid-transitions';
 
-
-export class MyPostingsScreen extends React.Component {
+export class NewTagScreen extends React.Component {
   static navigationOptions = { header: null };
   constructor(props) {
     super(props)
@@ -14,11 +12,6 @@ export class MyPostingsScreen extends React.Component {
       fontLoaded: true,
       data: []
     };
-  }
-  componentWillMount() {
-    getMyPostings().then((result) => {
-      this.setState({ data: result })
-    })
   }
   renderSeparator = () => {
     return (
@@ -38,7 +31,7 @@ export class MyPostingsScreen extends React.Component {
       <View style={{ flex: 1, backgroundColor: '#fff' }}>
         <View style={ styles.headingBufferTop }/>
         <View style={ styles.heading }>
-          <Text style={ this.state.fontLoaded ? styles.headingText : styles.else }>my postings</Text>
+          <Text style={ this.state.fontLoaded ? styles.headingText : styles.else }>new tag</Text>
         </View>
         <View style={{ alignItems: 'center', marginTop: -30 }}>
           <Image
@@ -46,57 +39,61 @@ export class MyPostingsScreen extends React.Component {
             style={ styles.vineImage }
           />
         </View>
-        <View style={{flexDirection: 'row', justifyContent: 'center', marginBottom: 10 }}>
-          <Text style={styles.pressedTab}>my postings</Text>
-          <TouchableOpacity
-            onPress={() => {
-              navigate('MyTags')
-            }}
-          >
-            <Text style={styles.tab}> / my tags</Text>
-          </TouchableOpacity>
-        </View>
         <View style={ styles.body }>
+          <View style={ styles.greyBar }>
+            <Text style={ this.state.fontLoaded ? styles.greyBarText : styles.else }>you will be notified if any of your tags appear on the bulletin board</Text>
+          </View>
           <View style = { styles.borderBox }>
             <Text style={ this.state.fontLoaded ? styles.border : styles.else }>hellomynameisjennyandyoucantunderstand</Text>
+          </View>
+          <View style={ styles.greyBar }>
+            <TextInput
+              style={ this.state.fontLoaded ? styles.greyBarText : styles.else }
+              placeholder="type a title, ISBN, course, professor, or author..."
+              placeholderTextColor='#000'
+            />
           </View>
           <View style = {{ height: '92%', width: '100%' }}>
             <FlatList
               data = { this.state.data }
               renderItem = {({ item }) => (
-                <MyPostingsButton
+                <MyTagsButton
                   font = { this.state.fontLoaded }
-                  title = { item.title }
-                  isbn = { item.isbn }
-                  price = { item.price }
-                  time = { item.timestamp }
-                  course = { item.course }
-                  postkey = { item.key }
-                  navigation = { this.props.navigation }
+                  thisTag = { item.thisTag }
                 />
               )}
               ItemSeparatorComponent={this.renderSeparator}
             />
+            <View style={styles.button}>
+              <Text style={this.state.fontLoaded ? styles.new : styles.else}>title, ISBN, author, course, etc...</Text>
+            </View>
+            <View style={styles.add}>
+              <Image
+                source={require('./../assets/images/tag.png')}
+                style={ styles.tagImage }
+              />
+              <TouchableOpacity
+                onPress={() => {
+                  createPosting({ isbn: this.state.isbn, dept: this.state.pressedDept[0], numb: this.state.numb, prof: this.state.prof, price: this.state.price }).then((result) => {
+                    navigate({ routeName: 'MyPostings', key: (Math.random() * 10000).toString() })
+                  })
+                }}
+              >
+              <Text style={this.state.fontLoaded ? styles.addTag : styles.else}>add tag</Text>
+              </TouchableOpacity>
+            </View>
           </View>
           <View style = { styles.borderBox }>
             <Text style={this.state.fontLoaded ? styles.border : styles.else }>hellomynameisjennyandyoucantunderstand</Text>
           </View>
-
         </View>
         <View style={ styles.bottomButtons }>
           <TouchableOpacity
             onPress={() => {
-              navigate({ routeName: 'MakePosting', key: (Math.random() * 10000).toString() })
+              navigate("MyTags")
             }}
           >
-            <Text style={ this.state.fontLoaded ? styles.bottomButtonsText : styles.else }>new posting</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => {
-              navigate("Home")
-            }}
-          >
-            <Text style={ this.state.fontLoaded ? styles.bottomButtonsText : styles.else }>home</Text>
+            <Text style={ this.state.fontLoaded ? styles.bottomButtonsText : styles.else }>cancel</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -105,13 +102,20 @@ export class MyPostingsScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  add: {
+    justifyContent: 'flex-end',
+  },
+  addTag: {
+    fontFamily: 'source-code-pro',
+    fontSize: 15,
+    textDecorationLine: 'underline',
+  },
   body: {
     justifyContent: 'center',
     flexDirection: 'column',
     alignContent: 'space-around',
     backgroundColor: '#E9E9E9',
-    marginTop: Dimensions.get('window').height / 100 * 2,
-    height: Dimensions.get('window').height / 2,
+    height: '50%',
   },
   border: {
     fontFamily: 'barcode',
@@ -120,6 +124,7 @@ const styles = StyleSheet.create({
   },
   borderBox: {
     width: '110%',
+    height: '4%',
   },
   bottomButtons: {
     justifyContent: 'space-around',
@@ -130,8 +135,28 @@ const styles = StyleSheet.create({
     fontFamily: 'gloria-hallelujah',
     color: '#024C2E',
   },
+  button: {
+    width: '80%',
+    height: '80%',
+    backgroundColor: 'white',
+    justifyContent: 'flex-start',
+    flexDirection: 'row',
+    borderRadius: 10,
+    borderWidth: 2,
+    padding: 10,
+  },
   else: {
     fontSize: 20,
+  },
+  greyBar: {
+    backgroundColor: '#CFCFCF',
+    alignContent: 'center',
+    marginBottom: '2%',
+  },
+  greyBarText: {
+    fontFamily: 'source-code-pro',
+    fontSize: 15,
+    marginLeft: '2%',
   },
   heading: {
     height: Dimensions.get('window').height / 100 * 12,
@@ -150,6 +175,10 @@ const styles = StyleSheet.create({
     fontFamily: 'gloria-hallelujah',
     color: '#024C2E',
   },
+  new: {
+    fontFamily: 'source-code-pro',
+    fontSize: 20,
+  },
   pressedTab: {
     fontFamily: 'source-code-pro',
     fontSize: 20,
@@ -158,6 +187,10 @@ const styles = StyleSheet.create({
   tab: {
     fontFamily: 'source-code-pro',
     fontSize: 20,
+  },
+  tagImage: {
+    width: 25,
+    height: 25,
   },
   vineImage: {
     transform: [{ rotate: '180deg'}],
