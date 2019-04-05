@@ -11,7 +11,7 @@ export default class MyPostingsButton extends React.Component {
     return (
       <TouchableOpacity
         onPress={() => {
-            navigate("PostingSummary", {title: this.props.title, isbn: this.props.isbn, price: this.props.price, course: this.props.course, professor: this.props.professor, time: this.props.time, postkey: this.props.postkey})
+            navigate("PostingSummary", {title: this.props.title, isbn: this.props.isbn, price: this.props.price, course: this.props.course, time: this.props.time, postkey: this.props.postkey})
         }}
         style={ styles.postingBox }
       >

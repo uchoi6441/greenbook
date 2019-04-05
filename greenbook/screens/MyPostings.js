@@ -59,7 +59,6 @@ export class MyPostingsScreen extends React.Component {
                   isbn = { item.isbn }
                   price = { item.price }
                   time = { item.timestamp }
-                  professor = { item.professor }
                   course = { item.course }
                   postkey = { item.key }
                   navigation = { this.props.navigation }

@@ -10,7 +10,6 @@ export class MakePostingScreen extends React.Component {
     this.state = {
       fontLoaded: true,
       isbn: '',
-      prof: '',
       numb: '',
       price: '',
       pressedDept: [],
@@ -164,15 +163,6 @@ export class MakePostingScreen extends React.Component {
                   <TextInput
                     style={ this.state.fontLoaded ? styles.isbnText : styles.else }
                     onChangeText={(numb) => this.setState({numb})}
-                  />
-                </View>
-              </View>
-              <View style={{flexDirection:'row'}}>
-                <Text style={this.state.fontLoaded ? styles.courseProf : style.else}>professor:</Text>
-                <View style={ styles.response }>
-                  <TextInput
-                    style={ this.state.fontLoaded ? styles.isbnText : styles.else }
-                    onChangeText={(prof) => this.setState({prof})}
                   />
                 </View>
               </View>

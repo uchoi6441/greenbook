@@ -13,7 +13,6 @@ export class PostingSummaryScreen extends React.Component {
     this.state = {
       fontLoaded: true,
     };
-    console.log(this.props.navigation.state.params)
   }
   render() {
     const { navigate } = this.props.navigation
@@ -43,9 +42,6 @@ export class PostingSummaryScreen extends React.Component {
                 </Text>
                 <Text style = { this.state.fontLoaded ? styles.info : styles.infoElse }>
                   course: {this.props.navigation.state.params.course}
-                </Text>
-                <Text style = { this.state.fontLoaded ? styles.info : styles.infoElse }>
-                  professor: {this.props.navigation.state.params.professor}
                 </Text>
                 <Text style = { this.state.fontLoaded ? styles.info : styles.infoElse }>
                   price: ${this.props.navigation.state.params.price}

@@ -27,7 +27,6 @@ export function createPosting(posting) {
       var book = result.book
       postingUpdate[`postings/${ PostKey }`] = {
         course: posting.dept + " " + posting.numb,
-        professor: posting.prof,
         price: posting.price,
         title: book.title_long,
         author: book.authors,
@@ -37,9 +36,8 @@ export function createPosting(posting) {
         key: PostKey,
         user: user.uid,
       };
-      postingUpdate[`books/${ book.isbn }/${ PostKey }`] = {
+      postingUpdate[`books/${ book.isbn13 }/${ PostKey }`] = {
         course: posting.dept + " " + posting.numb,
-        professor: posting.prof,
         price: posting.price,
         title: book.title_long,
         author: book.authors,
@@ -51,7 +49,6 @@ export function createPosting(posting) {
       };
       postingUpdate[`users/${ user.uid }/postings/${ PostKey }`] = {
         course : posting.dept + " " + posting.numb,
-        professor : posting.prof,
         price: posting.price,
         title: book.title_long,
         author: book.authors,

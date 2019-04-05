@@ -40,3 +40,12 @@ export function verifyAccount(email, password) {
     });
   })
 }
+
+export function searchDatabase(queryText) {
+  return new Promise ((resolve, reject) => {
+    var databaseRef = firebase.database().ref(`search`)
+    databaseRef.orderByKey().startAt(queryText).endAt(queryText + "\uf8ff").on("child_added", function(snapshot) {
+      console.log(snapshot.key);
+    });
+  })
+}

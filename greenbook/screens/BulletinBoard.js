@@ -2,6 +2,8 @@ import React from 'react';
 import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Dimensions, FlatList } from 'react-native';
 import { Font } from 'expo';
 import BulletinBoardPosting from './../components/BulletinBoardPosting';
+import { searchDatabase } from './../services/database-actions';
+
 
 export class BulletinBoardScreen extends React.Component {
   static navigationOptions = { header: null };
@@ -9,6 +11,7 @@ export class BulletinBoardScreen extends React.Component {
     super(props)
     this.state = {
       fontLoaded: true,
+      search: '',
     };
   }
   renderSeparator = () => {
@@ -22,6 +25,7 @@ export class BulletinBoardScreen extends React.Component {
     );
   };
   render() {
+    searchDatabase(this.state.search)
     const { navigate } = this.props.navigation
     return (
       <View style={{ flex: 1, backgroundColor: '#fff' }}>
@@ -41,6 +45,9 @@ export class BulletinBoardScreen extends React.Component {
               style={ this.state.fontLoaded ? styles.greyBarText : styles.else }
               placeholder="search by title, ISBN, course, professor, author..."
               placeholderTextColor='#000'
+              onChangeText={(search) => {
+                this.setState({search})
+              }}
             />
           </View>
           <View style={styles.searchView}>
