@@ -33,7 +33,9 @@ export class SummaryScreen extends React.Component {
         </View>
         <View style={ styles.bodyBox }>
           <View style={{marginLeft: '3%', marginRight: '5%'}}>
-            <Text style={this.state.fontLoaded ? styles.boxText : styles.justInCase }>greenbook is a textbook exchange app for Dartmouth students.</Text>
+            <Text style={this.state.fontLoaded ? styles.boxTradeText : styles.else }>trade</Text>
+            <Text style={this.state.fontLoaded ? styles.boxRootsText : styles.else }>roots</Text>
+            <Text style={this.state.fontLoaded ? styles.boxText : styles.justInCase }> is a textbook exchange app for Dartmouth students.</Text>
             <Text style={this.state.fontLoaded ? styles.boxText : styles.justInCase }>reduce your carbon footprint, buy books faster and for less money!</Text>
             <Text style={this.state.fontLoaded ? styles.boxTextSmall : styles.justInCase }>send feedback to greenbook@gmail.com</Text>
           </View>
@@ -82,6 +84,15 @@ const styles = StyleSheet.create({
   borderBox: {
     width: '110%',
     height: '2%'
+  },
+  boxRootsText: {
+    fontFamily: 'libre-barcode',
+    fontSize: 15,
+  },
+  boxTradeText: {
+    fontFamily: 'gloria-hallelujah',
+    color: '#024C2E',
+    fontSize: 15,
   },
   boxText: {
     fontFamily: 'source-code-pro',
