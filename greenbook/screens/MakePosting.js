@@ -65,6 +65,7 @@ export class MakePostingScreen extends React.Component {
               <View style={ styles.response }>
                 <TextInput
                   style={ this.state.fontLoaded ? styles.isbnText : styles.else }
+                  autoCorrect={false}
                   onChangeText={(isbn) => this.setState({isbn})}
                 />
               </View>
@@ -76,6 +77,7 @@ export class MakePostingScreen extends React.Component {
                 <View style={ styles.response }>
                   <TextInput
                     style={ this.state.fontLoaded ? styles.isbnText : styles.else }
+                    autoCorrect={false}
                     onChangeText={(price) => this.setState({price})}
                   />
                 </View>
@@ -162,6 +164,7 @@ export class MakePostingScreen extends React.Component {
                 <View style={ styles.response }>
                   <TextInput
                     style={ this.state.fontLoaded ? styles.isbnText : styles.else }
+                    autoCorrect={false}
                     onChangeText={(numb) => this.setState({numb})}
                   />
                 </View>
@@ -171,6 +174,7 @@ export class MakePostingScreen extends React.Component {
                 <View style={ styles.response }>
                   <TextInput
                     style={ this.state.fontLoaded ? styles.isbnText : styles.else }
+                    autoCorrect={false}
                     onChangeText={(prof) => this.setState({prof})}
                   />
                 </View>

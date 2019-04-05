@@ -61,13 +61,7 @@ export class MyTagsScreen extends React.Component {
           <Text style={styles.pressedTab}>my tags</Text>
         </View>
         <View style={ styles.body }>
-          <Modal
-            transparent={false}
-            visible={this.state.modalVisible}
-            onRequestClose={() => {
-              Alert.alert('Modal has been closed.');
-            }}>
-            <View style={styles.modal}>
+          <Modal transparent={false} visible={this.state.modalVisible} style={styles.modal}>
               <Text style={ this.state.fontLoaded ? styles.headingText : styles.else }>make a new tag</Text>
               <TextInput
                 style={ this.state.fontLoaded ? styles.userInfoText : styles.else }
@@ -78,16 +72,27 @@ export class MyTagsScreen extends React.Component {
               <View style={{justifyContent: 'center'}}>
                 <TouchableOpacity
                   onPress={() => {
-                    createTag({ item: this.state.tagItem }).then((result) => {
-                      this.setModalVisible(!this.state.modalVisible);
-                      navigate({ routeName: 'MyTags', key: (Math.random() * 10000).toString() })
-                    })
+                    if (this.state.tagItem != '') {
+                      createTag({ item: this.state.tagItem }).then((result) => {
+                        this.setModalVisible(!this.state.modalVisible);
+                        navigate({ routeName: 'MyTags', key: (Math.random() * 10000).toString() })
+                      })
+                    }
+                    else {
+                      alert('Please type in a tag')
+                    }
                   }}>
-                  <Text style={this.state.fontLoaded ? styles.makeNewTag : styles.else}>add tag</Text>
+                  <Text style={ this.state.fontLoaded ? styles.makeNewTag : styles.else }>add tag</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => {
+                    this.setModalVisible(!this.state.modalVisible);
+                    navigate({ routeName: 'MyTags', key: (Math.random() * 10000).toString() })
+                  }}>
+                  <Text style = { this.state.fontLoaded ? styles.back : styles.else }>back</Text>
                 </TouchableOpacity>
               </View>
-            </View>
-          </Modal>
+            </Modal>
           <View style = { styles.borderBox }>
             <Text style={ this.state.fontLoaded ? styles.border : styles.else }>hellomynameisjennyandyoucantunderstand</Text>
           </View>
@@ -151,6 +156,11 @@ const styles = StyleSheet.create({
     fontSize: 15,
     textDecorationLine: 'underline',
   },
+  back: {
+    fontSize: 20,
+    fontFamily: 'gloria-hallelujah',
+    color: '#024C2E',
+  },
   body: {
     justifyContent: 'center',
     flexDirection: 'column',
@@ -168,6 +178,7 @@ const styles = StyleSheet.create({
   bottomButtons: {
     justifyContent: 'space-around',
     alignItems: 'center',
+    marginTop: Dimensions.get('window').height / 100 * 5,
   },
   bottomButtonsText: {
     fontSize: 25,
@@ -211,11 +222,16 @@ const styles = StyleSheet.create({
     color: '#024C2E',
   },
   modal: {
-    justifyContent: 'center',
+    justifyContent: 'space-around',
     alignItems: 'center',
     borderRadius: 4,
     justifyContent: 'space-around',
-    flex: .6
+    alignItems: 'center',
+    flex: .6,
+    height: 100,
+    margin: 20,
+    paddingTop: 22,
+    borderColor: 'rgba(0, 0, 0, 0.1)',
   },
   pressedTab: {
     fontFamily: 'source-code-pro',
