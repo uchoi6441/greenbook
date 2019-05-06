@@ -5,8 +5,8 @@ import { ChatManager, TokenProvider } from '@pusher/chatkit-client';
 
 const CHATKIT_TOKEN_PROVIDER_ENDPOINT = 'https://us1.pusherplatform.io/services/chatkit_token_provider/v1/587fcd5f-cf84-421b-9fe0-8935ac068fd6/token';
 const CHATKIT_INSTANCE_LOCATOR = 'v1:us1:587fcd5f-cf84-421b-9fe0-8935ac068fd6';
-const CHATKIT_ROOM_ID = '19411369';
-const CHATKIT_USER_NAME = 'Dave';
+const CHATKIT_ROOM_ID = '19411428';
+const CHATKIT_USER_NAME = 'Urie Choi';
 
 export class MyChatScreen extends React.Component {
   constructor(props) {
@@ -78,12 +78,13 @@ export class MyChatScreen extends React.Component {
   render() {
     return (
       <View style={{ flex: 1, backgroundColor: '#fff' }}>
+        <View style={styles.headingBufferTop}/>
         <View style={styles.header}>
           <Text style={this.state.fontLoaded ? styles.name : styles.else}>{CHATKIT_USER_NAME}</Text>
-          <Image
-            source={require('./../assets/images/vine.png')}
-            style={ styles.vineImage }
-          />
+            <Image
+              source={require('./../assets/images/vine.png')}
+              style={ styles.vineImage }
+            />
         </View>
         <View style={styles.messageBody}>
           <GiftedChat
@@ -94,12 +95,32 @@ export class MyChatScreen extends React.Component {
             }}
           />
         </View>
+        <View style={styles.bottomButton}>
+          <TouchableOpacity
+            onPress={() => {
+              this.props.navigation.navigate('Messages')
+            }}
+          >
+            <Text style={ this.state.fontLoaded ? styles.back : styles.else }>back</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  back: {
+    fontSize: 25,
+    fontFamily: 'gloria-hallelujah',
+    color: '#024C2E',
+  },
+  bottomButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: -50,
+  },
   else: {
     fontSize: 44,
   },
@@ -108,10 +129,18 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     paddingLeft: Dimensions.get('window').width / 100 * 3.6,
     paddingRight: Dimensions.get('window').width / 100 * 3.6,
+    justifyContent: 'flex-end',
+    alignItems: 'flex-end',
+  },
+  headingBufferTop: {
+    height: Dimensions.get('window').height / 100 * 3,
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   messageBody: {
     backgroundColor: '#C5CFC4',
     height: Dimensions.get('window').height / 100 * 61,
+    marginBottom: Dimensions.get('window').height / 100 * 15,
   },
   name: {
     fontSize: 35,

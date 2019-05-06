@@ -23,6 +23,7 @@ import { BulletinBoardNoneFoundScreen } from './screens/BulletinBoardNoneFound';
 import { NewTagScreen } from './screens/NewTag';
 import { MyTagsScreen } from './screens/MyTags';
 import { MyChatScreen } from './screens/MyChat';
+import { MessagesScreen } from './screens/Messages';
 
 const RootStack = FluidNavigator({
   LogIn: { screen: LogInScreen },
@@ -44,6 +45,7 @@ const RootStack = FluidNavigator({
   MyTags: { screen: MyTagsScreen },
   NewTag: { screen: NewTagScreen },
   MyChat: { screen: MyChatScreen },
+  Messages: { screen: MessagesScreen },
 });
 
 export default createAppContainer(RootStack);

@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Dimensions, FlatList, ListItem, Modal } from 'react-native';
+import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Dimensions, FlatList, Modal } from 'react-native';
 import { Font } from 'expo';
 import { getMyTags, createTag } from './../services/tag-actions'
 import MyTagsButton from './../components/MyTagsButton'
