@@ -17,7 +17,8 @@ export class HomeScreen extends React.Component {
     const { navigate } = this.props.navigation
     return (
       <View style={{ flex: 1, backgroundColor: '#fff' }}>
-        <View style={{justifyContent: 'flex-start', alignSelf: 'flex-start', marginTop: Dimensions.get('window').height / 25, marginLeft: Dimensions.get('window').width / 15}}>
+        <View style={{justifyContent: 'flex-start', marginTop: Dimensions.get('window').height / 25, marginLeft: Dimensions.get('window').width / 15, marginRight: Dimensions.get('window').width / 15 }}>
+          <View style={{flexDirection:'row'}}>
           <TouchableOpacity
             onPress={() => {
               navigate("LogIn")
@@ -25,6 +26,18 @@ export class HomeScreen extends React.Component {
           >
             <Text style={ this.state.fontLoaded ? styles.logOut : styles.else}>log out</Text>
           </TouchableOpacity>
+          <View style={styles.environment}>
+            <View style={{flexDirection: 'column'}}>
+              <Text style={ this.state.fontLoaded ? styles.environmentText : styles.else }>Each traded book reduces</Text>
+              <Text style={ this.state.fontLoaded ? styles.environmentText : styles.else }>packaging waste, CO2 emissions,</Text>
+              <Text style={ this.state.fontLoaded ? styles.environmentText : styles.else }>and shipping costs! meet friends, save money, reduce carbon footprint</Text>
+            </View>
+            <Image
+              source={require('./../assets/images/pine.png')}
+              style={styles.pineImage}
+            />
+          </View>
+          </View>
         </View>
         <View style={ styles.headingBufferTop }/>
         <View style={ styles.heading }>
@@ -102,6 +115,13 @@ const styles = StyleSheet.create({
   else: {
     fontSize: 44,
   },
+  environment: {
+    justifyContent: 'flex-end',
+  },
+  environmentText: {
+    fontSize: 10,
+    fontFamily: 'source-code-pro',
+  },
   heading: {
     height: Dimensions.get('window').height / 100 * 12,
     backgroundColor: '#fff',
@@ -123,6 +143,10 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontFamily: 'gloria-hallelujah',
     color: '#024C2E',
+  },
+  pineImage: {
+    width: 14.6*1.3,
+    height: 29.4*1.3,
   },
   settingsImage: {
     width: Dimensions.get('window').width / 5,
