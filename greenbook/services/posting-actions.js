@@ -5,15 +5,15 @@ export function isbnLookup(isbn) {
   return new Promise((resolve, reject) => {
     let headers = {
     "Content-Type": 'application/json',
-    "X-API-Key": 'jnqd6k8zNGaHqOmBOAwWX1KJeta8iPx6DzZKit4b'
+    "Authorization": '40924_8a1998552b220f9eab4980d9d18c4dcd'
     }
-    fetch(`https://api.isbndb.com/book/${ isbn }`, {headers: headers})
-        .then(response => {
-            resolve(response.json());
-        })
-        .catch(error => {
-            console.error('Error:', error)
-        });
+    fetch(`https://api2.isbndb.com/book/${ isbn }?with_prices=1`, {headers: headers})
+      .then(response => {
+          resolve(response.json());
+      })
+      .catch(error => {
+          console.error('Error:', error)
+      });
   })
 }
 
@@ -25,6 +25,13 @@ export function createPosting(posting) {
       var PostKey = PostRef.key
       var postingUpdate = {}
       var book = result.book
+      console.log(book);
+      for (var i = 0, len = book.prices.length; i < len; i++) {
+        if (book.prices[i].merchant == "Amazon Mkt New") {
+          var amazonprice = book.prices[i].price;
+        }
+      }
+      console.log(amazonprice);
       postingUpdate[`postings/${ PostKey }`] = {
         course: posting.dept + " " + posting.numb,
         price: posting.price,
@@ -39,6 +46,7 @@ export function createPosting(posting) {
       postingUpdate[`books/${ book.isbn13 }/${ PostKey }`] = {
         course: posting.dept + " " + posting.numb,
         price: posting.price,
+        amazonprice: amazonprice,
         title: book.title_long,
         author: book.authors,
         isbn: book.isbn,
@@ -50,6 +58,7 @@ export function createPosting(posting) {
       postingUpdate[`users/${ user.uid }/postings/${ PostKey }`] = {
         course : posting.dept + " " + posting.numb,
         price: posting.price,
+        amazonprice: amazonprice,
         title: book.title_long,
         author: book.authors,
         isbn: book.isbn,
@@ -58,7 +67,7 @@ export function createPosting(posting) {
         key: PostKey,
       };
       firebase.database().ref().update(postingUpdate);
-      resolve(true)
+      resolve(amazonprice)
     })
   })
 }

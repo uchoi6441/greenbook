@@ -12,7 +12,7 @@ export class BulletinBoardScreen extends React.Component {
     super(props)
     this.state = {
       fontLoaded: true,
-      search: '',
+      data: []
     };
   }
   renderSeparator = () => {
@@ -26,7 +26,6 @@ export class BulletinBoardScreen extends React.Component {
     );
   };
   render() {
-    searchDatabase(this.state.search)
     const { navigate } = this.props.navigation
     return (
       <View style={{ flex: 1, backgroundColor: '#fff' }}>
@@ -47,7 +46,10 @@ export class BulletinBoardScreen extends React.Component {
               placeholder="search by title, ISBN, course, professor, or author..."
               placeholderTextColor='#000'
               onChangeText={(search) => {
-                this.setState({search})
+                searchDatabase(search).then((result) => {
+                  this.setState({ data: result })
+                  console.log(this.state.data)
+                })
               }}
             />
           </View>
@@ -56,22 +58,15 @@ export class BulletinBoardScreen extends React.Component {
               <Text style={this.state.fontLoaded ? styles.border : styles.else }>hellomynameisjennyandyoucantunderstand</Text>
             </View>
             <FlatList
-              data={[
-                {key: '1', destination: 'Home', title: 'The Voyageur', edition: false, publisher: 'Minnesota Historical Society Press', author: 'Grace Lee Nute', ISBN: '0-87351-213-8', course: 'hist12', quantity: 1, lowPrice: 20},
-                {key: '2', destination: 'Home', title: 'Witches, Rakes, and Rogues', edition: 2, publisher: 'Commonwealth Editions', author: 'D. Brenton Simons', ISBN: null, course: 'engl30', quantity: 2, lowPrice: 30},
-                {key: '3', destination: 'Home', title: 'Hey', edition: 4, publisher: 'Me', author: 'myself', ISBN: '554-34', course: 'bio12', quantity: 2, lowPrice: 20},
-              ]}
+              data = { this.state.data }
               renderItem = {({ item }) => (
                   <BulletinBoardPosting
                     navigation = { this.props.navigation }
                     font = { this.state.fontLoaded }
-                    destination = { item.destination }
                     title = { item.title }
-                    edition = { item.edition }
                     publisher = { item.publisher }
                     author = { item.author }
-                    ISBN = { item.ISBN }
-                    course = { item.course }
+                    ISBN = { item.isbn }
                     quantity = { item.quantity }
                     lowPrice = { item.lowPrice }
                   />

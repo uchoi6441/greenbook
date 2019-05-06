@@ -72,16 +72,6 @@ export class MakePostingScreen extends React.Component {
             <View style={{borderBottomWidth: 2, width: '90%', alignSelf: 'center'}}/>
             <View style={{flex: 3, justifyContent: 'space-around'}}>
               <View style={{flexDirection:'row'}}>
-                <Text style={this.state.fontLoaded ? styles.courseProf : style.else}>price:</Text>
-                <View style={ styles.response }>
-                  <TextInput
-                    style={ this.state.fontLoaded ? styles.isbnText : styles.else }
-                    autoCorrect={false}
-                    onChangeText={(price) => this.setState({price})}
-                  />
-                </View>
-              </View>
-              <View style={{flexDirection:'row'}}>
                 <Text style={this.state.fontLoaded ? styles.courseProf : style.else}>department:</Text>
                 <View style={ styles.deptResponse }>
                   <FlatList
@@ -181,13 +171,13 @@ export class MakePostingScreen extends React.Component {
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
-              if (this.state.price != '' && this.state.isbn != '') {
+              if (this.state.isbn != '') {
                 createPosting({ isbn: this.state.isbn, dept: this.state.pressedDept[0], numb: this.state.numb, prof: this.state.prof, price: this.state.price }).then((result) => {
                   navigate({ routeName: 'MyPostings', key: (Math.random() * 10000).toString() })
                 })
               }
               else {
-                alert('Price and ISBN are required fields.')
+                alert('ISBN is a required field.')
               }
             }}
           >
@@ -303,3 +293,14 @@ const styles = StyleSheet.create({
     height: Dimensions.get('window').width / 3,
   },
 });
+
+//              <View style={{flexDirection:'row'}}>
+//                <Text style={this.state.fontLoaded ? styles.courseProf : style.else}>price:</Text>
+//                <View style={ styles.response }>
+//                  <TextInput
+//                    style={ this.state.fontLoaded ? styles.isbnText : styles.else }
+//                    autoCorrect={false}
+//                    onChangeText={(price) => this.setState({price})}
+//                  />
+//                </View>
+//              </View>
