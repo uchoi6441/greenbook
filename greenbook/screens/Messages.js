@@ -12,10 +12,14 @@ export class MessagesScreen extends React.Component {
     super(props)
     this.state = {
       fontLoaded: true,
-      data: ['Jenny Engelman', 'Urie Choi'],
+      data: [],
     };
   }
-
+  componentWillMount() {
+    getMessages().then((result) => {
+      this.setState({ data: result })
+    })
+  }
   renderSeparator = () => {
     return (
       <View
@@ -33,6 +37,15 @@ export class MessagesScreen extends React.Component {
     const { navigate } = this.props.navigation
     return (
       <View style={{ flex: 1, backgroundColor: '#fff' }}>
+        <View style={{justifyContent: 'flex-start', alignSelf: 'flex-start', marginTop: Dimensions.get('window').height / 25, marginLeft: Dimensions.get('window').width / 15}}>
+          <TouchableOpacity
+            onPress={() => {
+              navigate("Home")
+            }}
+          >
+            <Text style={ this.state.fontLoaded ? styles.logOut : styles.else}>back</Text>
+          </TouchableOpacity>
+        </View>
         <View style={ styles.headingBufferTop }/>
         <View style={ styles.heading }>
           <Text style={ this.state.fontLoaded ? styles.headingText : styles.else }>messages</Text>
