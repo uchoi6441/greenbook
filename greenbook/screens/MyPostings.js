@@ -67,7 +67,7 @@ export class MyPostingsScreen extends React.Component {
                 <MyPostingsButton
                   font = { this.state.fontLoaded }
                   title = { item.title }
-                  isbn = { item.isbn }
+                  isbn = { item.isbn13 }
                   price = { item.price }
                   time = { item.timestamp }
                   course = { item.course }

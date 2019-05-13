@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "greenbook-c3edb"
+    "default": "greenbook-c3edb",
+    "greenbook2021": "greenbook2021"
   }
 }
