@@ -2,6 +2,7 @@ import React from "react";
 import { GiftedChat } from "react-native-gifted-chat";
 import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Dimensions } from 'react-native';
 import { ChatManager, TokenProvider } from '@pusher/chatkit-client';
+import Chatkit from '@pusher/chatkit-server';
 
 const CHATKIT_TOKEN_PROVIDER_ENDPOINT = 'https://us1.pusherplatform.io/services/chatkit_token_provider/v1/587fcd5f-cf84-421b-9fe0-8935ac068fd6/token';
 const CHATKIT_INSTANCE_LOCATOR = 'v1:us1:587fcd5f-cf84-421b-9fe0-8935ac068fd6';
@@ -43,6 +44,7 @@ export class MyChatScreen extends React.Component {
         console.log(err);
       });
   }
+
   onReceive = data => {
     const { id, senderId, text, createdAt } = data;
     const incomingMessage = {
@@ -52,8 +54,6 @@ export class MyChatScreen extends React.Component {
       user: {
         _id: senderId,
         name: senderId,
-        avatar:
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmXGGuS_PrRhQt73sGzdZvnkQrPXvtA-9cjcPxJLhLo8rW-sVA',
       },
     };
 
@@ -61,6 +61,7 @@ export class MyChatScreen extends React.Component {
       messages: GiftedChat.append(previousState.messages, incomingMessage),
     }));
   };
+
   onSend = (messages = []) => {
     messages.forEach(message => {
       this.currentUser

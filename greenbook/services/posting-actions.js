@@ -1,4 +1,4 @@
-import firebase from 'firebase'
+import firebase from 'firebase';
 import moment from 'moment';
 
 export function isbnLookup(isbn) {

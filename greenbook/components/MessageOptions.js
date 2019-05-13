@@ -7,7 +7,6 @@ export default class MessageOptions extends React.Component {
   render() {
     const { navigate } = this.props.navigation;
     return (
-
       <TouchableOpacity
         onPress={() => {
           navigate(this.props.destination)
