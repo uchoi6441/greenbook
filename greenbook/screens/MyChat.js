@@ -7,6 +7,7 @@ import { ChatManager, TokenProvider } from '@pusher/chatkit-client';
 
 const CHATKIT_TOKEN_PROVIDER_ENDPOINT = 'https://us1.pusherplatform.io/services/chatkit_token_provider/v1/587fcd5f-cf84-421b-9fe0-8935ac068fd6/token';
 const CHATKIT_INSTANCE_LOCATOR = 'v1:us1:587fcd5f-cf84-421b-9fe0-8935ac068fd6';
+const CHATKIT_SECRET_KEY = '5d61aa3e-2d2e-46eb-9363-3f22ffa16743:2F0abjZuUWf9ZvukvGvQw2vSqOpdRUgbgzemQO5V9UE=';
 const CHATKIT_ROOM_ID = '19411428';
 const CHATKIT_USER_NAME = 'Urie Choi';
 
@@ -100,7 +101,7 @@ export class MyChatScreen extends React.Component {
         <View style={styles.bottomButton}>
           <TouchableOpacity
             onPress={() => {
-              this.props.navigation.navigate('Messages')
+              this.props.navigation.navigate('Home')
             }}
           >
             <Text style={ this.state.fontLoaded ? styles.back : styles.else }>back</Text>

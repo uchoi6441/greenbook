@@ -9,6 +9,7 @@
   "dependencies": {
     "@pusher/chatkit-client": "^1.5.0",
     "@pusher/chatkit-server": "^1.1.0",
+    "@stdlib/stdlib": "0.0.60",
     "aws-amplify-react-native": "^2.1.7",
     "expo": "^32.0.2",
     "firebase": "^5.8.2",
