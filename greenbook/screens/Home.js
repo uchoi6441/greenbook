@@ -2,8 +2,8 @@ import React from 'react';
 import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Dimensions } from 'react-native';
 import { Font } from 'expo';
 import HomeOptions from './../components/HomeOptions';
+import MessageButton from './../components/MessageButton';
 import { FluidNavigator } from 'react-navigation-fluid-transitions';
-
 
 export class HomeScreen extends React.Component {
   static navigationOptions = { header: null };
@@ -53,7 +53,7 @@ export class HomeScreen extends React.Component {
             font = { this.state.fontLoaded }
             text = { 'messages' }
             navigation = { this.props.navigation }
-            destination = { 'Home' }
+            destination = { 'Chat' }
           />
           <HomeOptions
             font = { this.state.fontLoaded }
