@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Dimensions 
 import { Font } from 'expo';
 import { FluidNavigator } from 'react-navigation-fluid-transitions';
 import { GiftedChat } from 'react-native-gifted-chat';
+import Fire from './Fire';
 
 export class ChatScreen extends React.Component {
   static navigationOptions = { header: null };
@@ -13,6 +14,23 @@ export class ChatScreen extends React.Component {
       messages: [],
     };
   }
+  componentDidMount() {
+    Fire.shared.on(message =>
+      this.setState(previousState => ({
+        messages: GiftedChat.append(previousState.messages, message),
+      }))
+    );
+  }
+  componentWillUnmount(){
+    Fire.shared.off();
+  }
+  get user() {
+    return {
+      name: this.props.navigation.state.params.name,
+      _id: Fire.shared.uid,
+    };
+  }
+
   static navigationOptions = ({ navigation }) => ({
     title: (navigation.state.params || {}).email || 'Chat!',
   });
@@ -25,6 +43,8 @@ export class ChatScreen extends React.Component {
         friendName = { this.props.email }
         navigation = { this.props.navigation }
         destination = { 'Home' }
+        onSend={Fire.shared.send}
+        user={this.user}
       />
     );
   }
