@@ -9,9 +9,11 @@ export class Fire extends React.Component {
   }
   observeAuth = () =>
     firebase.auth().onAuthStateChanged(this.onAuthStateChanged);
+
   get ref() {
     return firebase.database().ref('messages');
   }
+  
   on = callback =>
     this.ref
       .limitToLast(20)

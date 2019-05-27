@@ -4,6 +4,7 @@ import { Font } from 'expo';
 import { FluidNavigator } from 'react-navigation-fluid-transitions';
 import { GiftedChat } from 'react-native-gifted-chat';
 import Fire from './Fire';
+import { getMyPostings } from './../services/posting-actions'
 
 export class ChatScreen extends React.Component {
   static navigationOptions = { header: null };
@@ -14,6 +15,7 @@ export class ChatScreen extends React.Component {
       messages: [],
     };
   }
+
   componentDidMount() {
     Fire.shared.on(message =>
       this.setState(previousState => ({
@@ -21,9 +23,11 @@ export class ChatScreen extends React.Component {
       }))
     );
   }
-  componentWillUnmount(){
+
+  componentWillUnmount() {
     Fire.shared.off();
   }
+
   get user() {
     return {
       name: this.props.navigation.state.params.name,
