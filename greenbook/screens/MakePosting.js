@@ -185,7 +185,7 @@ export class MakePostingScreen extends React.Component {
         <View style={ styles.bottomButtons }>
           <TouchableOpacity
             onPress={() => {
-              navigate("Home")
+              navigate('MyPostings')
             }}
           >
             <Text style={ this.state.fontLoaded ? styles.bottomButtonsText : styles.else }>cancel</Text>
