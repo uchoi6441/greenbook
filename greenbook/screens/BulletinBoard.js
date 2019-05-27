@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Dimensions, FlatList } from 'react-native';
 import { Font } from 'expo';
 import BulletinBoardPosting from './../components/BulletinBoardPosting';
+import { searchDatabase } from './../services/database-actions';
 import TrendingSearches from './../components/TrendingSearches';
 
 
@@ -11,6 +12,7 @@ export class BulletinBoardScreen extends React.Component {
     super(props)
     this.state = {
       fontLoaded: true,
+      data: []
     };
   }
   renderSeparator = () => {
@@ -25,6 +27,8 @@ export class BulletinBoardScreen extends React.Component {
   };
   render() {
     const { navigate } = this.props.navigation
+    const algoliasearch = require('algoliasearch');
+    const searchClient = algoliasearch("P9LKM9IWML", "41b06325003d00a6bb7650a9d64a7c00");
     return (
       <View style={{ flex: 1, backgroundColor: '#fff' }}>
         <View style={ styles.headingBufferTop }/>
@@ -43,6 +47,12 @@ export class BulletinBoardScreen extends React.Component {
               style={ this.state.fontLoaded ? styles.greyBarText : styles.else }
               placeholder="search by title, ISBN, course, professor, or author..."
               placeholderTextColor='#000'
+              onChangeText={(search) => {
+                searchDatabase(search).then((result) => {
+                  this.setState({ data: result })
+                  console.log(result);
+                })
+              }}
             />
           </View>
           <View style={styles.searchView}>
@@ -50,24 +60,14 @@ export class BulletinBoardScreen extends React.Component {
               <Text style={this.state.fontLoaded ? styles.border : styles.else }>hellomynameisjennyandyoucantunderstand</Text>
             </View>
             <FlatList
-              data={[
-                {key: '1', destination: 'Home', title: 'The Voyageur', edition: false, publisher: 'Minnesota Historical Society Press', author: 'Grace Lee Nute', ISBN: '0-87351-213-8', course: 'hist12', quantity: 1, lowPrice: 20},
-                {key: '2', destination: 'Home', title: 'Witches, Rakes, and Rogues', edition: 2, publisher: 'Commonwealth Editions', author: 'D. Brenton Simons', ISBN: null, course: 'engl30', quantity: 2, lowPrice: 30},
-                {key: '3', destination: 'Home', title: 'Hey', edition: 4, publisher: 'Me', author: 'myself', ISBN: '554-34', course: 'bio12', quantity: 2, lowPrice: 20},
-              ]}
+              data = { this.state.data }
               renderItem = {({ item }) => (
                   <BulletinBoardPosting
                     navigation = { this.props.navigation }
                     font = { this.state.fontLoaded }
-                    destination = { item.destination }
                     title = { item.title }
-                    edition = { item.edition }
-                    publisher = { item.publisher }
                     author = { item.author }
-                    ISBN = { item.ISBN }
-                    course = { item.course }
-                    quantity = { item.quantity }
-                    lowPrice = { item.lowPrice }
+                    ISBN = { item.isbn13 }
                   />
               )}
               ItemSeparatorComponent={this.renderSeparator}

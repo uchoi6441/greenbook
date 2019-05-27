@@ -5,7 +5,6 @@ import { Font } from 'expo';
 export default class TrendingSearches extends React.Component {
   state = { fontLoaded: true };
   render() {
-    const { navigate } = this.props.navigation;
     return (
       <TouchableOpacity
         style={ styles.trendingButtons }

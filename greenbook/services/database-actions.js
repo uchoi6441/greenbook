@@ -40,3 +40,19 @@ export function verifyAccount(email, password) {
     });
   })
 }
+
+export function searchDatabase(queryText) {
+  return new Promise ((resolve, reject) => {
+    const algoliasearch = require('algoliasearch');
+    const client = algoliasearch('P9LKM9IWML', '41b06325003d00a6bb7650a9d64a7c00');
+    const index = client.initIndex('books');
+    var postings = [];
+    index.search({ query: queryText}, (err, { hits } = {}) =>
+      {
+        if (err) throw err;
+        console.log(hits);
+        resolve(hits);
+      }
+    );
+  })
+}
