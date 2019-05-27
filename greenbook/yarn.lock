@@ -7089,8 +7089,8 @@ react-navigation-drawer@1.0.5:
     react-native-tab-view "^1.2.0"
 
 react-navigation-fluid-transitions@^0.3.1:
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/react-navigation-fluid-transitions/-/react-navigation-fluid-transitions-0.3.1.tgz#4b38e717711444789435217e048be3c991640ff5"
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/react-navigation-fluid-transitions/-/react-navigation-fluid-transitions-0.3.2.tgz#8cb68a5102432756f80a0862d314b1720ac66501"
   dependencies:
     lodash.chunk "*"
     lodash.clamp "*"

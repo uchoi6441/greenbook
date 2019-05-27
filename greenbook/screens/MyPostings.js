@@ -12,7 +12,7 @@ export class MyPostingsScreen extends React.Component {
     super(props)
     this.state = {
       fontLoaded: true,
-      data: []
+      data: [],
     };
   }
   componentWillMount() {

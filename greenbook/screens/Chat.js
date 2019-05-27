@@ -14,10 +14,9 @@ export class ChatScreen extends React.Component {
       messages: [],
     };
   }
+
   componentWillMount() {
-    Fire.on().then((result) => {
-      this.setState( {messages: GiftedChat.append(messages, result)} )
-    });
+    Fire.on()
   }
 
   componentWillUnmount() {
