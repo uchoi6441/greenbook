@@ -27,6 +27,8 @@ export class BulletinBoardScreen extends React.Component {
   };
   render() {
     const { navigate } = this.props.navigation
+    const algoliasearch = require('algoliasearch');
+    const searchClient = algoliasearch("P9LKM9IWML", "41b06325003d00a6bb7650a9d64a7c00");
     return (
       <View style={{ flex: 1, backgroundColor: '#fff' }}>
         <View style={ styles.headingBufferTop }/>
@@ -48,7 +50,7 @@ export class BulletinBoardScreen extends React.Component {
               onChangeText={(search) => {
                 searchDatabase(search).then((result) => {
                   this.setState({ data: result })
-                  console.log(this.state.data)
+                  console.log(result);
                 })
               }}
             />
@@ -64,11 +66,8 @@ export class BulletinBoardScreen extends React.Component {
                     navigation = { this.props.navigation }
                     font = { this.state.fontLoaded }
                     title = { item.title }
-                    publisher = { item.publisher }
                     author = { item.author }
-                    ISBN = { item.isbn }
-                    quantity = { item.quantity }
-                    lowPrice = { item.lowPrice }
+                    ISBN = { item.isbn13 }
                   />
               )}
               ItemSeparatorComponent={this.renderSeparator}

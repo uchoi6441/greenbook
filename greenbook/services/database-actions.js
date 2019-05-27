@@ -43,14 +43,16 @@ export function verifyAccount(email, password) {
 
 export function searchDatabase(queryText) {
   return new Promise ((resolve, reject) => {
-    var databaseRef = firebase.database().ref(`search`)
-    var postings = []
-    databaseRef.orderByKey().equalTo(queryText).on("child_added", function(snapshot) {
-      firebase.database().ref(`books/${snapshot.val()}`).once('value').then(snapshot => {
-        postings.push(snapshot.val())
-        postings.push(snapshot.val())
-      })
-    });
-    resolve(postings)
+    const algoliasearch = require('algoliasearch');
+    const client = algoliasearch('P9LKM9IWML', '41b06325003d00a6bb7650a9d64a7c00');
+    const index = client.initIndex('books');
+    var postings = [];
+    index.search({ query: queryText}, (err, { hits } = {}) =>
+      {
+        if (err) throw err;
+        console.log(hits);
+        resolve(hits);
+      }
+    );
   })
 }

@@ -15,9 +15,6 @@ export default class BulletinBoardPosting extends React.Component {
         style={ styles.posting }
       >
         <Text style = { this.props.font ? styles.titleText : styles.buttonTextElse }>{ this.props.title }</Text>
-        <View style={{flexDirection:'row'}}>
-          <Text style = { this.props.font ? styles.buttonText : styles.buttonTextElse }>{ this.props.publisher }</Text>
-        </View>
         <Text style = { this.props.font ? styles.buttonText : styles.buttonTextElse }>{ this.props.author }</Text>
         <View style={{flexDirection:'row'}}>
           <Text style = { this.props.font ? styles.buttonText : styles.buttonTextElse }>ISBN: </Text>
