@@ -3,8 +3,7 @@ import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Dimensions 
 import { Font } from 'expo';
 import { FluidNavigator } from 'react-navigation-fluid-transitions';
 import { GiftedChat } from 'react-native-gifted-chat';
-import Fire from './Fire';
-import { getMyPostings } from './../services/posting-actions'
+import * as Fire from './Fire';
 
 export class ChatScreen extends React.Component {
   static navigationOptions = { header: null };
@@ -15,39 +14,36 @@ export class ChatScreen extends React.Component {
       messages: [],
     };
   }
-
-  componentDidMount() {
-    Fire.shared.on(message =>
-      this.setState(previousState => ({
-        messages: GiftedChat.append(previousState.messages, message),
-      }))
-    );
+  componentWillMount() {
+    Fire.on().then((result) => {
+      this.setState( {messages: GiftedChat.append(messages, result)} )
+    });
   }
 
   componentWillUnmount() {
-    Fire.shared.off();
+    Fire.off();
   }
 
   get user() {
     return {
-      name: this.props.navigation.state.params.name,
-      _id: Fire.shared.uid,
+      name: Fire.getName(),
+      _id: Fire.getUid(),
     };
   }
 
   static navigationOptions = ({ navigation }) => ({
     title: (navigation.state.params || {}).email || 'Chat!',
   });
+
   render() {
     const { navigate } = this.props.navigation
     return (
       <GiftedChat
-        messages={this.state.messages}
+        messages = { this.state.messages }
         font = { this.state.fontLoaded }
-        friendName = { this.props.email }
         navigation = { this.props.navigation }
         destination = { 'Home' }
-        onSend={Fire.shared.send}
+        onSend={Fire.send}
         user={this.user}
       />
     );
