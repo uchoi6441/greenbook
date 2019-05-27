@@ -13,6 +13,7 @@ import { AboutScreen } from './screens/About';
 import { SummaryScreen } from './screens/Summary';
 import { MakePostingScreen } from './screens/MakePosting';
 import { MyPostingsScreen } from './screens/MyPostings';
+import { PostingSummaryScreen } from './screens/PostingSummary';
 import { Tutorial0Screen } from './screens/Tutorial0';
 import { Tutorial1Screen } from './screens/Tutorial1';
 import { Tutorial2Screen } from './screens/Tutorial2';
@@ -31,6 +32,7 @@ const RootStack = FluidNavigator({
   Congrats: { screen: CongratsScreen },
   Settings: { screen: SettingsScreen },
   Summary: { screen: SummaryScreen },
+  PostingSummary: { screen: PostingSummaryScreen },
   MakePosting: { screen: MakePostingScreen },
   MyPostings: { screen: MyPostingsScreen },
   Tutorial0: { screen: Tutorial0Screen },

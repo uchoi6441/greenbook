@@ -1,44 +1,26 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Dimensions, FlatList, ListItem } from 'react-native';
 import { Font } from 'expo';
-import { getMyPostings } from './../services/posting-actions'
+import { getPosting } from './../services/posting-actions'
 import MyPostingsButton from './../components/MyPostingsButton'
 import { FluidNavigator } from 'react-navigation-fluid-transitions';
 
 
-export class MyPostingsScreen extends React.Component {
+export class PostingSummaryScreen extends React.Component {
   static navigationOptions = { header: null };
   constructor(props) {
     super(props)
     this.state = {
       fontLoaded: true,
-      data: []
     };
   }
-  componentWillMount() {
-    getMyPostings().then((result) => {
-      this.setState({ data: result })
-    })
-  }
-  renderSeparator = () => {
-    return (
-      <View
-        style={{
-          height: 2,
-          backgroundColor: "#000000",
-          alignSelf: 'center',
-          width: Dimensions.get('window').width / 10 * 9,
-        }}
-      />
-    );
-  };
   render() {
     const { navigate } = this.props.navigation
     return (
       <View style={{ flex: 1, backgroundColor: '#fff' }}>
         <View style={ styles.headingBufferTop }/>
         <View style={ styles.heading }>
-          <Text style={ this.state.fontLoaded ? styles.headingText : styles.else }>my postings</Text>
+          <Text style={ this.state.fontLoaded ? styles.headingText : styles.else }>summary</Text>
         </View>
         <View style={{ alignItems: 'center', marginTop: -30 }}>
           <Image
@@ -46,37 +28,25 @@ export class MyPostingsScreen extends React.Component {
             style={ styles.vineImage }
           />
         </View>
-        <View style={{flexDirection: 'row', justifyContent: 'center', marginBottom: 10 }}>
-          <Text style={styles.pressedTab}>my postings</Text>
-          <TouchableOpacity
-            onPress={() => {
-              navigate('MyTags')
-            }}
-          >
-            <Text style={styles.tab}> / my tags</Text>
-          </TouchableOpacity>
-        </View>
         <View style={ styles.body }>
           <View style = { styles.borderBox }>
             <Text style={ this.state.fontLoaded ? styles.border : styles.else }>hellomynameisjennyandyoucantunderstand</Text>
           </View>
-          <View style = {{ height: '92%', width: '100%' }}>
-            <FlatList
-              data = { this.state.data }
-              renderItem = {({ item }) => (
-                <MyPostingsButton
-                  font = { this.state.fontLoaded }
-                  title = { item.title }
-                  isbn = { item.isbn13 }
-                  price = { item.price }
-                  time = { item.timestamp }
-                  course = { item.course }
-                  postkey = { item.key }
-                  navigation = { this.props.navigation }
-                />
-              )}
-              ItemSeparatorComponent={this.renderSeparator}
-            />
+          <View style = {{ height: '92%', width: '100%', alignItems: 'center', justifyContent: 'center' }}>
+            <View style = { styles.button } >
+                <Text style = { this.state.fontLoaded ? styles.buttonText : styles.buttonTextElse }>
+                  {this.props.navigation.state.params.title}
+                </Text>
+                <Text style = { this.state.fontLoaded ? styles.info : styles.infoElse }>
+                  isbn: {this.props.navigation.state.params.isbn}
+                </Text>
+                <Text style = { this.state.fontLoaded ? styles.info : styles.infoElse }>
+                  course: {this.props.navigation.state.params.course}
+                </Text>
+                <Text style = { this.state.fontLoaded ? styles.info : styles.infoElse }>
+                  price: ${this.props.navigation.state.params.price}
+                </Text>
+            </View>
           </View>
           <View style = { styles.borderBox }>
             <Text style={this.state.fontLoaded ? styles.border : styles.else }>hellomynameisjennyandyoucantunderstand</Text>
@@ -86,7 +56,7 @@ export class MyPostingsScreen extends React.Component {
         <View style={ styles.bottomButtons }>
           <TouchableOpacity
             onPress={() => {
-              navigate({ routeName: 'MakePosting', key: (Math.random() * 10000).toString() })
+              navigate("MakePosting")
             }}
           >
             <Text style={ this.state.fontLoaded ? styles.bottomButtonsText : styles.else }>new posting</Text>
@@ -110,8 +80,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignContent: 'space-around',
     backgroundColor: '#E9E9E9',
-    marginTop: Dimensions.get('window').height / 100 * 2,
-    height: Dimensions.get('window').height / 2,
+    height: '50%',
   },
   border: {
     fontFamily: 'barcode',
@@ -120,6 +89,7 @@ const styles = StyleSheet.create({
   },
   borderBox: {
     width: '110%',
+    height: '4%',
   },
   bottomButtons: {
     justifyContent: 'space-around',
@@ -128,6 +98,25 @@ const styles = StyleSheet.create({
   bottomButtonsText: {
     fontSize: 25,
     fontFamily: 'gloria-hallelujah',
+    color: '#024C2E',
+  },
+  button: {
+    width: '80%',
+    height: '80%',
+    backgroundColor: 'white',
+    justifyContent: 'flex-start',
+    flexDirection: 'column',
+    borderRadius: 10,
+    borderWidth: 2,
+    padding: 10,
+  },
+  buttonText: {
+    fontFamily: 'gloria-hallelujah',
+    fontSize: 18,
+    color: '#024C2E',
+  },
+  buttonTextElse: {
+    fontSize: 18,
     color: '#024C2E',
   },
   else: {
@@ -149,6 +138,13 @@ const styles = StyleSheet.create({
     fontSize: 35,
     fontFamily: 'gloria-hallelujah',
     color: '#024C2E',
+  },
+  info: {
+    fontFamily: 'source-code-pro',
+    fontSize: 16,
+  },
+  infoElse: {
+    fontSize: 16,
   },
   pressedTab: {
     fontFamily: 'source-code-pro',

@@ -6,29 +6,22 @@ export default class BulletinBoardPosting extends React.Component {
   state = { fontLoaded: true };
   render() {
     const { navigate } = this.props.navigation;
+    console.log("here")
     return (
       <TouchableOpacity
         onPress={() => {
-          navigate(this.props.destination)
+          navigate("Home")
         }}
         style={ styles.posting }
       >
         <Text style = { this.props.font ? styles.titleText : styles.buttonTextElse }>{ this.props.title }</Text>
-        <View style={{flexDirection:'row'}}>
-          <Text style = { this.props.font ? styles.buttonText : styles.buttonTextElse }>{ this.props.edition }</Text>
-          <Text style = { this.props.font ? styles.buttonText : styles.buttonTextElse }>ed., </Text>
-          <Text style = { this.props.font ? styles.buttonText : styles.buttonTextElse }>{ this.props.publisher }</Text>
-        </View>
         <Text style = { this.props.font ? styles.buttonText : styles.buttonTextElse }>{ this.props.author }</Text>
         <View style={{flexDirection:'row'}}>
           <Text style = { this.props.font ? styles.buttonText : styles.buttonTextElse }>ISBN: </Text>
-          <Text style = { this.props.font ? styles.buttonText : styles.buttonTextElse }>{ this.props.ISBN }</Text>
+          <Text style = { this.props.font ? styles.buttonText : styles.buttonTextElse }>{ this.props.isbn }</Text>
         </View>
-        <Text style = { this.props.font ? styles.buttonText : styles.buttonTextElse }>{ this.props.course }</Text>
         <View style={{flexDirection:'row'}}>
-          <Text style = { this.props.font ? styles.buttonText : styles.buttonTextElse }>{ this.props.quantity }</Text>
           <Text style = { this.props.font ? styles.buttonText : styles.buttonTextElse }> postings starting at $</Text>
-          <Text style = { this.props.font ? styles.buttonText : styles.buttonTextElse }>{ this.props.lowPrice }</Text>
         </View>
       </TouchableOpacity>
     );
