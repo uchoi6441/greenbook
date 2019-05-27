@@ -61,38 +61,44 @@ export class MyTagsScreen extends React.Component {
           <Text style={styles.pressedTab}>my tags</Text>
         </View>
         <View style={ styles.body }>
-          <Modal transparent={false} visible={this.state.modalVisible} style={styles.modal}>
-              <Text style={ this.state.fontLoaded ? styles.headingText : styles.else }>make a new tag</Text>
-              <TextInput
-                style={ this.state.fontLoaded ? styles.userInfoText : styles.else }
-                placeholder="type a title, ISBN, course, or author..."
-                placeholderTextColor='#000'
-                onChangeText={(tagItem) => this.setState({tagItem})}
-              />
-              <View style={{justifyContent: 'center'}}>
-                <TouchableOpacity
-                  onPress={() => {
-                    if (this.state.tagItem != '') {
-                      createTag({ item: this.state.tagItem }).then((result) => {
-                        this.setModalVisible(!this.state.modalVisible);
-                        navigate({ routeName: 'MyTags', key: (Math.random() * 10000).toString() })
-                      })
-                    }
-                    else {
-                      alert('Please type in a tag')
-                    }
-                  }}>
-                  <Text style={ this.state.fontLoaded ? styles.makeNewTag : styles.else }>add tag</Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                  onPress={() => {
-                    this.setModalVisible(!this.state.modalVisible);
-                    navigate({ routeName: 'MyTags', key: (Math.random() * 10000).toString() })
-                  }}>
-                  <Text style = { this.state.fontLoaded ? styles.back : styles.else }>back</Text>
-                </TouchableOpacity>
+          <Modal transparent={false} visible={this.state.modalVisible}>
+            <View style={styles.modal}>
+              <View style={styles.modalInset}>
+                <Text style={ this.state.fontLoaded ? styles.headingText : styles.else }>make a new tag</Text>
+                <View style={styles.tagInput}>
+                  <TextInput
+                    style={ this.state.fontLoaded ? styles.userInfoText : styles.else }
+                    placeholder="type a title, ISBN, course, or author..."
+                    placeholderTextColor='#000'
+                    onChangeText={(tagItem) => this.setState({tagItem})}
+                  />
+                </View>
+                <View style={{justifyContent: 'center'}}>
+                  <TouchableOpacity
+                    onPress={() => {
+                      if (this.state.tagItem != '') {
+                        createTag({ item: this.state.tagItem }).then((result) => {
+                          this.setModalVisible(!this.state.modalVisible);
+                          navigate({ routeName: 'MyTags', key: (Math.random() * 10000).toString() })
+                        })
+                      }
+                      else {
+                        alert('Please type in a tag')
+                      }
+                    }}>
+                    <Text style={ this.state.fontLoaded ? styles.makeNewTag : styles.else }>add tag</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    onPress={() => {
+                      this.setModalVisible(!this.state.modalVisible);
+                      navigate({ routeName: 'MyTags', key: (Math.random() * 10000).toString() })
+                    }}>
+                    <Text style = { this.state.fontLoaded ? styles.back : styles.else }>back</Text>
+                  </TouchableOpacity>
+                </View>
               </View>
-            </Modal>
+            </View>
+          </Modal>
           <View style = { styles.borderBox }>
             <Text style={ this.state.fontLoaded ? styles.border : styles.else }>hellomynameisjennyandyoucantunderstand</Text>
           </View>
@@ -222,16 +228,21 @@ const styles = StyleSheet.create({
     color: '#024C2E',
   },
   modal: {
-    justifyContent: 'space-around',
+    justifyContent: 'center',
+    alignContent: 'center',
+    height: Dimensions.get('window').height,
+  },
+  modalInset: {
+    paddingTop: 20,
+    paddingBottom: 20,
+    paddingLeft: 10,
+    paddingRight: 10,
+    justifyContent: 'space-between',
     alignItems: 'center',
-    borderRadius: 4,
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    flex: .6,
-    height: 100,
-    margin: 20,
-    paddingTop: 22,
-    borderColor: 'rgba(0, 0, 0, 0.1)',
+    borderRadius: 10,
+    borderColor: '#000',
+    borderWidth: 5,
+    height: Dimensions.get('window').height * .5,
   },
   pressedTab: {
     fontFamily: 'source-code-pro',
@@ -245,6 +256,12 @@ const styles = StyleSheet.create({
   tagImage: {
     width: 25,
     height: 25,
+  },
+  tagInput: {
+    borderRadius: 5,
+    borderColor: '#000',
+    borderWidth: 2,
+    padding: 5,
   },
   vineImage: {
     transform: [{ rotate: '180deg'}],
