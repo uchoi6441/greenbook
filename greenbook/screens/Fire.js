@@ -16,7 +16,6 @@ export function observeAuth() {
 export function onAuthStateChanged(user) {
     if (!user) {
       try {
-        // 4.
         firebase.auth().signInAnonymously();
       } catch ({ message }) {
         alert(message);
@@ -74,16 +73,10 @@ export function send(messages) {
   return new Promise((resolve, reject) => {
     const newMessages = messages.map((message) => {
       message.timestamp = getTimestamp();
-      // const { text, user } = message;
-      // const newMessage = {
-      //     text,
-      //     user,
-      //     timestamp: getTimestamp(),
-      //   };
       return message;
     })
     append(newMessages);
-    resolve('Sent!');
+    resolve(true);
   })
 };
 

@@ -31,7 +31,7 @@ export class ChatScreen extends React.Component {
   }
 
   static navigationOptions = ({ navigation }) => ({
-    title: (navigation.state.params || {}).email || 'Chat!',
+    title: user.name || 'Chat!',
   });
 
   onSend = (messages = []) => {
