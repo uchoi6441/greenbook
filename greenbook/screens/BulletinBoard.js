@@ -5,7 +5,6 @@ import BulletinBoardPosting from './../components/BulletinBoardPosting';
 import { searchDatabase } from './../services/database-actions';
 import TrendingSearches from './../components/TrendingSearches';
 
-
 export class BulletinBoardScreen extends React.Component {
   static navigationOptions = { header: null };
   constructor(props) {
@@ -68,6 +67,7 @@ export class BulletinBoardScreen extends React.Component {
                     title = { item.title }
                     author = { item.author }
                     ISBN = { item.isbn13 }
+                    user = { item.user }
                   />
               )}
               ItemSeparatorComponent={this.renderSeparator}

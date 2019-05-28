@@ -8,12 +8,7 @@ export default class BulletinBoardPosting extends React.Component {
     const { navigate } = this.props.navigation;
     console.log("here")
     return (
-      <TouchableOpacity
-        onPress={() => {
-          navigate("Home")
-        }}
-        style={ styles.posting }
-      >
+      <View style={ styles.posting }>
         <Text style = { this.props.font ? styles.titleText : styles.buttonTextElse }>{ this.props.title }</Text>
         <Text style = { this.props.font ? styles.buttonText : styles.buttonTextElse }>{ this.props.author }</Text>
         <View style={{flexDirection:'row'}}>
@@ -23,7 +18,14 @@ export default class BulletinBoardPosting extends React.Component {
         <View style={{flexDirection:'row'}}>
           <Text style = { this.props.font ? styles.buttonText : styles.buttonTextElse }> postings starting at $</Text>
         </View>
-      </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            navigate("Chat")
+          }}
+        >
+          <Text style = { this.props.font ? styles.buttonText : styles.buttonTextElse }>message this seller</Text>
+        </TouchableOpacity>
+      </View>
     );
   }
 }

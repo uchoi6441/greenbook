@@ -34,6 +34,15 @@ export class ChatScreen extends React.Component {
     title: (navigation.state.params || {}).email || 'Chat!',
   });
 
+  onSend = (messages = []) => {
+    this.setState({
+      messages: GiftedChat.append(this.state.messages, messages)
+    }, () => {
+      console.log(this.state.messages)
+      Fire.send(this.state.messages)
+    })
+  }
+
   render() {
     const { navigate } = this.props.navigation
     return (
@@ -42,8 +51,8 @@ export class ChatScreen extends React.Component {
         font = { this.state.fontLoaded }
         navigation = { this.props.navigation }
         destination = { 'Home' }
-        onSend={Fire.send}
-        user={this.user}
+        onSend={messages => { this.onSend(messages) }}
+        user={ this.user }
       />
     );
   }

@@ -28,7 +28,7 @@ export class HomeScreen extends React.Component {
           </TouchableOpacity>
           <View style={styles.environment}>
             <View style={{flexDirection: 'column', paddingLeft: 10}}>
-              <Text style={ this.state.fontLoaded ? styles.environmentText : styles.else }>Each traded book reduces</Text>
+              <Text style={ this.state.fontLoaded ? styles.environmentText : styles.else }>Each TradeRoots book reduces</Text>
               <Text style={ this.state.fontLoaded ? styles.environmentText : styles.else }>packaging waste, your carbon footprint,</Text>
               <Text style={ this.state.fontLoaded ? styles.environmentText : styles.else }>and shipping costs!</Text>
             </View>
@@ -65,7 +65,7 @@ export class HomeScreen extends React.Component {
             font = { this.state.fontLoaded }
             text = { 'messages' }
             navigation = { this.props.navigation }
-            destination = { 'Messages' }
+            destination = { 'Chat' }
           />
           <HomeOptions
             font = { this.state.fontLoaded }

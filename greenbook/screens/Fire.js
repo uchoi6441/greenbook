@@ -1,6 +1,7 @@
 import React from 'react';
 import firebase from 'firebase';
 import moment from 'moment';
+import { GiftedChat } from 'react-native-gifted-chat';
 
 export function getRef() {
   return firebase.database().ref('messages');
@@ -8,15 +9,26 @@ export function getRef() {
 
 export function observeAuth() {
   return new Promise((resolve, reject) => {
-    firebase.auth().onAuthStateChanged(this.onAuthStateChanged);
+    firebase.auth().onAuthStateChanged(onAuthStateChanged);
   })
 }
+
+export function onAuthStateChanged(user) {
+    if (!user) {
+      try {
+        // 4.
+        firebase.auth().signInAnonymously();
+      } catch ({ message }) {
+        alert(message);
+      }
+    }
+};
 
 export function on() {
   return new Promise((resolve, reject) => {
     getRef()
       .limitToLast(20)
-      .on('child_added', snapshot => callback(this.parse(snapshot)));
+      .on('child_added', snapshot => callback(parse(snapshot)));
     resolve(true)
   })
 }
@@ -50,25 +62,31 @@ export function getTimestamp() {
   return firebase.database.ServerValue.TIMESTAMP;
 }
 
-export function send(message) {
+export function append(messages) {
   return new Promise((resolve, reject) => {
-    for (let i = 0; i < messages.length; i++) {
-      const { text, user } = messages[i];
-      const message = {
-        text,
-        user,
-        timestamp: this.timestamp,
-      };
-      this.append(message);
-    }
-    resolve(message)
+    console.log(messages)
+    firebase.database().ref(`messages`).set(messages)
+    resolve(true)
+  })
+}
+
+export function send(messages) {
+  return new Promise((resolve, reject) => {
+    const newMessages = messages.map((message) => {
+      message.timestamp = getTimestamp();
+      // const { text, user } = message;
+      // const newMessage = {
+      //     text,
+      //     user,
+      //     timestamp: getTimestamp(),
+      //   };
+      return message;
+    })
+    append(newMessages);
+    resolve('Sent!');
   })
 };
 
-export function append(message) {
-  this.ref.push(message)
-}
-
 export function off() {
-    this.ref.off();
+    getRef().off();
 }
