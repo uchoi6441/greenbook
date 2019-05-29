@@ -23,7 +23,7 @@ export class ChatScreen extends React.Component {
     Fire.off();
   }
 
-  get user() {
+  getUser() {
     return {
       name: Fire.getName(),
       _id: Fire.getUid(),
@@ -31,7 +31,7 @@ export class ChatScreen extends React.Component {
   }
 
   static navigationOptions = ({ navigation }) => ({
-    title: user.name || 'Chat!',
+    title: (navigation.state.params || {}).email || 'Chat!',
   });
 
   onSend = (messages = []) => {
@@ -52,7 +52,7 @@ export class ChatScreen extends React.Component {
         navigation = { this.props.navigation }
         destination = { 'Home' }
         onSend={messages => { this.onSend(messages) }}
-        user={ this.user }
+        user={ this.getUser() }
       />
     );
   }
