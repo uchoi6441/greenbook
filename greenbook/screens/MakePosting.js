@@ -72,6 +72,15 @@ export class MakePostingScreen extends React.Component {
             <View style={{borderBottomWidth: 2, width: '90%', alignSelf: 'center'}}/>
             <View style={{flex: 3, justifyContent: 'space-around'}}>
               <View style={{flexDirection:'row'}}>
+                <Text style={this.state.fontLoaded ? styles.courseProf : style.else}>price:</Text>
+                <View style={ styles.response }>
+                  <TextInput
+                    style={ this.state.fontLoaded ? styles.isbnText : styles.else }
+                    onChangeText={(price) => this.setState({price})}
+                  />
+                </View>
+              </View>
+              <View style={{flexDirection:'row'}}>
                 <Text style={this.state.fontLoaded ? styles.courseProf : style.else}>department:</Text>
                 <View style={ styles.deptResponse }>
                   <FlatList
