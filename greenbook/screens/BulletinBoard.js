@@ -50,7 +50,6 @@ export class BulletinBoardScreen extends React.Component {
               onChangeText={(search) => {
                 searchDatabase(search).then((result) => {
                   this.setState({ data: result })
-                  console.log(result);
                 })
               }}
             />
@@ -68,6 +67,7 @@ export class BulletinBoardScreen extends React.Component {
                     title = { item.title }
                     author = { item.author }
                     ISBN = { item.isbn13 }
+                    postings = {item.postings}
                   />
               )}
               ItemSeparatorComponent={this.renderSeparator}

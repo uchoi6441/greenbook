@@ -50,7 +50,6 @@ export function searchDatabase(queryText) {
     index.search({ query: queryText}, (err, { hits } = {}) =>
       {
         if (err) throw err;
-        console.log(hits);
         resolve(hits);
       }
     );

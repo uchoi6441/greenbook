@@ -6,7 +6,7 @@ export default class BulletinBoardPosting extends React.Component {
   state = { fontLoaded: true };
   render() {
     const { navigate } = this.props.navigation;
-    console.log("here")
+    var quantity = Object.keys(this.props.postings).length;
     return (
       <TouchableOpacity
         onPress={() => {
@@ -21,7 +21,7 @@ export default class BulletinBoardPosting extends React.Component {
           <Text style = { this.props.font ? styles.buttonText : styles.buttonTextElse }>{ this.props.isbn }</Text>
         </View>
         <View style={{flexDirection:'row'}}>
-          <Text style = { this.props.font ? styles.buttonText : styles.buttonTextElse }> postings starting at $</Text>
+          <Text style = { this.props.font ? styles.buttonText : styles.buttonTextElse }>{quantity} posting(s) starting at $</Text>
         </View>
       </TouchableOpacity>
     );
